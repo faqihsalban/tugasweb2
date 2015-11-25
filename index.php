@@ -1,10 +1,39 @@
 <html>
-    <head> 
+    <head>
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+      <!-- include css -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <link href="css/bootstrap.min.css" rel="stylesheet">
+      <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+      <link href="css/sb-admin.css" rel="stylesheet">
+      <link href="css/font-awesome.css" rel="stylesheet">
+      <link href="css/style.css" rel="stylesheet">
+      <link href="css/pages/dashboard.css" rel="stylesheet">
+      <link href="css/pages/faq.css" rel="stylesheet">
+
+      <!-- script dan css alertify -->
+      <script src="alertify/alertify.min.js"></script>
+      <link rel="stylesheet" href="alertify/css/alertify.min.css" />
+      <link rel="stylesheet" href="alertify/css/themes/default.min.css" />
+
+      <!-- include javascript -->
+      <script src="js/jquery-1.7.2.min.js"></script>
+      <script src="js/excanvas.min.js"></script>
+      <script src="js/chart.min.js" type="text/javascript"></script>
+      <script src="js/bootstrap.js"></script>
+      <script language="javascript" type="text/javascript" src="js/full-calendar/fullcalendar.min.js"></script>
+      <script src="js/base.js"></script>
+      <script src="js/jquery-ui.js"></script>
+
 
 
         <script type='text/javascript' language='javascript'>
             function logout() {
-                window.location(window.location.hostname+"/index.php?menu=logout");
+                // window.location(window.location.hostname+"/index.php?menu=logout");
             }
 
 
@@ -42,16 +71,13 @@ include_once 'controller/serviceController.php';
 include_once 'controller/transacController.php';
 include_once 'controller/userController.php';
 
+include_once 'view/main.php';
+include_once 'view/deliFood.php';
 
 
 
-
-
-
-
-
-if (!isset($_SESSION['is_logded'])) {
-    $_SESSION['is_logded'] = FALSE;
+if (!isset($_SESSION['is_logged'])) {
+    $_SESSION['is_logged'] = FALSE;
 }
 if (isset($_GET['menu'])) {
     $mnu = $_GET['menu'];
@@ -67,9 +93,10 @@ switch ($mnu) {
         $usecon = new userController();
         $usecon->index();
         break;
-    case 'book':
-        $bookcon = new bookController();
-        $bookcon->index();
+    case 'deliFood':
+        // $bookcon = new bookController();
+        // $bookcon->index();
+        include_once("view/deliFood.php");
         break;
     case 'cate':
         $katecon = new kategoriController();
@@ -81,10 +108,10 @@ switch ($mnu) {
     case 'updatebook':
         include("fupdbook.php");
         break;
-    case 'logout':
-        $usecon = new userController();
-        $usecon->logout();
-        break;
+    case 'logout':include_once ("logout.php");
+        // $usecon = new userController();
+        // $usecon->logout();
+        // break;
     default :
         $usecon = new userController();
         $usecon->index();

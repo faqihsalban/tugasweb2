@@ -155,7 +155,7 @@ class userDao implements userInterface {
 
             if ($stmt->rowCount() == 1) {
                 while ($row = $stmt->fetch()) {
-                    $_SESSION['is_logded'] = TRUE;
+                    $_SESSION['is_logged'] = TRUE;
                     $_SESSION['id'] = $row['id_user'];
                     $_SESSION['role'] = $row['role'];
                     $_SESSION['name'] = $row['name'];

@@ -34,21 +34,21 @@ class userController {
                 if ($login_result) {
                     header("location:index.php");
                 } else {
-                    echo "User pass salah ooii";
+                    echo "Username dan password salah";
                 }
             }
         }
         require_once '/home.php';
     }
-    
-    public function logout() {
 
-        $_SESSION['is_logded'] = FALSE;
-        $_SESSION['id'] = '';
-        $login_result = FALSE;
-        session_unset();
-        session_destroy();
-        header('location:index.php');
-    }
+    // public function logout() {
+    //
+    //     $_SESSION['is_logged'] = FALSE;
+    //     $_SESSION['id'] = '';
+    //     $login_result = FALSE;
+    //     session_unset();
+    //     session_destroy();
+    //     header('location:index.php');
+    // }
 
 }
