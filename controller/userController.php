@@ -32,7 +32,7 @@ class userController {
                 $usr->setPassword($password);
                 $login_result =$this->userdao->login($usr);
                 if ($login_result) {
-                    header("location:index.php");
+                    header("location:view/main.php");
                 } else {
                     echo "Username dan password salah";
                 }

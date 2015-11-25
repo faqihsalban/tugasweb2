@@ -71,8 +71,8 @@ include_once 'controller/serviceController.php';
 include_once 'controller/transacController.php';
 include_once 'controller/userController.php';
 
-include_once 'view/main.php';
-include_once 'view/deliFood.php';
+//include_once 'view/main.php';
+//include_once 'view/deliFood.php';
 
 
 

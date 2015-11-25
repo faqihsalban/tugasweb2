@@ -1,106 +1,215 @@
+<?php
+// 	session_start();
+// 	ob_start();
+// 	require '../../Connection.php';
+// 	$unit = $_SESSION['setNamaUnit'];
+//   if(isset($_GET['idRuangan'])){
+//     $idRuangan = $_GET['idRuangan'];
+//   } else {
+//
+//     $sql = "
+//             SELECT idRuangan FROM tbweb_Ruangan WHERE idGedung=1";
+//     $rs = odbc_exec($conn, $sql);
+//     while (odbc_fetch_row($rs)) {
+//       $idRuangan = odbc_result($rs, 'idRuangan');
+//       break;
+//   }
+//
+// }
+?>
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <title>Login - Peminjaman Ruangan BPSI</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-		<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-		<link href="css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
-		<link href="css/font-awesome.css" rel="stylesheet">
-		<link href="css/style.css" rel="stylesheet" type="text/css">
-		<link href="css/pages/signin.css" rel="stylesheet" type="text/css">
-		<!-- script dan css alertify -->
-		<script src="alertify/alertify.min.js"></script>
-		<link rel="stylesheet" href="alertify/css/alertify.min.css" />
-		<link rel="stylesheet" href="alertify/css/themes/default.min.css" />
-  </head>
-  <body>
-    <?php
-    if ($_SESSION['is_logged']) {
+<html lang="en">
+<head>
 
-        // echo "<a href='index.php?menu=logout'>Logout</a>";
-        //disini harus bikin yang login jika role yang masuk ada lah user biasa, admin, pemilik dan driver
-        //bikin html nya di pisah aja, nanti di include
-        echo "<br>";
-        // echo "Welcome " . $_SESSION['name'];
-        $role = "";
-        if ($_SESSION['role']==1) {
-          $role = "Admin";
-        }
-        elseif ($_SESSION['role']==2) {
-          $role = "User";
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
+                    class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a>
+                    <a class="brand"><div class="icon-large icon-truck">
 
-        }
-        elseif ($_SESSION['role']==3) {
-          $role = "Driver";
-        }
-        else {
-          $role="Owner";
-        }
-        // echo " anda sebagai  " . $role;
-        // 1 admin, 2 user 3 driver, 4 owner
-        if ($_SESSION['role']==1) {
-          header ('location:view/main.php');
-        } else if ($_SESSION['role'] == 2) { //user
-            //  include_once 'user/home.php';
-        } else if ($_SESSION['role'] == 3) { //driver
-            //  include_once 'driver/home.php';
-        } else if ($_SESSION['role'] == 4) { //owner
-            // include_once 'owner/home.php';
-        }
-    } else {
-        ?>
+                    </div>Deli Town</a>
+      <div class="nav-collapse">
+        <ul class="nav pull-right">
 
-        <!-- <div class="account-container">
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						<div class="icon-large icon-envelope"> <id class="counter" style="display:none">0</id>
+						</div><b class="caret"></b></a>
 
-            <div class="content clearfix">
+            <ul class="dropdown-menu message-dropdown">
 
-                <form action="#" method="post">
-                    <h1>Login</h1>
+							<?php
+							// require_once '../../show_Notif.php';
 
-                    <div class="login-fields">
+							//menentukan index akhir for
+							// if (count($arrayNotifications)>=3) { //jika pjang array >= 3 maka yg ditampilkan hanya 3 notif terbaru saja
+								// $indexAkhir = count($arrayNotifications)-3;
+							// } else { // jika pjang array < 3 maka tampilkan semua
+								// $indexAkhir = 0;
+							// }
 
-                        <p>Silahkan masukkan data login</p>
+							// for ($index=count($arrayNotifications)-1; $index >= $indexAkhir; $index--) {
+								//kasih icon bullhorn jika notif itu baru
+								// if ($arrayNotifications[$index][9]==0) {
+								// 	$icon = 'icon-bullhorn';
+								// } else {
+								// 	$icon='';
+								// }
 
-                        <div class="field">
-                            <label for="username">Username</label>
-                            <input type="text" id="username" name="username" value="" placeholder="Username" class="login username-field" />
-                        </div> <!-- /field -->
+							// 	echo "
+							// 	<li class='message-preview'>
+							// 			<a href='../update_form.php?id={$arrayNotifications[$index][10]}'>
+							// 					<div class='media'>
+							// 							<div class='media-body'>
+							// 								<h5 class='media-heading'>
+							// 								<strong>{$arrayNotifications[$index][0]} ({$arrayNotifications[$index][1]})  <i class='{$icon}'></i></strong>
+							// 								</h5>
+							// 								<p class='small text-muted'><i class='icon-small icon-time'></i>  {$arrayNotifications[$index][2]}</p>
+							// 								<p>Request jadwal ruangan {$arrayNotifications[$index][5]}</p>
+							// 							</div>
+							// 					</div>
+							// 			</a>
+							// 	</li>";
+              //
+							// }
+							?>
 
-                        <!-- <div class="field">
-                            <label for="password">Password:</label>
-                            <input type="password" id="password" name="password" value="" placeholder="Password" class="login password-field"/>
-                        </div> <!-- /password -->
+                <li class="message-footer">
+                    <a href="../Notifikasi/notifikasi.php">Baca Seluruh Pesan</a>
+                </li>
+            </ul>
+        	</li>
 
-                    <!-- </div> <!-- /login-fields -->
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
+             class="icon-large icon-user"></i> <b class="caret"></b></a>
+ 						<ul class="dropdown-menu">
+ 								<li><a href="../ganti_password.php">Ganti Password</a></li>
+								<li><a href="../Laporan/cetak_laporan.php">Cetak Laporan</a></li>
+ 	              <li><a href="logout.php">Keluar</a></li>
+             </ul>
+           </l
+        </ul>
 
-                    <!-- <div class="login-actions">
-                        <button class="button btn btn-success btn-large" type="submit" name="btn_login">Masuk</button>
-                    </div> <!-- .actions -->
+      </div>
+      <!--/.nav-collapse -->
+    </div>
+    <!-- /container -->
+  </div>
+  <!-- /navbar-inner -->
+</div>
+<!-- /navbar -->
+<div class="subnavbar">
+  <div class="subnavbar-inner">
+    <div class="container">
+      <ul class="mainnav">
 
-                <!-- </form> -->
+        <li class="dropdown"><a href="index.php?menu=deliFood" class="dropdown-toggle" >
+          <div class="icon-large icon-glass">
+          </div>
+          <span>FOOD DELI</span> <b class="caret"></b></a>
+        </li>
 
-            <!-- </div> <!-- /content -->
+        <li class="active"><a href="gap.php" class="dropdown-toggle" >
+          <div class="icon-large icon-tag">
+          </div>
+          <span>LAUNDRY DELI</span> <b class="caret"></b></a>
 
-        <!-- </div> <!-- /account-container -->
+        </li>
 
-        <!--    <form action="" method="POST">
-                <table border="1">
-                    <tr>
-                        <td> Username
-                        <td><input type="text" name="username"></tr>
-                    <tr>
-                        <td> Password
-                        <td><input type="Password" name="password"></tr>
-                    <tr>
-                        <td colspan="2"><input type="submit" value="login" name="btn_login"/>
-                    </tr>
-                </table>
-            </form>-->
-        <?php
-    }
-    ?>
-  </body>
+        <li class="dropdown"><a href="../GWM/gwm.php" class="dropdown-toggle" >
+          <div class="icon-large icon-copy">
+          </div>
+          <span>PHOTOCOPY DELI</span> <b class="caret"></b></a>
+        </li>
+
+      </ul>
+    </div>
+    <!-- /container -->
+  </div>
+  <!-- /subnavbar-inner -->
+</div>
+<!-- /subnavbar -->
+
+
+
+
+<div class="main">
+  <div class="main-inner">
+    <div class="container">
+      <div class="row">
+				<div class="widget">
+					<div class="widget-content">
+						<div class="faq-container">
+							<!-- <div class="faq-toc"> -->
+
+								<h2 style="text-align: center;"><br>Selamat Datang di Deli Town
+                  <div class="icon-large icon-truck" style="color:#52017b"></div>
+                  <div class="icon-small icon-align-left"></div>
+                </h2>
+                <p style="text-align:center">Silahkan Login atau <a href="#">Daftar</a></p>
+
+                <div class="account-container" style="margin-top:1em; margin-bottom:3em">
+
+                    <div class="content clearfix" >
+                        <form action="" method="post">
+                            <h1>Login</h1>
+
+                            <div class="login-fields">
+
+                                <div class="field">
+                                    <label for="username">Username</label>
+                                    <input type="text" id="username" name="username" value="" placeholder="Username" class="login username-field" />
+                                </div> <!-- /field -->
+
+                              <div class="field">
+                                    <label for="password">Password:</label>
+                                    <input type="password" id="password" name="password" value="" placeholder="Password" class="login password-field"/>
+                                </div> <!-- /password -->
+
+                            </div>
+
+                            <div class="login-actions">
+                                <button class="button btn btn-success btn-large" type="submit" name="btn_login">Masuk</button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                  </div>
+							</div>
+						</div>
+					</div>
+				</div>
+				</div>
+				</div>
+			</div>
+		</div>
+		</div>
+
+
+
+<!-- <div class="footer">
+  <div class="footer-inner">
+    <div class="container">
+      <div class="row">
+        <div class="span12"> &copy; 2015 Peminjaman Ruangan by Silviana & Claudia. All Rights Reserved. Powered by BPSI </div>
+        <!-- /span12 -->
+      <!-- </div> -->
+      <!-- /row -->
+    <!-- </div> -->
+    <!-- /container -->
+  <!-- </div> -->
+  <!-- /footer-inner -->
+<!-- </div> -->
+<!-- /footer -->
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+<!-- bagin -->
+
+
+
+</body>
 </html>
