@@ -136,18 +136,30 @@ class transacDao implements transacInterface {
     }
 
     public function get_transac_by_driver($id_driver) {
+        $transacs = new ArrayObject();
         try {
             $conn = conection::getconection();
             $sql = "SELECT * from transac where id_driver = ?";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(1, $id_driver);
             $stmt->execute();
+            while ($row = $stmt->fetch()) {
+                $transac = new transac();
+                $transac->setId_transac($row['id_transac']);
+                $transac->setId_user($row['id_user']);
+                $transac->setId_driver($row['id_driver']);
+                $transac->setAddress($row['address']);
+                $transac->setStatus($row['status']);
+                $transac->setTotal($row['total']);
+
+                $transacs->append(transac);
+            }
         } catch (Exception $e) {
             echo $e->getMessage();
             die();
         }
         $conn = NULL;
-        return $stmt;
+        return $transacs;
     }
 
     public function upd_driver(\transac $vtransac) {
@@ -168,6 +180,33 @@ class transacDao implements transacInterface {
         }
         $conn = NULL;
         return $result;
+    }
+
+    public function get_transac_by_status($status) {
+        $transacs = new ArrayObject();
+        try {
+            $conn = conection::getconection();
+            $sql = "SELECT * from transac where status = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(1, $status);
+            $stmt->execute();
+            while ($row = $stmt->fetch()) {
+                $transac = new transac();
+                $transac->setId_transac($row['id_transac']);
+                $transac->setId_user($row['id_user']);
+                $transac->setId_driver($row['id_driver']);
+                $transac->setAddress($row['address']);
+                $transac->setStatus($row['status']);
+                $transac->setTotal($row['total']);
+
+                $transacs->append($transac);
+            }
+        } catch (Exception $e) {
+            echo $e->getMessage();
+            die();
+        }
+        $conn = NULL;
+        return $transacs;
     }
 
 //put your code here

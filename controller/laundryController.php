@@ -7,10 +7,10 @@
  */
 
 /**
- * Description of menuController
+ * Description of laundryController
  *
  * @author faqih
  */
-class menuController {
+class laundryController {
     //put your code here
 }

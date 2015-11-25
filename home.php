@@ -110,14 +110,14 @@
           <span>FOOD DELI</span> <b class="caret"></b></a>
         </li>
 
-        <li class="active"><a href="gap.php" class="dropdown-toggle" >
+        <li class="active"><a href="index.php?menu=deliLaundry" class="dropdown-toggle" >
           <div class="icon-large icon-tag">
           </div>
           <span>LAUNDRY DELI</span> <b class="caret"></b></a>
 
         </li>
 
-        <li class="dropdown"><a href="../GWM/gwm.php" class="dropdown-toggle" >
+        <li class="dropdown"><a href="index.php?menu=deliCopy" class="dropdown-toggle" >
           <div class="icon-large icon-copy">
           </div>
           <span>PHOTOCOPY DELI</span> <b class="caret"></b></a>
@@ -147,6 +147,9 @@
                   <div class="icon-large icon-truck" style="color:#52017b"></div>
                   <div class="icon-small icon-align-left"></div>
                 </h2>
+                                                        
+                                                        
+                                                        
                 <p style="text-align:center">Silahkan Login atau <a href="#">Daftar</a></p>
 
                 <div class="account-container" style="margin-top:1em; margin-bottom:3em">

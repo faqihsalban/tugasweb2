@@ -7,10 +7,10 @@
  */
 
 /**
- * Description of transacController
+ * Description of deliCopy
  *
  * @author faqih
  */
-class transacController {
+class deliCopy {
     //put your code here
 }

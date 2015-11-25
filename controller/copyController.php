@@ -7,10 +7,10 @@
  */
 
 /**
- * Description of itemController
+ * Description of copyController
  *
  * @author faqih
  */
-class itemController {
+class copyController {
     //put your code here
 }

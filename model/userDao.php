@@ -130,7 +130,7 @@ class userDao implements userInterface {
             $stmt->bindParam(1, $vuser->getName());
             $stmt->bindParam(2, $vuser->getPassword());
             $stmt->bindParam(3, $vuser->getPhone());
-            $stmt->bindParam(4, $vuser->getRole());
+            $stmt->bindParam(4, $vuser->getEmail());
             $stmt->bindParam(5, $vuser->getId_user());
             $result = $stmt->execute();
             $conn->commit();
@@ -156,7 +156,7 @@ class userDao implements userInterface {
             if ($stmt->rowCount() == 1) {
                 while ($row = $stmt->fetch()) {
                     $_SESSION['is_logged'] = TRUE;
-                    $_SESSION['id'] = $row['id_user'];
+                    $_SESSION['id_user'] = $row['id_user'];
                     $_SESSION['role'] = $row['role'];
                     $_SESSION['name'] = $row['name'];
                     $login_result = TRUE;

@@ -7,10 +7,10 @@
  */
 
 /**
- * Description of serviceController
+ * Description of deliLaundry
  *
  * @author faqih
  */
-class serviceController {
+class deliLaundry {
     //put your code here
 }

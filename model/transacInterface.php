@@ -16,6 +16,7 @@ interface transacInterface {
     public function get_transac_by_user($id_user);
     public function get_transac_by_driver($id_driver);
     public function get_transac_by_id($id_transac);
+    public function get_transac_by_status($status);
     public function get_transac(transac $vtransac );
     public function add(transac $vtransac );
     public function del(transac $vtransac );

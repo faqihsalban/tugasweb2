@@ -18,7 +18,16 @@ class service {
     private $address;
     private $phone;
     private $type;
-    public function getId_service() {
+    private $id_user;
+    public function getId_user() {
+        return $this->id_user;
+    }
+
+    public function setId_user($id_user) {
+        $this->id_user = $id_user;
+    }
+
+        public function getId_service() {
         return $this->id_service;
     }
 
