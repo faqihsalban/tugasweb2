@@ -66,9 +66,9 @@
     include_once 'model/userInterface.php';
     include_once 'model/userDao.php';
 
-    include_once 'controller/copyController.php';
+   // include_once 'controller/copyController.php';
     include_once 'controller/foodController.php';
-    include_once 'controller/laundryController.php';
+  //  include_once 'controller/laundryController.php';
     include_once 'controller/userController.php';
 
 
@@ -101,12 +101,12 @@
             $foodcon->index();
             break;
         case 'deliLaundry':
-            $laundcon = new laundryController();
-            $laundcon->index();
+            $laundcon = new foodController();
+            $laundcon->laundry();
             break;
         case 'deliCopy':
-            $copycon = new copyController();
-            $copycon->index();
+            $copycon = new foodController();
+            $copycon->photocopy();
             break;
         case 'user':
             $usercon = new userController();
