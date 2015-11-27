@@ -30,7 +30,7 @@ class itemDao implements itemInterface {
             echo $e->getMessage();
             die();
         }
-          $conn = NULL;
+        $conn = NULL;
         return $result;
     }
 
@@ -54,18 +54,27 @@ class itemDao implements itemInterface {
     }
 
     public function get_item_by_transac($id_transac) {
+        $items = new ArrayObject();
         try {
             $conn = conection::getconection();
             $sql = "SELECT * from item where id_transac = ?";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(1, $id_transac);
             $stmt->execute();
+            while ($row = $stmt->fetch()) {
+                $item = new item();
+                $item->setId_menu($row['id_menu']);
+                $item->setId_service($row['id_service']);
+                $item->setName($row['name']);
+                $item->setPrice($row['price']);
+                $items->append($item);
+            }
         } catch (Exception $e) {
             echo $e->getMessage();
             die();
         }
         $conn = NULL;
-        return $stmt;
+        return $items;
     }
 
 }

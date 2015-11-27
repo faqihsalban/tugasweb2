@@ -14,15 +14,15 @@ and open the template in the editor.
             <table align="center">
                 <tr>
                     <td width="100">id user</td>
-                    <td><?php echo $user['id_user']; ?></td>
+                    <td><?php echo $user->getId_user(); ?></td>
                 </tr>
                 <tr>
                     <td>nama</td>
-                    <td><input type="text" name="name" placeholder="nama" value="<?php echo $user['name']; ?>"/></td>
+                    <td><input type="text" name="name" placeholder="nama" value="<?php echo $user->getName(); ?>"/></td>
                 </tr>
                 <tr>
                     <td>username</td>
-                    <td><?php echo $user['username']; ?></td>
+                    <td><?php echo $user->getUsername(); ?></td>
                 </tr>
                 <tr>
                     <td>password</td>
@@ -30,19 +30,19 @@ and open the template in the editor.
                 </tr>
                 <tr>
                     <td>email</td>
-                    <td><input type="text" name="email" placeholder="email" value="<?php echo $user['email']; ?>"/></td>
+                    <td><input type="text" name="email" placeholder="email" value="<?php echo $user->getEmail(); ?>"/></td>
                 </tr>
                 <tr>
                     <td>phone</td>
-                    <td><input type="text" name="phone" placeholder="phone" value="<?php echo $user['phone']; ?>"/></td>
+                    <td><input type="text" name="phone" placeholder="phone" value="<?php echo $user->getPhone(); ?>"/></td>
                 </tr>
                 <tr>
                     <td>role</td>
-                    <td><?php echo $user['role']; ?></td>
+                    <td><?php echo $user->getRole(); ?></td>
                 </tr>
                 <tr>
                     <td>date join</td>
-                    <td><?php echo $user['date_join']; ?></td>
+                    <td><?php echo $user->getDate_join(); ?></td>
                 </tr>
 
 

@@ -58,66 +58,115 @@ class userDao implements userInterface {
     }
 
     public function get_all_user() {
+        $users = new ArrayObject();
         try {
             $conn = conection::getconection();
-            $sql = "SELECT * from user";
+            $sql = "SELECT * from user ";
             $stmt = $conn->prepare($sql);
-
+            
             $stmt->execute();
+            while ($row = $stmt->fetch()) {
+                $user = new user();
+                $user->setId_user($row['id_user']);
+                $user->setName($row['name']);
+                $user->setPassword($row['password']);
+                $user->setPhone($row['phone']);
+                $user->setUsername($row['username']);
+                $user->setRole($row['role']);
+                $user->setEmail($row['email']);
+                $user->setDate_join($row['date_join']);
+                $users->append($user);
+            }
         } catch (Exception $e) {
             echo $e->getMessage();
             die();
         }
         $conn = NULL;
-        return $stmt;
+        return $users;
     }
 
     public function get_user(\user $vuser) {
+        $users = new ArrayObject();
         try {
             $conn = conection::getconection();
             $sql = "SELECT * from user where id_user=?";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(1, $vuser->getId_user());
-
             $stmt->execute();
+            while ($row = $stmt->fetch()) {
+                $user = new user();
+                $user->setId_user($row['id_user']);
+                $user->setName($row['name']);
+                $user->setPassword($row['password']);
+                $user->setPhone($row['phone']);
+                $user->setUsername($row['username']);
+                $user->setRole($row['role']);
+                $user->setEmail($row['email']);
+                $user->setDate_join($row['date_join']);
+                //$users->append($user);
+            }
         } catch (Exception $e) {
             echo $e->getMessage();
             die();
         }
         $conn = NULL;
-        return $stmt;
+        return $user;
     }
 
     public function get_user_by_id($id_user) {
+        $users = new ArrayObject();
         try {
             $conn = conection::getconection();
             $sql = "SELECT * from user where id_user=?";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(1, $id_user);
-
             $stmt->execute();
+            while ($row = $stmt->fetch()) {
+                $user = new user();
+                $user->setId_user($row['id_user']);
+                $user->setName($row['name']);
+                $user->setPassword($row['password']);
+                $user->setPhone($row['phone']);
+                $user->setUsername($row['username']);
+                $user->setRole($row['role']);
+                $user->setEmail($row['email']);
+                $user->setDate_join($row['date_join']);
+                //$users->append($user);
+            }
         } catch (Exception $e) {
             echo $e->getMessage();
             die();
         }
         $conn = NULL;
-        return $stmt;
+        return $user;
     }
 
     public function get_user_by_role($role) {
+       $users = new ArrayObject();
         try {
             $conn = conection::getconection();
             $sql = "SELECT * from user where role=?";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(1, $role);
-
             $stmt->execute();
+            while ($row = $stmt->fetch()) {
+                $user = new user();
+                $user->setId_user($row['id_user']);
+                $user->setName($row['name']);
+                $user->setPassword($row['password']);
+                $user->setPhone($row['phone']);
+                $user->setUsername($row['username']);
+                $user->setRole($row['role']);
+                $user->setEmail($row['email']);
+                $user->setDate_join($row['date_join']);
+                $users->append($user);
+            }
         } catch (Exception $e) {
             echo $e->getMessage();
             die();
         }
         $conn = NULL;
-        return $stmt;
+        return $users;
     }
 
     public function upd(\user $vuser) {

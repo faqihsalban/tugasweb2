@@ -55,64 +55,119 @@ class transacDao implements transacInterface {
     }
 
     public function get_all_transac(DateTime $date1, DateTime $date2) {
+        $transacs = new ArrayObject();
         try {
             $conn = conection::getconection();
-            $sql = "SELECT * from transac where date between ? and ?";
+           $sql = "SELECT * from transac where date between ? and ?";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(1, $date1);
             $stmt->bindParam(2, $date2);
             $stmt->execute();
+            while ($row = $stmt->fetch()) {
+                $transac = new transac();
+                $transac->setId_transac($row['id_transac']);
+                $transac->setId_user($row['id_user']);
+                $transac->setId_driver($row['id_driver']);
+                $transac->setAddress($row['address']);
+                $transac->setStatus($row['status']);
+                $transac->setTotal($row['total']);
+
+                $transacs->append($transac);
+            }
         } catch (Exception $e) {
             echo $e->getMessage();
             die();
         }
         $conn = NULL;
-        return $stmt;
+        return $transacs;
     }
 
+    
+    
+    
+    
+    
+    
+    
     public function get_transac(\transac $vtransac) {
+        $transacs = new ArrayObject();
         try {
             $conn = conection::getconection();
             $sql = "SELECT * from transac where id_transac = ?";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(1, $vtransac->getId_transac());
             $stmt->execute();
+            while ($row = $stmt->fetch()) {
+                $transac = new transac();
+                $transac->setId_transac($row['id_transac']);
+                $transac->setId_user($row['id_user']);
+                $transac->setId_driver($row['id_driver']);
+                $transac->setAddress($row['address']);
+                $transac->setStatus($row['status']);
+                $transac->setTotal($row['total']);
+
+                $transacs->append($transac);
+            }
         } catch (Exception $e) {
             echo $e->getMessage();
             die();
         }
         $conn = NULL;
-        return $stmt;
+        return $transacs;
     }
 
     public function get_transac_by_id($id_transac) {
+      // $transacs = new ArrayObject();
         try {
             $conn = conection::getconection();
             $sql = "SELECT * from transac where id_transac = ?";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(1, $id_transac);
             $stmt->execute();
+            while ($row = $stmt->fetch()) {
+                $transac = new transac();
+                $transac->setId_transac($row['id_transac']);
+                $transac->setId_user($row['id_user']);
+                $transac->setId_driver($row['id_driver']);
+                $transac->setAddress($row['address']);
+                $transac->setStatus($row['status']);
+                $transac->setTotal($row['total']);
+
+               // $transacs->append(transac);
+            }
         } catch (Exception $e) {
             echo $e->getMessage();
             die();
         }
         $conn = NULL;
-        return $stmt;
+        return $transac;
     }
 
     public function get_transac_by_user($id_user) {
+        $transacs = new ArrayObject();
         try {
             $conn = conection::getconection();
             $sql = "SELECT * from transac where id_user = ?";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(1, $id_user);
             $stmt->execute();
+            while ($row = $stmt->fetch()) {
+                $transac = new transac();
+                $transac->setId_transac($row['id_transac']);
+                $transac->setId_user($row['id_user']);
+                $transac->setId_driver($row['id_driver']);
+                $transac->setAddress($row['address']);
+                $transac->setStatus($row['status']);
+                $transac->setTotal($row['total']);
+
+                $transacs->append($transac);
+            }
         } catch (Exception $e) {
             echo $e->getMessage();
             die();
         }
         $conn = NULL;
-        return $stmt;
+        return $transacs;
     }
 
     public function upd_status(\transac $vtransac) {
@@ -152,7 +207,7 @@ class transacDao implements transacInterface {
                 $transac->setStatus($row['status']);
                 $transac->setTotal($row['total']);
 
-                $transacs->append(transac);
+                $transacs->append($transac);
             }
         } catch (Exception $e) {
             echo $e->getMessage();
@@ -189,6 +244,62 @@ class transacDao implements transacInterface {
             $sql = "SELECT * from transac where status = ?";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(1, $status);
+            $stmt->execute();
+            while ($row = $stmt->fetch()) {
+                $transac = new transac();
+                $transac->setId_transac($row['id_transac']);
+                $transac->setId_user($row['id_user']);
+                $transac->setId_driver($row['id_driver']);
+                $transac->setAddress($row['address']);
+                $transac->setStatus($row['status']);
+                $transac->setTotal($row['total']);
+
+                $transacs->append($transac);
+            }
+        } catch (Exception $e) {
+            echo $e->getMessage();
+            die();
+        }
+        $conn = NULL;
+        return $transacs;
+    }
+
+    public function get_transac_by_driver_status($id_driver, $status) {
+         $transacs = new ArrayObject();
+        try {
+            $conn = conection::getconection();
+            $sql = "SELECT * from transac where id_driver = ? and status = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(1, $id_driver);
+            $stmt->bindParam(2, $status);
+            $stmt->execute();
+            while ($row = $stmt->fetch()) {
+                $transac = new transac();
+                $transac->setId_transac($row['id_transac']);
+                $transac->setId_user($row['id_user']);
+                $transac->setId_driver($row['id_driver']);
+                $transac->setAddress($row['address']);
+                $transac->setStatus($row['status']);
+                $transac->setTotal($row['total']);
+
+                $transacs->append($transac);
+            }
+        } catch (Exception $e) {
+            echo $e->getMessage();
+            die();
+        }
+        $conn = NULL;
+        return $transacs;
+    }
+
+    public function get_transac_by_user_status($id_user, $status) {
+         $transacs = new ArrayObject();
+        try {
+            $conn = conection::getconection();
+            $sql = "SELECT * from transac where id_user = ? and status = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(1, $id_user);
+            $stmt->bindParam(2, $status);
             $stmt->execute();
             while ($row = $stmt->fetch()) {
                 $transac = new transac();

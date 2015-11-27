@@ -55,8 +55,18 @@ class userController {
     }
 
     public function driver() {
+        if(isset($_GET['service']))
+        {
+            $vtransac = new transac();
+            $vtransac->setId_transac($_GET['service']);
+            $vtransac->setStatus(1);
+            
+            $pesan = $this->transacdao->upd_status($vtransac);
+        }
+        
         $result = $this->transacdao->get_transac_by_status(0)->getIterator();
-echo 
+        $onproces = $this->transacdao->get_transac_by_status(1)->getIterator();
+ 
         require_once '/view/driver/main.php';
     }
 
@@ -69,7 +79,7 @@ echo
     }
 
     public function editprofile() {
-        $user = $this->userdao->get_user_by_id($_SESSION['id_user'])->fetch();
+        $user = $this->userdao->get_user_by_id($_SESSION['id_user']);
         if (isset($_POST['btn_update'])) {
             $userbaru = new user();
             $userbaru->setName($_POST['name']);

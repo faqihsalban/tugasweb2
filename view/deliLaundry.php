@@ -1,16 +1,11 @@
-<?php
+<!DOCTYPE html>
+<html>
+    <head>
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of deliLaundry
- *
- * @author faqih
- */
-class deliLaundry {
-    //put your code here
-}
+    </head>
+    <body>
+        ini deskripsi delilaundry
+        
+      
+</body>
+</html>

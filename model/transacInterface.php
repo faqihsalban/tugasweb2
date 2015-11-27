@@ -14,7 +14,9 @@ interface transacInterface {
     //put your code here
     public function get_all_transac(DateTime $date1, DateTime $date2);
     public function get_transac_by_user($id_user);
+    public function get_transac_by_user_status($id_user,$status);
     public function get_transac_by_driver($id_driver);
+    public function get_transac_by_driver_status($id_driver,$status);
     public function get_transac_by_id($id_transac);
     public function get_transac_by_status($status);
     public function get_transac(transac $vtransac );
