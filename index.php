@@ -144,11 +144,11 @@
             $usercon = new userController();
             $usercon->driver();
             break;
-        case 'owner':
+        case 'driverEditProfile':
             $usercon = new userController();
-            $usercon->owner();
+            $usercon->driverEditProfile();
             break;
-        case 'ownerMain':
+        case 'owner':
             $usercon = new userController();
             $usercon->owner();
             break;

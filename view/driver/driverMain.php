@@ -5,16 +5,47 @@
 
     </head>
     <body>
-        NAMPILIN 3 menu pilihan buat si driver
-        <br>
+      <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+          <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span> </a>
+                          <a href="index.php?menu=driver" class="brand"><div class="icon-large icon-truck">
 
-        <br><a href=index.php?menu=editprofile&id=<?php echo $_SESSION['id_user']; ?>> edit profile</a>
-        <br>
-        <a href=logout.php> logout</a> 
+                          </div>Deli Town</a>
+            <div class="nav-collapse">
+              <ul class="nav pull-right">
+                <?php if ($_SESSION['is_logged']) { ?>
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="icon-large icon-user"></i> <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="index.php?menu=driverEditProfile">Edit Profile</a></li>
+                      <li><a href="index.php?menu=logout"> logout</a></li>
+                   </ul>
+                 </li>
+              </ul>
+              <?php } ?>
 
-        tersedia
-        <table border='1'>
-            <th> id transac <th> id user <th> address <th> status <th> total <th> aksi
+            </div>
+            <!--/.nav-collapse -->
+          </div>
+          <!-- /container -->
+        </div>
+        <!-- /navbar-inner -->
+      </div>
+      <!-- /navbar -->
+
+<div class="main"style="background-image:url('img/driver_background.jpg');background-size:100% ">
+<div class="main-inner">
+  <div class="container">
+    <div class="row">
+      <div class="widget" >
+        <div class="widget-content" style="width: 74%">
+          <br>
+        <table class="table table-striped table-bordered">
+            <th> id transaction <th> id user <th> address <th> status <th> total <th> aksi
                 <?php while ($result->valid()) { ?>
                 <tr>
                     <td> <?php echo $result->current()->getId_transac(); ?>
@@ -31,7 +62,7 @@
         </table>
         <br>
         on proses
-        <table border='1'>
+        <table class="table table-striped table-bordered">
             <th> id transac <th> id user <th> address <th> status <th> total <th> aksi
                 <?php while ($onproces->valid()) { ?>
                 <tr>
@@ -47,5 +78,11 @@
             }
             ?>
         </table>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
     </body>
 </html>

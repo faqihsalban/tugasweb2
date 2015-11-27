@@ -163,6 +163,35 @@ class userController {
         require_once '/view/owner/ownerEditProfile.php';
     }
 
+    public function driverEditProfile() {
+        $user = $this->userdao->get_user_by_id($_SESSION['id_user']);
+
+        if (isset($_POST['btn_update'])) {
+            $confirmPassword = $_POST['confirmPassword'];
+            $password = $_POST['password'];
+            $userbaru = new user();
+            $userbaru->setName($_POST['name']);
+            $userbaru->setPassword(md5($_POST['password']));
+            $userbaru->setEmail($_POST['email']);
+            $userbaru->setPhone($_POST['phone']);
+            $userbaru->setId_user($_SESSION['id_user']);
+
+            if($password!=$confirmPassword) {
+              $this->userdao->upd($userbaru);
+              echo "
+                    <script>
+                    alertify.alert('Password Tidak Sesuai Konfirmasi');
+                    </script>
+                   ";
+            }
+            else {
+              // echo "alalalala";
+              header("location:index.php?menu=userMain");
+            }
+        }
+        require_once '/view/driver/driverEditProfile.php';
+    }
+
 
     // public function logout() {
     //
