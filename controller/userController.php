@@ -17,8 +17,8 @@ class userController {
     private $transacdao;
 
     public function __construct() {
-        $this->userdao = new userDao();
-        $this->transacdao = new transacDao();
+        $this->userDao = new userDao();
+        $this->transacDao = new transacDao();
     }
 
     public function index() {
@@ -43,7 +43,11 @@ class userController {
                     else if ($_SESSION['role'] == 4)
                         header("location: index.php?menu=owner");
                 } else {
-                    echo "Username dan password salah";
+                  echo "
+                        <script>
+                        alertify.Error('Username dan Password salah');
+                        </script>
+                       ";
                 }
             }
         } else
@@ -59,6 +63,24 @@ class userController {
     }
 
     public function signup() {
+      if (isset($_POST['signUp'])) {
+            $email = $_POST['email'];
+            $nama = $_POST['nama'];
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+            $confirmPassword = $_POST['confirmPassword'];
+            $phone = $_POST['phone'];
+
+            $user = new User();
+            $user->setEmail($email);
+            $user->setName($nama);
+            $user->setUsername($username);
+            $user->setPassword(md5($password));
+            $user->setPhone($phone);
+            $this->$userdao->add($user);
+
+        }
+        $dataUser = $this->userDao->get_all_user()->getIterator();
         require_once 'signup.php';
     }
 

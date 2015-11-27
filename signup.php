@@ -12,7 +12,7 @@
           <div class="navbar-inner">
             <div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
                             class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a>
-                            <a class="brand"><div class="icon-large icon-truck">
+                            <a href="index.php?menu=signup" class="brand"><div class="icon-large icon-truck">
 
                             </div>Deli Town</a>
                             <div class="nav-collapse">
@@ -87,38 +87,38 @@
         	            <center><tr>
         	              <td width="12%">Email</td>
         	              <td colspan="3">
-        	                <input type="text" class="inputNama" name="namaRuangan" placeholder="Email">
+        	                <input type="text" class="inputNama" name="email" placeholder="Email">
         	              </td>
         	            </tr></center>
 
         	            <tr>
         	              <td width="12%">Nama</td>
-        	              <td colspan="3"><input type="text" class="inputNama" name="namaRuangan" placeholder="Nama"></td>
+        	              <td colspan="3"><input type="text" class="inputNama" name="nama" placeholder="Nama"></td>
         	            </tr>
 
         	            <tr>
         	              <td width="12%">Username</td>
-        	              <td colspan="3"><input type="text" class="inputNama" name="kapasitas" placeholder="Username" id="txtAngka" maxlength="4"> </td>
+        	              <td colspan="3"><input type="text" class="inputNama" name="username" placeholder="Username" id="txtAngka" maxlength="4"> </td>
         	            </tr>
 
                       <tr>
         	              <td width="12%">Password</td>
-        	              <td colspan="3"><input type="password" class="inputNama" name="kapasitas" placeholder="Password" id="txtAngka" maxlength="4"> </td>
+        	              <td colspan="3"><input type="password" class="inputNama" name="password" placeholder="Password" id="txtAngka" maxlength="4"> </td>
         	            </tr>
 
                       <tr>
         	              <td width="12%">Confirm Password</td>
-        	              <td colspan="3"><input type="password" class="inputNama" name="kapasitas" placeholder="Confirm Password" id="txtAngka" maxlength="4"></td>
+        	              <td colspan="3"><input type="password" class="inputNama" name="confirmPassword" placeholder="Confirm Password" id="txtAngka" maxlength="4"></td>
         	            </tr>
 
                       <tr>
         	              <td width="12%">Phone</td>
-        	              <td colspan="3"><input type="text" class="inputNama" name="kapasitas" placeholder="Phone" id="txtAngka" maxlength="4"> </td>
+        	              <td colspan="3"><input type="text" class="inputNama" name="phone" placeholder="Phone" id="txtAngka" maxlength="4"> </td>
         	            </tr>
 
         		          <tr>
         				          <td colspan="4">
-        				            <button type="submit" class="button btn btn-success btn-large" style="margin-left: 10px" name="tambahRuangan">Sign Up</button>
+        				            <button type="submit" class="button btn btn-success btn-large" style="margin-left: 10px" name="signUp">Sign Up</button>
         				            <button type="reset" class="button btn btn-success btn-large" style="margin-left: 20px">Reset</button>
         				          </td>
         		        	</tr>
