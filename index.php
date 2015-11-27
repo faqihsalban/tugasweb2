@@ -14,7 +14,7 @@
             <link href="css/style.css" rel="stylesheet">
             <link href="css/pages/dashboard.css" rel="stylesheet">
             <link href="css/pages/faq.css" rel="stylesheet">
-
+            <link href="css/pages/signin.css" rel="stylesheet" type="text/css">
             <!-- script dan css alertify -->
             <script src="alertify/alertify.min.js"></script>
             <link rel="stylesheet" href="alertify/css/alertify.min.css" />
@@ -112,9 +112,29 @@
             $usercon = new userController();
             $usercon->user();
             break;
+        case 'userMain':
+            $usercon = new userController();
+            $usercon->user();
+            break;
         case 'admin':
             $usercon = new userController();
             $usercon->admin();
+            break;
+        case 'login':
+            $usercon = new userController();
+            $usercon->login();
+            break;
+        case 'signup':
+            $usercon = new userController();
+            $usercon->signup();
+            break;
+        case 'editProfile':
+            $usercon = new userController();
+            $usercon->editProfile();
+            break;
+        case 'userEditProfile':
+            $usercon = new userController();
+            $usercon->userEditProfile();
             break;
         case 'driver':
             $usercon = new userController();

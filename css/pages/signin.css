@@ -6,7 +6,7 @@ Bootstrap Admin Template by EGrappler.com
 
 
 /** Base Body Styles **/
-body{ background: url(../../img/body-bg.png); color:#838383; font: 13px/1.7em "Kalinga";}
+body{ background: url(../../img/body-bg.png); color:#6b6b6b; font: 13px/1.7em "Kalinga";}
 
 
 .account-container {
@@ -48,7 +48,7 @@ body{ background: url(../../img/body-bg.png); color:#838383; font: 13px/1.7em "K
 	padding: 11px 15px 10px 50px;
 	background-color: #fdfdfd;
 	width: 25em;
-	height: 40px;
+	height: 3.1em;
 	display: block;
 	margin: 0;
 	box-shadow: inset 2px 2px 4px #f1f1f1;

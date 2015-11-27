@@ -13,7 +13,7 @@
  */
 class foodController {
     //put your code here
-    
+
      private $servicedao;
      private $menudao;
 
@@ -23,39 +23,39 @@ class foodController {
     }
 
     public function index() {
-        
+
         $hasil = $this->servicedao->get_service_by_type(1)->getIterator();
         if(isset($_GET['service']))
         {
             $id_service = $_GET['service'];
             $menu = $this->menudao->get_menu_by_service($id_service)->getIterator();
-            
+
         }
-        
+
         require '/view/deliFood.php';
     }
     public function photocopy() {
-        
-        $hasil = $this->servicedao->get_service_by_type(2)->getIterator();
-        if(isset($_GET['service']))
-        {
-            $id_service = $_GET['service'];
-            $menu = $this->menudao->get_menu_by_service($id_service)->getIterator();
-            
-        }
-        
-        require '/view/deliCopy.php';
-    }
-    public function laundry() {
-        
+
         $hasil = $this->servicedao->get_service_by_type(3)->getIterator();
         if(isset($_GET['service']))
         {
             $id_service = $_GET['service'];
             $menu = $this->menudao->get_menu_by_service($id_service)->getIterator();
-            
+
         }
-        
+
+        require '/view/deliCopy.php';
+    }
+    public function laundry() {
+
+        $hasil = $this->servicedao->get_service_by_type(2)->getIterator();
+        if(isset($_GET['service']))
+        {
+            $id_service = $_GET['service'];
+            $menu = $this->menudao->get_menu_by_service($id_service)->getIterator();
+
+        }
+
         require '/view/deliLaundry.php';
     }
 }

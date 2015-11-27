@@ -47,11 +47,19 @@ class userController {
                 }
             }
         } else
-            require_once '/home.php';
+            require_once './home.php';
     }
 
     public function user() {
-        require_once '/view/user/main.php';
+        require_once '/view/user/userMain.php';
+    }
+
+    public function login() {
+        require_once 'login.php';
+    }
+
+    public function signup() {
+        require_once 'signup.php';
     }
 
     public function driver() {
@@ -60,25 +68,25 @@ class userController {
             $vtransac = new transac();
             $vtransac->setId_transac($_GET['service']);
             $vtransac->setStatus(1);
-            
+
             $pesan = $this->transacdao->upd_status($vtransac);
         }
-        
+
         $result = $this->transacdao->get_transac_by_status(0)->getIterator();
         $onproces = $this->transacdao->get_transac_by_status(1)->getIterator();
- 
-        require_once '/view/driver/main.php';
+
+        require_once '/view/driver/DriverMain.php';
     }
 
     public function admin() {
-        require_once '/view/admin/main.php';
+        require_once '/view/admin/adminMain.php';
     }
 
     public function owner() {
-        require_once '/view/owner/main.php';
+        require_once '/view/owner/ownerMain.php';
     }
 
-    public function editprofile() {
+    public function editProfile() {
         $user = $this->userdao->get_user_by_id($_SESSION['id_user']);
         if (isset($_POST['btn_update'])) {
             $userbaru = new user();
@@ -94,8 +102,38 @@ class userController {
         }
 
 
-        require_once '/view/editprofile.php';
+        require_once '/view/editProfile.php';
     }
+
+    public function userEditProfile() {
+        $user = $this->userdao->get_user_by_id($_SESSION['id_user']);
+
+        if (isset($_POST['btn_update'])) {
+            $confirmPassword = $_POST['confirmPassword'];
+            $password = $_POST['password'];
+            $userbaru = new user();
+            $userbaru->setName($_POST['name']);
+            $userbaru->setPassword(md5($_POST['password']));
+            $userbaru->setEmail($_POST['email']);
+            $userbaru->setPhone($_POST['phone']);
+            $userbaru->setId_user($_SESSION['id_user']);
+
+            if($password!=$confirmPassword) {
+              $this->userdao->upd($userbaru);
+              echo "
+                    <script>
+                    alertify.alert('Password Tidak Sesuai Konfirmasi');
+                    </script>
+                   ";
+            }
+            else {
+              // echo "alalalala";
+              header("location:index.php?menu=userMain");
+            }
+        }
+        require_once '/view/user/userEditProfile.php';
+    }
+
 
     // public function logout() {
     //

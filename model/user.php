@@ -12,7 +12,7 @@
  * @author faqih
  */
 class user {
-    
+
     private $id_user;
     private $name;
     private $username;
@@ -21,7 +21,7 @@ class user {
     private $phone;
     private $role;
     private $date_join;
-    
+
     public function getId_user() {
         return $this->id_user;
     }
@@ -84,9 +84,6 @@ class user {
 
     public function setDate_join($date_join) {
         $this->date_join = $date_join;
-    }
+    }    
 
-
-    
-       
 }

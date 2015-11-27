@@ -72,24 +72,19 @@ and open the template in the editor.
               <!-- /subnavbar -->
 
 
-      <div class="main">
-        <div class="main-inner">
-          <div class="container">
-            <center>
-            <div class="rowSignup">
-              <div class="widget-content">
+<div class="main">
+  <div class="main-inner">
+    <div class="container">
+      <center>
+      <div class="rowSignup">
+        <div class="widget-content">
         <form method="POST" enctype="multipart/form-data">
             <table class="table table-striped table-bordered" >
               <br>
               <tr>
                 <td colspan="4"> <p style="font-size:170%; text-align: center" ><b>Edit User Profile</b></p></td>
               </tr>
-                <tr>
-                    <td width="100">ID User</td>
-                    <td>
-                      <?php echo $user->getId_user(); ?>
-                    </td>
-                </tr>
+
                 <tr>
                     <td>Nama</td>
                     <td><input type="text" class="inputNama" name="name" placeholder="Nama" value="<?php echo $user->getName(); ?>"/></td>
@@ -98,32 +93,28 @@ and open the template in the editor.
                     <td>Username</td>
                     <td><?php echo $user->getUsername(); ?></td>
                 </tr>
-                <tr>
-                    <td>Password</td>
-                    <td><input type="password" class="inputNama" name="Password" placeholder="Password" value=""/></td>
-                </tr>
+
                 <tr>
                     <td>Email</td>
-                    <td><input type="text" class="inputNama" name="Email" placeholder="email" value="<?php echo $user->getEmail(); ?>"/></td>
+                    <td><input type="text" class="inputNama" name="email" placeholder="Email" value="<?php echo $user->getEmail(); ?>"/></td>
                 </tr>
                 <tr>
                     <td>Phone</td>
-                    <td><input type="text" class="inputNama" name="Phone" placeholder="phone" value="<?php echo $user->getPhone(); ?>"/></td>
+                    <td><input type="text" class="inputNama" name="phone" placeholder="Phone" value="<?php echo $user->getPhone(); ?>"/></td>
                 </tr>
                 <tr>
-                    <td>Role</td>
-                    <td><?php echo $user->getRole(); ?></td>
+                    <td>Password</td>
+                    <td><input type="password" class="inputNama" name="password" placeholder="Password" value=""/></td>
                 </tr>
                 <tr>
-                    <td>Date Join</td>
-                    <td><?php echo $user->getDate_join(); ?></td>
+                    <td>Confirm Password</td>
+                    <td><input type="password" class="inputNama" name="confirmPassword" placeholder="Confirm Password" value=""/></td>
                 </tr>
-
 
                 <tr>
                     <td></td>
                     <td>
-                        <input type="submit" class="button btn btn-success btn-large" style="margin-left: 10px" value="Update" name="btn_update"/>
+                        <input type="submit" class="button btn btn-success btn-large" value="Update" name="btn_update"/>
                     </td>
                 </tr>
             </table>
