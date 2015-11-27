@@ -23,30 +23,16 @@
                             </div>Deli Town</a>
               <div class="nav-collapse">
                 <ul class="nav pull-right">
-
-        					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
-        						<div class="icon-large icon-envelope"> <id class="counter" style="display:none">0</id>
-        						</div><b class="caret"></b></a>
-
-                    <ul class="dropdown-menu message-dropdown">
-
-
-
-                        <li class="message-footer">
-                            <a href="../Notifikasi/notifikasi.php">Baca Seluruh Pesan</a>
-                        </li>
-                    </ul>
-                	</li>
-
-        					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
-                     class="icon-large icon-user"></i> <b class="caret"></b></a>
-         						<ul class="dropdown-menu">
-         								<li><a href="../ganti_password.php">Ganti Password</a></li>
-        								<li><a href="../Laporan/cetak_laporan.php">Cetak Laporan</a></li>
-         	              <li><a href="logout.php">Keluar</a></li>
+                  <?php if ($_SESSION['is_logged']) { ?>
+                  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="icon-large icon-user"></i> <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="index.php?menu=userEditProfile">Edit Profile</a></li>
+                        <li><a href="index.php?menu=logout"> logout</a></li>
                      </ul>
-                   </l
+                   </li>
                 </ul>
+                <?php } ?>
 
               </div>
               <!--/.nav-collapse -->
@@ -91,7 +77,7 @@
 
 
 
-    <div class="main"style="background-image:url('img/food_background.jpg');background-size:100%;rotate:90">
+    <div class="main"style="background-image:url('img/food_background3.jpg');background-size:100%;">
     <div class="main-inner">
       <div class="container">
         <div class="row">
@@ -127,7 +113,7 @@
                             <br><br>
 
                             Bagaimana cara mendaftarkan restoran ke FOOD DELI?
-                            Kirimkan email ke: <a href="#">gofood@go-jek.com</a> dengan mencantumkan nama, nomor telepon,
+                            Kirimkan email ke: <a href="#">deliTown@gmail.com</a> dengan mencantumkan nama, nomor telepon,
                             nama restoran dan jenis masakan. Representatif dari FOOD DELI akan segera menghubungi kamu.<br><br>
 
                             <p style="text-align:center">Untuk melakukan pemesanan silakan <a href="index.php?menu=login">Login</a>
@@ -142,11 +128,19 @@
                                         while ($hasil->valid()) {
 
                                             echo "<tr>";
-                                            echo "<td>" . $hasil->current()->getName();
-                                            echo "<td>";
-                                            ?>
-                                            <a href="index.php?menu=deliFood&service=<?php echo $hasil->current()->getId_service(); ?>"> show menu</a>
-                                            <?php
+                                                echo "<td> "
+                                                    . $hasil->current()->getName();
+                                                    // while ($hasil -> valid()) {
+                                                    //   echo "<option value='".$hasil -> current() -> getId_service()."'>".$hasil -> current() -> getName()."</option>";
+                                                    //   $hasil->next();
+                                                    // }
+                                                echo "</td>";
+
+                                                echo "<td>";
+                                                ?>
+                                                    <a href="index.php?menu=deliFood&service=<?php echo $hasil->current()->getId_service(); ?>" name="show"> Show Menu</a>
+                                                <?php
+                                                echo "</td>";
                                             echo "</tr>";
                                             $hasil->next();
                                         }
@@ -156,21 +150,35 @@
                                 <br>
                                         <?php if (isset($_GET['service'])) { ?>
                                     <table class="table table-striped table-bordered">
-                                        <th>name <th> price  <th> action
+                                        <th>Name <th> Price  <th> Quantity
                                             <?php
                                             while ($menu->valid()) {
                                                 echo "<tr>";
-                                                echo "<td>" . $menu->current()->getName();
-                                                echo "<td>" . $menu->current()->getPrice();
-                                                echo "<td>";
-                                                ?>
-                                                <input type = 'button' value='pilih' onclick="pilihmenu('<?php echo $menu->current()->getId_menu(); ?>')"/>
-                                                <?php
+                                                  echo "<td>" . $menu->current()->getName();
+                                                  echo "<td>" . $menu->current()->getPrice();
+                                                  echo "<td>";
+                                                  ?>
+                                                    <input class="inputQuantity" type="text" name="quantity">
+                                                    <!-- <input type = 'button' value='pilih' onclick="pilihmenu('<?php echo $menu->current()->getId_menu(); ?>')"/> -->
+                                                  <?php
                                                 echo "</tr>";
                                                 $menu->next();
                                             }
                                             ?>
+                                            <?php if ($_SESSION['is_logged'])  {  ?>
+                                            <tr>
+                                              <td colspan="2" style="text-align:right;"> Total </td>
+                                              <td>
+                                                <input class="inputQuantity" type="text" name="total" value="">
+                                              </td>
+                                            </tr>
 
+                                            <tr>
+                                              <td colspan="3">
+                                                <input type="button" class="button btn btn-success btn-large" value="Pesan" name="btn_pesan">
+                                              </td>
+                                            </tr>
+                                            <?php } ?>
                                     </table>
 
                             <?php } ?>
@@ -196,3 +204,14 @@
     ?>
   </body>
 </html>
+<script type="text/javascript">
+function showTextField(el) {
+	if (el.selectedIndex) {
+		switch(el.selectedIndex) {
+		    case 1:
+			document.forms[0].elements['btn_show'].style.display = "";
+			break;
+		}
+	}
+}
+</script>

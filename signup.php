@@ -15,6 +15,9 @@
                             <a class="brand"><div class="icon-large icon-truck">
 
                             </div>Deli Town</a>
+                            <div class="nav-collapse">
+                              <ul class="nav pull-right">
+
                             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
                               <i class="icon-large icon-user"></i> <b class="caret"></b></a>
                               <ul class="dropdown-menu">
@@ -22,7 +25,8 @@
                                   <li><a href="index.php?menu=logout"> logout</a></li>
                                </ul>
                              </li>
-                            </ul>
+                          </ul>
+
 
               </div>
               <!--/.nav-collapse -->

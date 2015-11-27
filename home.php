@@ -18,7 +18,7 @@
                          <a class="brand"><div class="icon-large icon-truck">
 
                          </div>Deli Town</a>
-           
+
 
            </div>
            <!--/.nav-collapse -->

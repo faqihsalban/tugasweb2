@@ -18,30 +18,16 @@
                             </div>Deli Town</a>
               <div class="nav-collapse">
                 <ul class="nav pull-right">
-
-        					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
-        						<div class="icon-large icon-envelope"> <id class="counter" style="display:none">0</id>
-        						</div><b class="caret"></b></a>
-
-                    <ul class="dropdown-menu message-dropdown">
-
-
-
-                        <li class="message-footer">
-                            <a href="../Notifikasi/notifikasi.php">Baca Seluruh Pesan</a>
-                        </li>
-                    </ul>
-                	</li>
-
-        					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
-                     class="icon-large icon-user"></i> <b class="caret"></b></a>
-         						<ul class="dropdown-menu">
-         								<li><a href="../ganti_password.php">Ganti Password</a></li>
-        								<li><a href="../Laporan/cetak_laporan.php">Cetak Laporan</a></li>
-         	              <li><a href="logout.php">Keluar</a></li>
+                  <?php if ($_SESSION['is_logged']) { ?>
+                  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="icon-large icon-user"></i> <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="index.php?menu=userEditProfile">Edit Profile</a></li>
+                        <li><a href="index.php?menu=logout"> logout</a></li>
                      </ul>
-                   </l
-                </ul>
+                   </li>
+                  </ul>
+                  <?php } ?>
 
               </div>
               <!--/.nav-collapse -->
@@ -86,7 +72,7 @@
 
 
 
-    <div class="main"style="background-image:url('img/laundry_background.jpg');background-size:100% 100%">
+    <div class="main"style="background-image:url('img/laundry_background.jpg');background-size:100%">
     <div class="main-inner">
       <div class="container">
         <div class="row">
@@ -122,8 +108,11 @@
                             <br><br>
 
                             Bagaimana cara mendaftarkan toko laundry ke LAUNDRY DELI?
-                            Kirimkan email ke: <a href="#">goLAUNDRY@go-jek.com</a> dengan mencantumkan nama, nomor telepon,
+                            Kirimkan email ke: <a href="#">deliTown@gmail.com</a> dengan mencantumkan nama, nomor telepon,
                             nama toko laundry dan menu laundry. Representatif dari LAUNDRY DELI akan segera menghubungi kamu.<br><br>
+
+                            <p style="text-align:center">Untuk melakukan pemesanan silakan <a href="index.php?menu=login">Login</a>
+                              atau <a href="index.php?menu=signup">Daftar</a></p>
                           <?php }?>
                             <?php
                                     // if ($_SESSION['is_logged']) {

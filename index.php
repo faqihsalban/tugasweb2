@@ -136,11 +136,19 @@
             $usercon = new userController();
             $usercon->userEditProfile();
             break;
+        case 'ownerEditProfile':
+            $usercon = new userController();
+            $usercon->ownerEditProfile();
+            break;
         case 'driver':
             $usercon = new userController();
             $usercon->driver();
             break;
         case 'owner':
+            $usercon = new userController();
+            $usercon->owner();
+            break;
+        case 'ownerMain':
             $usercon = new userController();
             $usercon->owner();
             break;
