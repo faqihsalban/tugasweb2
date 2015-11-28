@@ -14,6 +14,7 @@ interface serviceInterface {
     //put your code here
     public function get_service_by_type($type);
     public function get_service_by_id($id_service);
+    public function get_service_by_user($id_user);
     public function get_service(service $vservice);
     public function add(service $vservice);
     public function del(service $vservice);
