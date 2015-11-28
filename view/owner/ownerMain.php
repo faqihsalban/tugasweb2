@@ -78,27 +78,14 @@
                                                   echo "<td>" . $menu->current()->getPrice();
                                                   echo "<td>";
                                                   ?>
-                                                    <input class="inputQuantity" type="text" name="quantity">
-                                                    <!-- <input type = 'button' value='pilih' onclick="pilihmenu('<?php echo $menu->current()->getId_menu(); ?>')"/> -->
-                                                  <?php
+                                                                                                <a href="index.php?menu=editMenu&id=<?php echo $menu->current()->getId_menu(); ?>" name="show"> edit Menu</a>
+
+                                                      <?php
                                                 echo "</tr>";
                                                 $menu->next();
                                             }
                                             ?>
-                                            <?php if ($_SESSION['is_logged'])  {  ?>
-                                            <tr>
-                                              <td colspan="2" style="text-align:right;"> Total </td>
-                                              <td>
-                                                <input class="inputQuantity" type="text" name="total" value="">
-                                              </td>
-                                            </tr>
-
-                                            <tr>
-                                              <td colspan="3">
-                                                <input type="button" class="button btn btn-success btn-large" value="Pesan" name="btn_pesan">
-                                              </td>
-                                            </tr>
-                                            <?php } ?>
+                                          
                                     </table>
 
                             <?php } ?>

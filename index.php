@@ -152,6 +152,10 @@
             $usercon = new userController();
             $usercon->owner();
             break;
+        case 'editMenu':
+            $usercon = new userController();
+            $usercon->editMenu();
+            break;
         case 'logout':include_once ("logout.php");
         // $usecon = new userController();
         // $usecon->logout();

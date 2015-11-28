@@ -16,7 +16,7 @@ class userController {
     private $userdao;
     private $transacdao;
     private $servicedao;
-     private $menudao;
+    private $menudao;
 
     public function __construct() {
         $this->userDao = new userDao();
@@ -47,7 +47,7 @@ class userController {
                     else if ($_SESSION['role'] == 4)
                         header("location: index.php?menu=owner");
                 } else {
-                  echo "
+                    echo "
                         <script>
                         alertify.Error('Username dan Password salah');
                         </script>
@@ -67,7 +67,7 @@ class userController {
     }
 
     public function signup() {
-      if (isset($_POST['signUp'])) {
+        if (isset($_POST['signUp'])) {
             $email = $_POST['email'];
             $nama = $_POST['nama'];
             $username = $_POST['username'];
@@ -82,15 +82,13 @@ class userController {
             $user->setPassword(md5($password));
             $user->setPhone($phone);
             $this->$userdao->add($user);
-
         }
         $dataUser = $this->userDao->get_all_user()->getIterator();
         require_once 'signup.php';
     }
 
     public function driver() {
-        if(isset($_GET['service']))
-        {
+        if (isset($_GET['service'])) {
             $vtransac = new transac();
             $vtransac->setId_transac($_GET['service']);
             $vtransac->setStatus(1);
@@ -108,17 +106,22 @@ class userController {
         require_once '/view/admin/adminMain.php';
     }
 
+    public function editMenu() {
+        
+        $id_menu = $_GET['id'];
+        $menu = $this->menudao->get_menu_by_id($id_menu);
+        require_once '/view/owner/editmenu.php';
+    }
+
     public function owner() {
-        
+
         $services = $this->servicedao->get_service_by_user($_SESSION['id_user'])->getIterator();
-        
-        if(isset($_GET['service']))
-        {
+
+        if (isset($_GET['service'])) {
             $id_service = $_GET['service'];
             $menu = $this->menudao->get_menu_by_service($id_service)->getIterator();
-
         }
-        require_once '/view/owner/ownerMain.php';
+         require_once '/view/owner/ownerMain.php';
     }
 
     public function editProfile() {
@@ -153,17 +156,16 @@ class userController {
             $userbaru->setPhone($_POST['phone']);
             $userbaru->setId_user($_SESSION['id_user']);
 
-            if($password!=$confirmPassword) {
-              $this->userDao->upd($userbaru);
-              echo "
+            if ($password != $confirmPassword) {
+                $this->userDao->upd($userbaru);
+                echo "
                     <script>
                     alertify.alert('Password Tidak Sesuai Konfirmasi');
                     </script>
                    ";
-            }
-            else {
-              // echo "alalalala";
-              header("location:index.php?menu=userMain");
+            } else {
+                // echo "alalalala";
+                header("location:index.php?menu=userMain");
             }
         }
         require_once '/view/user/userEditProfile.php';
@@ -182,17 +184,16 @@ class userController {
             $userbaru->setPhone($_POST['phone']);
             $userbaru->setId_user($_SESSION['id_user']);
 
-            if($password!=$confirmPassword) {
-              $this->userDao->upd($userbaru);
-              echo "
+            if ($password != $confirmPassword) {
+                $this->userDao->upd($userbaru);
+                echo "
                     <script>
                     alertify.alert('Password Tidak Sesuai Konfirmasi');
                     </script>
                    ";
-            }
-            else {
-              // echo "alalalala";
-              header("location:index.php?menu=userMain");
+            } else {
+                // echo "alalalala";
+                header("location:index.php?menu=userMain");
             }
         }
         require_once '/view/owner/ownerEditProfile.php';
@@ -211,22 +212,20 @@ class userController {
             $userbaru->setPhone($_POST['phone']);
             $userbaru->setId_user($_SESSION['id_user']);
 
-            if($password!=$confirmPassword) {
-              $this->userDao->upd($userbaru);
-              echo "
+            if ($password != $confirmPassword) {
+                $this->userDao->upd($userbaru);
+                echo "
                     <script>
                     alertify.alert('Password Tidak Sesuai Konfirmasi');
                     </script>
                    ";
-            }
-            else {
-              // echo "alalalala";
-              header("location:index.php?menu=userMain");
+            } else {
+                // echo "alalalala";
+                header("location:index.php?menu=userMain");
             }
         }
         require_once '/view/driver/driverEditProfile.php';
     }
-
 
     // public function logout() {
     //
