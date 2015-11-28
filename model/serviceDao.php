@@ -156,5 +156,32 @@ class serviceDao implements serviceInterface {
         return $result;
     }
 
+    public function get_service_by_user($id_user) {
+        $services = new ArrayObject();
+        try {
+            $conn = conection::getconection();
+            $sql = "SELECT * from service where id_user = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(1, $id_user);
+            $stmt->execute();
+            while ($row = $stmt->fetch()) {
+                $service = new service();
+                $service->setId_service($row['id_service']);
+                $service->setName($row['name']);
+                $service->setAddress($row['address']);
+                $service->setPhone($row['phone']);
+                $service->setType($row['type']);
+                $service->setId_user($row['id_user']);
+
+                $services->append($service);
+            }
+        } catch (Exception $e) {
+            echo $e->getMessage();
+            die();
+        }
+        $conn = NULL;
+        return $services;
+    }
+
 //put your code here
 }
