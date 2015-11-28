@@ -16,7 +16,7 @@
 
                             </div>Deli Town</a>
                             <div class="nav-collapse">
-                              <ul class="nav pull-right">
+                              <!-- <ul class="nav pull-right">
 
                             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
                               <i class="icon-large icon-user"></i> <b class="caret"></b></a>
@@ -25,7 +25,7 @@
                                   <li><a href="index.php?menu=logout"> logout</a></li>
                                </ul>
                              </li>
-                          </ul>
+                          </ul> -->
 
 
               </div>
@@ -47,7 +47,7 @@
                   <span>FOOD DELI</span> <b class="caret"></b></a>
                 </li>
 
-                <li class="active"><a href="index.php?menu=deliLaundry" class="dropdown-toggle" >
+                <li class="dropdown"><a href="index.php?menu=deliLaundry" class="dropdown-toggle" >
                   <div class="icon-large icon-tag">
                   </div>
                   <span>LAUNDRY DELI</span> <b class="caret"></b></a>
