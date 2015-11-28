@@ -122,7 +122,7 @@ class userController {
     }
 
     public function editProfile() {
-        $user = $this->userdao->get_user_by_id($_SESSION['id_user']);
+        $user = $this->userDao->get_user_by_id($_SESSION['id_user']);
         if (isset($_POST['btn_update'])) {
             $userbaru = new user();
             $userbaru->setName($_POST['name']);
@@ -131,7 +131,7 @@ class userController {
             $userbaru->setPhone($_POST['phone']);
             $userbaru->setId_user($_SESSION['id_user']);
 
-            if ($this->userdao->upd($userbaru))
+            if ($this->userDao->upd($userbaru))
                 echo "sukses";
             header("location: index.php?menu=user");
         }
@@ -141,7 +141,7 @@ class userController {
     }
 
     public function userEditProfile() {
-        $user = $this->userdao->get_user_by_id($_SESSION['id_user']);
+        $user = $this->userDao->get_user_by_id($_SESSION['id_user']);
 
         if (isset($_POST['btn_update'])) {
             $confirmPassword = $_POST['confirmPassword'];
@@ -154,7 +154,7 @@ class userController {
             $userbaru->setId_user($_SESSION['id_user']);
 
             if($password!=$confirmPassword) {
-              $this->userdao->upd($userbaru);
+              $this->userDao->upd($userbaru);
               echo "
                     <script>
                     alertify.alert('Password Tidak Sesuai Konfirmasi');
@@ -170,7 +170,7 @@ class userController {
     }
 
     public function ownerEditProfile() {
-        $user = $this->userdao->get_user_by_id($_SESSION['id_user']);
+        $user = $this->userDao->get_user_by_id($_SESSION['id_user']);
 
         if (isset($_POST['btn_update'])) {
             $confirmPassword = $_POST['confirmPassword'];
@@ -183,7 +183,7 @@ class userController {
             $userbaru->setId_user($_SESSION['id_user']);
 
             if($password!=$confirmPassword) {
-              $this->userdao->upd($userbaru);
+              $this->userDao->upd($userbaru);
               echo "
                     <script>
                     alertify.alert('Password Tidak Sesuai Konfirmasi');
@@ -199,7 +199,7 @@ class userController {
     }
 
     public function driverEditProfile() {
-        $user = $this->userdao->get_user_by_id($_SESSION['id_user']);
+        $user = $this->userDao->get_user_by_id($_SESSION['id_user']);
 
         if (isset($_POST['btn_update'])) {
             $confirmPassword = $_POST['confirmPassword'];
@@ -212,7 +212,7 @@ class userController {
             $userbaru->setId_user($_SESSION['id_user']);
 
             if($password!=$confirmPassword) {
-              $this->userdao->upd($userbaru);
+              $this->userDao->upd($userbaru);
               echo "
                     <script>
                     alertify.alert('Password Tidak Sesuai Konfirmasi');
