@@ -53,6 +53,7 @@
           <tr>
             <td style="text-align:center">
               <select name="combo_service">
+
                 <?php
                     while ($hasil -> valid()) {
                       echo "<option value='".$hasil -> current() -> getId_service()."'>".$hasil -> current() -> getName()."</option>";
