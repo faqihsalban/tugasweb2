@@ -19,8 +19,8 @@ class userController {
     private $menudao;
 
     public function __construct() {
-        $this->userDao = new userDao();
-        $this->transacDao = new transacDao();
+        $this->userdao = new userDao();
+        $this->transacdao = new transacDao();
         $this->servicedao = new serviceDao();
         $this->menudao = new menuDao();
     }
@@ -36,7 +36,7 @@ class userController {
                 $usr = new user();
                 $usr->setUsername($username);
                 $usr->setPassword($password);
-                $login_result = $this->userDao->login($usr);
+                $login_result = $this->userdao->login($usr);
                 if ($login_result) {
                     if ($_SESSION['role'] == 1)
                         header("location: index.php?menu=admin");
@@ -83,7 +83,7 @@ class userController {
             $user->setPhone($phone);
             $this->$userdao->add($user);
         }
-        $dataUser = $this->userDao->get_all_user()->getIterator();
+        $dataUser = $this->userdao->get_all_user()->getIterator();
         require_once 'signup.php';
     }
 
@@ -92,23 +92,62 @@ class userController {
             $vtransac = new transac();
             $vtransac->setId_transac($_GET['service']);
             $vtransac->setStatus(1);
+            $vtransac->setId_driver($_SESSION['id_user']);
 
             $pesan = $this->transacdao->upd_status($vtransac);
+            $pesan = $this->transacdao->upd_driver($vtransac);
+        }
+        if (isset($_GET['done'])) {
+            $vtransac = new transac();
+            $vtransac->setId_transac($_GET['done']);
+            $vtransac->setStatus(2);
+           
+
+            $pesan = $this->transacdao->upd_status($vtransac);
+          
         }
 
         $result = $this->transacdao->get_transac_by_status(0)->getIterator();
-        $onproces = $this->transacdao->get_transac_by_status(1)->getIterator();
+        $onproces = $this->transacdao->get_transac_by_driver_status($_SESSION['id_user'],1)->getIterator();
+        $complete = $this->transacdao->get_transac_by_driver_status($_SESSION['id_user'],2)->getIterator();
 
         require_once '/view/driver/DriverMain.php';
     }
 
     public function admin() {
+        $alluser = $this->userdao->get_all_user()->getIterator();
+        $user = $this->userdao->get_user_by_role(2)->getIterator();
+        $driver = $this->userdao->get_user_by_role(3)->getIterator();
+        $owner = $this->userdao->get_user_by_role(4)->getIterator();
+        
         require_once '/view/admin/adminMain.php';
     }
 
     public function editMenu() {
-
         $id_menu = $_GET['id'];
+        
+        if (isset($_POST['btn_delete'])) {
+            $vmenu = new menu();
+            $vmenu->setId_menu($id_menu);
+            //ini nya ga jalan alert nya
+            echo "alertify.confirm('Apakah anda yakin ingin menghapus menu?','ya','Default Value')";
+             
+            $this->menudao->del($vmenu);
+        }
+        
+        if (isset($_POST['btn_update'])) {
+            $vmenu = new menu();
+            $vmenu->setId_menu($id_menu);
+            $vmenu->setName($_POST['menuName']);
+            $vmenu->setPrice($_POST['menuPrice']);
+            //ini nya ga jalan alert nya
+            echo "alertify.confirm('Apakah anda yakin ingin menghapus menu?','ya','Default Value')";
+
+            $this->menudao->upd($vmenu);
+            header("location: index.php?menu=owner");
+        }
+
+
         $menu = $this->menudao->get_menu_by_id($id_menu);
         require_once '/view/owner/editmenu.php';
     }
@@ -121,11 +160,11 @@ class userController {
             $id_service = $_GET['service'];
             $menu = $this->menudao->get_menu_by_service($id_service)->getIterator();
         }
-         require_once '/view/owner/ownerMain.php';
+        require_once '/view/owner/ownerMain.php';
     }
 
     public function editProfile() {
-        $user = $this->userDao->get_user_by_id($_SESSION['id_user']);
+        $user = $this->userdao->get_user_by_id($_SESSION['id_user']);
         if (isset($_POST['btn_update'])) {
             $userbaru = new user();
             $userbaru->setName($_POST['name']);
@@ -134,7 +173,7 @@ class userController {
             $userbaru->setPhone($_POST['phone']);
             $userbaru->setId_user($_SESSION['id_user']);
 
-            if ($this->userDao->upd($userbaru))
+            if ($this->userdao->upd($userbaru))
                 echo "sukses";
             header("location: index.php?menu=user");
         }
@@ -142,7 +181,7 @@ class userController {
     }
 
     public function userEditProfile() {
-        $user = $this->userDao->get_user_by_id($_SESSION['id_user']);
+        $user = $this->userdao->get_user_by_id($_SESSION['id_user']);
 
         if (isset($_POST['btn_update'])) {
             $confirmPassword = $_POST['confirmPassword'];
@@ -155,7 +194,7 @@ class userController {
             $userbaru->setId_user($_SESSION['id_user']);
 
             if ($password != $confirmPassword) {
-                $this->userDao->upd($userbaru);
+                $this->userdao->upd($userbaru);
                 echo "
                     <script>
                     alertify.alert('Password Tidak Sesuai Konfirmasi');
@@ -170,7 +209,7 @@ class userController {
     }
 
     public function ownerEditProfile() {
-        $user = $this->userDao->get_user_by_id($_SESSION['id_user']);
+        $user = $this->userdao->get_user_by_id($_SESSION['id_user']);
 
         if (isset($_POST['btn_update'])) {
             $confirmPassword = $_POST['confirmPassword'];
@@ -183,7 +222,7 @@ class userController {
             $userbaru->setId_user($_SESSION['id_user']);
 
             if ($password != $confirmPassword) {
-                $this->userDao->upd($userbaru);
+                $this->userdao->upd($userbaru);
                 echo "
                     <script>
                     alertify.alert('Password Tidak Sesuai Konfirmasi');
@@ -198,7 +237,7 @@ class userController {
     }
 
     public function driverEditProfile() {
-        $user = $this->userDao->get_user_by_id($_SESSION['id_user']);
+        $user = $this->userdao->get_user_by_id($_SESSION['id_user']);
 
         if (isset($_POST['btn_update'])) {
             $confirmPassword = $_POST['confirmPassword'];
@@ -211,7 +250,7 @@ class userController {
             $userbaru->setId_user($_SESSION['id_user']);
 
             if ($password != $confirmPassword) {
-                $this->userDao->upd($userbaru);
+                $this->userdao->upd($userbaru);
                 echo "
                     <script>
                     alertify.alert('Password Tidak Sesuai Konfirmasi');

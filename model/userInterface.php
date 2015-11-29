@@ -18,6 +18,7 @@ interface userInterface {
     public function add(\user $vuser);
     public function del(\user $vuser);
     public function upd(\user $vuser);
+
     public function login(\user $vuser);
 
 }

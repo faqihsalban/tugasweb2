@@ -14,8 +14,12 @@
  
  
      <?php 
-
-
+//intinya dia cuma ganti role user aja sih
+//$alluser  ini list semua user yang ada
+    //    $user  ini list user yang status nya user biasa
+   //     $driver ini list user yang status nya jadi driver
+    //    $owner ini list user yang jadi owner
+     // tombol aksi nya pake yang edit profile aja, 
 ?>
 </body>
 </html>

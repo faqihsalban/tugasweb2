@@ -46,7 +46,7 @@
           <br>
         <table class="table table-striped table-bordered">
             <th> id transaction <th> id user <th> address <th> status <th> total <th> aksi
-                <?php while ($result->valid()) { ?>
+                <?php if($onproces->count()==0){ while ($result->valid()) { ?>
                 <tr>
                     <td> <?php echo $result->current()->getId_transac(); ?>
                     <td> <?php echo $result->current()->getId_user(); ?>
@@ -57,11 +57,11 @@
                 </tr>
                 <?php
                 $result->next();
-            }
+                }}
             ?>
         </table>
         <br>
-        on proses
+        ON PROCESS
         <table class="table table-striped table-bordered">
             <th> id transac <th> id user <th> address <th> status <th> total <th> aksi
                 <?php while ($onproces->valid()) { ?>
@@ -71,10 +71,28 @@
                     <td> <?php echo $onproces->current()->getAddress(); ?>
                     <td> <?php echo $onproces->current()->getStatus(); ?>
                     <td> <?php echo $onproces->current()->getTotal(); ?>
-                    <td><a href="index.php?menu=driver&service=<?php echo $onproces->current()->getId_transac(); ?>"> pilih</a>
+                    <td><a href="index.php?menu=driver&done=<?php echo $onproces->current()->getId_transac(); ?>"> pilih</a>
                 </tr>
                 <?php
                 $onproces->next();
+            }
+            ?>
+        </table>
+        <br>
+        FINISH
+        <table class="table table-striped table-bordered">
+            <th> id transac <th> id user <th> address <th> status <th> total <th> aksi
+                <?php while ($complete->valid()) { ?>
+                <tr>
+                    <td> <?php echo $complete->current()->getId_transac(); ?>
+                    <td> <?php echo $complete->current()->getId_user(); ?>
+                    <td> <?php echo $complete->current()->getAddress(); ?>
+                    <td> <?php echo $complete->current()->getStatus(); ?>
+                    <td> <?php echo $complete->current()->getTotal(); ?>
+                    <!-- <td><a href="index.php?menu=driver&service=<?php echo $complete->current()->getId_transac(); ?>"> pilih</a>-->
+                </tr>
+                <?php
+                $complete->next();
             }
             ?>
         </table>

@@ -60,11 +60,20 @@ class foodController {
     }
 
     public function deleteMenu() {
+        //udahhhh cek di usercontroller dibagian edit menu nya
+        //
+        //
+        //
       //nanti ada ini ya #qih sebelum delete :
       // echo "alertify.confirm('Apakah anda yakin ingin menghapus menu?',ini fungsi -> delete($idMenu),'Default Value')";
     }
 
     public function editMenu() {
+        
+          //udahhhh cek di usercontroller dibagian edit menu nya
+        //
+        //
+        //
       // #qih ntar habis dia edit langsung tembak ke menu owner aja
       // header ('balik lagi ke index.php?menu=owner')
     }
