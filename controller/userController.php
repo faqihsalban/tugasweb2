@@ -101,10 +101,10 @@ class userController {
             $vtransac = new transac();
             $vtransac->setId_transac($_GET['done']);
             $vtransac->setStatus(2);
-           
+
 
             $pesan = $this->transacdao->upd_status($vtransac);
-          
+
         }
 
         $result = $this->transacdao->get_transac_by_status(0)->getIterator();
@@ -119,22 +119,22 @@ class userController {
         $user = $this->userdao->get_user_by_role(2)->getIterator();
         $driver = $this->userdao->get_user_by_role(3)->getIterator();
         $owner = $this->userdao->get_user_by_role(4)->getIterator();
-        
+
         require_once '/view/admin/adminMain.php';
     }
 
     public function editMenu() {
         $id_menu = $_GET['id'];
-        
+
         if (isset($_POST['btn_delete'])) {
             $vmenu = new menu();
             $vmenu->setId_menu($id_menu);
             //ini nya ga jalan alert nya
             echo "alertify.confirm('Apakah anda yakin ingin menghapus menu?','ya','Default Value')";
-             
+
             $this->menudao->del($vmenu);
         }
-        
+
         if (isset($_POST['btn_update'])) {
             $vmenu = new menu();
             $vmenu->setId_menu($id_menu);
@@ -230,7 +230,7 @@ class userController {
                    ";
             } else {
                 // echo "alalalala";
-                header("location:index.php?menu=userMain");
+                header("location:index.php?menu=ownerMain");
             }
         }
         require_once '/view/owner/ownerEditProfile.php';
@@ -258,10 +258,50 @@ class userController {
                    ";
             } else {
                 // echo "alalalala";
-                header("location:index.php?menu=userMain");
+                header("location:index.php?menu=driverMain");
             }
         }
         require_once '/view/driver/driverEditProfile.php';
+    }
+
+    public function adminEditProfile() {
+        $user = $this->userdao->get_user_by_id($_SESSION['id_user']);
+
+        if (isset($_POST['btn_update'])) {
+            $confirmPassword = $_POST['confirmPassword'];
+            $password = $_POST['password'];
+            $userbaru = new user();
+            $userbaru->setName($_POST['name']);
+            $userbaru->setPassword(md5($_POST['password']));
+            $userbaru->setEmail($_POST['email']);
+            $userbaru->setPhone($_POST['phone']);
+            $userbaru->setId_user($_SESSION['id_user']);
+
+            if ($password != $confirmPassword) {
+                $this->userdao->upd($userbaru);
+                echo "
+                    <script>
+                    alertify.alert('Password Tidak Sesuai Konfirmasi');
+                    </script>
+                   ";
+            } else {
+                // echo "alalalala";
+                header("location:index.php?menu=adminMain");
+            }
+        }
+        require_once '/view/admin/adminEditProfile.php';
+    }
+
+    public function adminUser() {
+        require_once '/view/admin/adminUser.php';
+    }
+
+    public function adminTenant() {
+        require_once '/view/admin/adminTenant.php';
+    }
+
+    public function adminTrans() {
+        require_once '/view/admin/adminTrans.php';
     }
 
     // public function logout() {

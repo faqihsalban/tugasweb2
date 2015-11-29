@@ -68,7 +68,7 @@ class menuDao implements menuInterface {
                 $menu->setPrice($row['price']);
               //  $menus->append($menu);
             }
-            
+
         } catch (Exception $e) {
             echo $e->getMessage();
             die();
@@ -93,13 +93,13 @@ class menuDao implements menuInterface {
                 $menu->setPrice($row['price']);
               //  $menus->append($menu);
             }
-            
+
         } catch (Exception $e) {
             echo $e->getMessage();
             die();
         }
         $conn = NULL;
-        return $menu;
+        return $menus;
     }
 
     public function get_menu_by_service($id_service) {
@@ -118,7 +118,7 @@ class menuDao implements menuInterface {
                 $menu->setPrice($row['price']);
                 $menus->append($menu);
             }
-            
+
         } catch (Exception $e) {
             echo $e->getMessage();
             die();

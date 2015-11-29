@@ -43,7 +43,7 @@
       <div class="container">
         <ul class="mainnav">
 
-          <li class="dropdown"><a href="index.php?menu=adminUser" class="dropdown-toggle" >
+          <li class="active"><a href="index.php?menu=adminUser" class="dropdown-toggle" >
             <div class="icon-large icon-group">
             </div>
             <span>USER</span> <b class="caret"></b></a>
@@ -73,15 +73,35 @@
 
 
 
-  <div class="main"  >
-    <div class="main-inner" >
-      <div class="container" style="background-image: url('img/admin_background.jpg');background-size:100%;width:50%;height:80%">
+  <div class="main">
+    <div class="main-inner">
+      <div class="container">
         <center>
-        <div class="rowSignup">
-          <div class="widget-content" style="margin-top:3em;">
-            <br>
-            <h2><?php echo $user->getName(); ?></h2>
-<!-- faqih ini mau dikasih nama adminnya gimana sih..haha -->
+        <div class="row">
+          <div class="widget-content">
+
+            <form action="" method="post">
+
+              <?php
+
+              echo "<table class='table table-striped table-bordered' style='width:80%'>";
+                  echo "<br>";
+                  echo "<th>ID</th>";
+                  echo "<th>User</th>";
+                  echo "<th>Username</th>";
+                  echo "<th>Email</th>";
+                  echo "<th>Phone</th>";
+                  echo "<th>Role</th>";
+                  echo "<th>Join Date</th>";
+                  echo "<th>Action</th>";
+
+              echo "</table>";
+
+            //data user disini ya faqih
+               ?>
+
+            </form>
+
           </div>
 
         </div>

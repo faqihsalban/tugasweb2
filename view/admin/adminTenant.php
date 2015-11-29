@@ -49,7 +49,7 @@
             <span>USER</span> <b class="caret"></b></a>
           </li>
 
-          <li class="dropdown"><a href="index.php?menu=adminTenant" class="dropdown-toggle" >
+          <li class="active"><a href="index.php?menu=adminTenant" class="dropdown-toggle" >
             <div class="icon-large icon-sitemap">
             </div>
             <span>TENANT</span> <b class="caret"></b></a>
@@ -73,15 +73,32 @@
 
 
 
-  <div class="main"  >
-    <div class="main-inner" >
-      <div class="container" style="background-image: url('img/admin_background.jpg');background-size:100%;width:50%;height:80%">
+  <div class="main">
+    <div class="main-inner">
+      <div class="container">
         <center>
-        <div class="rowSignup">
-          <div class="widget-content" style="margin-top:3em;">
-            <br>
-            <h2><?php echo $user->getName(); ?></h2>
-<!-- faqih ini mau dikasih nama adminnya gimana sih..haha -->
+        <div class="row">
+          <div class="widget-content">
+
+            <form action="" method="post">
+
+              <?php
+
+              echo "<table class='table table-striped table-bordered' style='width:80%'>";
+                  echo "<br>";
+                  echo "<th>ID</th>";
+                  echo "<th>Name</th>";
+                  echo "<th>Address</th>";
+                  echo "<th>Phone</th>";
+                  echo "<th>Type</th>";
+                  echo "<th>Action</th>";
+
+              echo "</table>";
+              //data tenant di sini ya faqih
+               ?>
+
+            </form>
+
           </div>
 
         </div>

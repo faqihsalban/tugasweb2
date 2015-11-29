@@ -22,7 +22,7 @@
               <i class="icon-large icon-user"></i> <b class="caret"></b></a>
               <ul class="dropdown-menu">
                   <li><a href="index.php?menu=ownerEditProfile">Edit Profile</a></li>
-                  <li><a href="index.php?menu=logout"> logout</a></li>
+                  <li><a href="index.php?menu=logout"> Logout</a></li>
                </ul>
              </li>
           </ul>
@@ -48,7 +48,8 @@
               <?php
                                     // if ($_SESSION['is_logged']) {
                                         echo '<table class="table table-striped table-bordered" style="">';
-                                        echo '<th colspan="2"> restaurant';
+                                        echo "<br>";
+                                        echo '<th colspan="2" style="text-align:center"> restaurant';
                                         // echo '<th> action';
                                         while ($services->valid()) {
 
@@ -56,10 +57,10 @@
                                                 echo "<td>". $services->current()->getName(); echo "</td>";
                                                 echo "<td>";
                                                 ?>
-                                                <a href="index.php?menu=owner&service=<?php echo $services->current()->getId_service(); ?>" name="show">
+                                                <center><a href="index.php?menu=owner&service=<?php echo $services->current()->getId_service(); ?>" name="show">
                                                 <!-- #pao itu kelas btn info warnanya gak asik, ntar ganti aja jadi kuning atau apa deh yg cocok -->
                                                 <input type='button' class='btn btn-info' value='Show Menu'>
-                                                </a>
+                                              </a></center>
                                                 <?php
                                                 echo "</td>";
                                             echo "</tr>";

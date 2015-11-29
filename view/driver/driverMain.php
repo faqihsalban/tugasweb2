@@ -22,7 +22,7 @@
                   <i class="icon-large icon-user"></i> <b class="caret"></b></a>
                   <ul class="dropdown-menu">
                       <li><a href="index.php?menu=driverEditProfile">Edit Profile</a></li>
-                      <li><a href="index.php?menu=logout"> logout</a></li>
+                      <li><a href="index.php?menu=logout"> Logout</a></li>
                    </ul>
                  </li>
               </ul>

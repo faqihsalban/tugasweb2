@@ -120,6 +120,10 @@
             $usercon = new userController();
             $usercon->admin();
             break;
+        case 'adminEditProfile':
+            $usercon = new userController();
+            $usercon->adminEditProfile();
+            break;
         case 'login':
             $usercon = new userController();
             $usercon->login();
@@ -155,6 +159,18 @@
         case 'editMenu':
             $usercon = new userController();
             $usercon->editMenu();
+            break;
+        case 'adminUser':
+            $usercon = new userController();
+            $usercon->adminUser();
+            break;
+        case 'adminTenant':
+            $usercon = new userController();
+            $usercon->adminTenant();
+            break;
+        case 'adminTrans':
+            $usercon = new userController();
+            $usercon->adminTrans();
             break;
         case 'logout':include_once ("logout.php");
         // $usecon = new userController();

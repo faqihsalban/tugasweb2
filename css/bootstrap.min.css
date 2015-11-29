@@ -2093,20 +2093,20 @@ background-repeat:no-repeat;
   background-image: -moz-linear-gradient(rgba(78, 178, 213, 0), rgba(7, 23, 29, 0.1));
   background-image: -o-linear-gradient(rgba(78, 178, 213, 0), rgba(7, 23, 29, 0.1));
   background-image: linear-gradient(rgba(78, 178, 213, 0), rgba(7, 23, 29, 0.1));
-  background-color: #4eb2d5;
-  border-color: #35a7cf #35a7cf #237795;
+  background-color: #ffe605;
+  border-color: #dbc502 #dbc502 #dbc502;
   border-color: rgba(0, 0, 0, 0.05) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.15);
   color: white;
   text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.15);
   *background-color: #35a7cf;
 }
 .btn-info:hover, .btn-info:active, .btn-info.active, .btn-info.disabled, .btn-info[disabled] {
-	background-color: #35a7cf;
+	background-color: #ffe500;
   color: white;
-  *background-color: #2d98be;
+  *background-color: #ffe500;
 }
 .btn-info:active, .btn-info.active {
-	background-color: #2888a9 \9;
+	background-color: #ffe500 \9;
 }
 .btn-inverse {
 	 background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(85, 85, 85, 0)), color-stop(100%, rgba(0, 0, 0, 0.1)));
