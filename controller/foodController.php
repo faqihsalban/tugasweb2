@@ -58,4 +58,15 @@ class foodController {
 
         require '/view/deliLaundry.php';
     }
+
+    public function deleteMenu() {
+      //nanti ada ini ya #qih sebelum delete :
+      // echo "alertify.confirm('Apakah anda yakin ingin menghapus menu?',ini fungsi -> delete($idMenu),'Default Value')";
+    }
+
+    public function editMenu() {
+      // #qih ntar habis dia edit langsung tembak ke menu owner aja
+      // header ('balik lagi ke index.php?menu=owner')
+    }
+
 }

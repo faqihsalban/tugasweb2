@@ -16,7 +16,7 @@ and open the template in the editor.
                 <div class="navbar-inner">
                   <div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
                                   class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a>
-                                  <a href="index.php?menu=ownerMain" class="brand"><div class="icon-large icon-truck">
+                                  <a href="index.php?menu=owner" class="brand"><div class="icon-large icon-truck">
 
                                   </div>Deli Town</a>
                                   <div class="nav-collapse">
@@ -25,7 +25,7 @@ and open the template in the editor.
                                   <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <i class="icon-large icon-user"></i> <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="index.php?menu=userEditProfile">Edit Profile</a></li>
+                                        <li><a href="index.php?menu=ownerEditProfile">Edit Profile</a></li>
                                         <li><a href="index.php?menu=logout"> logout</a></li>
                                      </ul>
                                    </li>

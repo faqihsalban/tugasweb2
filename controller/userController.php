@@ -107,7 +107,7 @@ class userController {
     }
 
     public function editMenu() {
-        
+
         $id_menu = $_GET['id'];
         $menu = $this->menudao->get_menu_by_id($id_menu);
         require_once '/view/owner/editmenu.php';
@@ -138,8 +138,6 @@ class userController {
                 echo "sukses";
             header("location: index.php?menu=user");
         }
-
-
         require_once '/view/editProfile.php';
     }
 
