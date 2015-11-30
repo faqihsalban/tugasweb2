@@ -20,6 +20,7 @@ interface transacInterface {
     public function get_transac_by_id($id_transac);
     public function get_transac_by_status($status);
     public function get_transac(transac $vtransac );
+    public function get_last_id();
     public function add(transac $vtransac );
     public function del(transac $vtransac );
     public function upd_status(transac $vtransac );

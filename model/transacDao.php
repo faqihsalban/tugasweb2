@@ -18,12 +18,13 @@ class transacDao implements transacInterface {
         try {
             $conn = conection::getconection();
             $conn->beginTransaction();
-            $sql = "INSERT into transac(id_user,address,total,status) values (?,?,?,?)";
+            $sql = "INSERT into transac(id_user,address,total,status,id_transac) values (?,?,?,?,?)";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(1, $vtransac->getId_user());
             $stmt->bindParam(2, $vtransac->getAddress());
             $stmt->bindParam(3, $vtransac->getTotal());
             $stmt->bindParam(4, $vtransac->getStatus());
+            $stmt->bindParam(5, $vtransac->getId_transac());
 
             $result = $stmt->execute();
             $conn->commit();
@@ -58,7 +59,7 @@ class transacDao implements transacInterface {
         $transacs = new ArrayObject();
         try {
             $conn = conection::getconection();
-           $sql = "SELECT * from transac where date between ? and ?";
+            $sql = "SELECT * from transac where date between ? and ?";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(1, $date1);
             $stmt->bindParam(2, $date2);
@@ -82,13 +83,6 @@ class transacDao implements transacInterface {
         return $transacs;
     }
 
-    
-    
-    
-    
-    
-    
-    
     public function get_transac(\transac $vtransac) {
         $transacs = new ArrayObject();
         try {
@@ -117,7 +111,7 @@ class transacDao implements transacInterface {
     }
 
     public function get_transac_by_id($id_transac) {
-      // $transacs = new ArrayObject();
+        // $transacs = new ArrayObject();
         try {
             $conn = conection::getconection();
             $sql = "SELECT * from transac where id_transac = ?";
@@ -133,7 +127,7 @@ class transacDao implements transacInterface {
                 $transac->setStatus($row['status']);
                 $transac->setTotal($row['total']);
 
-               // $transacs->append(transac);
+                // $transacs->append(transac);
             }
         } catch (Exception $e) {
             echo $e->getMessage();
@@ -265,7 +259,7 @@ class transacDao implements transacInterface {
     }
 
     public function get_transac_by_driver_status($id_driver, $status) {
-         $transacs = new ArrayObject();
+        $transacs = new ArrayObject();
         try {
             $conn = conection::getconection();
             $sql = "SELECT * from transac where id_driver = ? and status = ?";
@@ -293,7 +287,7 @@ class transacDao implements transacInterface {
     }
 
     public function get_transac_by_user_status($id_user, $status) {
-         $transacs = new ArrayObject();
+        $transacs = new ArrayObject();
         try {
             $conn = conection::getconection();
             $sql = "SELECT * from transac where id_user = ? and status = ?";
@@ -318,6 +312,23 @@ class transacDao implements transacInterface {
         }
         $conn = NULL;
         return $transacs;
+    }
+
+    public function get_last_id() {
+        try {
+            $conn = conection::getconection();
+            $sql = "SELECT max(id_transac) from transac";
+            $stmt = $conn->prepare($sql);
+          //  $stmt->bindParam(1, $id_transac);
+            $stmt->execute();
+           $hasil = $stmt->fetch();
+
+        } catch (Exception $e) {
+            echo $e->getMessage();
+            die();
+        }
+        $conn = NULL;
+        return $hasil;
     }
 
 //put your code here

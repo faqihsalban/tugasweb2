@@ -31,13 +31,18 @@ class userController {
             $password = md5(trim($_POST['password']));
 
             if (empty($username) || empty($password)) {
-                echo "tidak boleh kosong";
+                echo "<script>alertify.error('Username dan Password kosong');</script>";
+
+                // echo "Username dan Password kosong";
+                require_once './login.php';
             } else {
                 $usr = new user();
                 $usr->setUsername($username);
                 $usr->setPassword($password);
                 $login_result = $this->userdao->login($usr);
                 if ($login_result) {
+                    echo "<script>alertify.success('sukses');</script>";
+
                     if ($_SESSION['role'] == 1)
                         header("location: index.php?menu=admin");
                     else if ($_SESSION['role'] == 2)
@@ -47,11 +52,10 @@ class userController {
                     else if ($_SESSION['role'] == 4)
                         header("location: index.php?menu=owner");
                 } else {
-                    echo "
-                        <script>
-                        alertify.Error('Username dan Password salah');
-                        </script>
-                       ";
+                    //  echo "Username dan Password tidak ditemukan";
+
+                    echo "<script>alertify.error('Username dan Password salah');</script>";
+                    require_once './login.php';
                 }
             }
         } else
@@ -104,12 +108,11 @@ class userController {
 
 
             $pesan = $this->transacdao->upd_status($vtransac);
-
         }
 
         $result = $this->transacdao->get_transac_by_status(0)->getIterator();
-        $onproces = $this->transacdao->get_transac_by_driver_status($_SESSION['id_user'],1)->getIterator();
-        $complete = $this->transacdao->get_transac_by_driver_status($_SESSION['id_user'],2)->getIterator();
+        $onproces = $this->transacdao->get_transac_by_driver_status($_SESSION['id_user'], 1)->getIterator();
+        $complete = $this->transacdao->get_transac_by_driver_status($_SESSION['id_user'], 2)->getIterator();
 
         require_once '/view/driver/DriverMain.php';
     }
@@ -117,21 +120,20 @@ class userController {
     public function admin() {
         $dirisendiri = $this->userdao->get_user_by_id($_SESSION['id_user']);
         $alluser = $this->userdao->get_all_user()->getIterator();
-       
+
         require_once '/view/admin/adminMain.php';
     }
 
     public function editMenu() {
-      
-$id_menu = $_GET['id'];
+
+        $id_menu = $_GET['id'];
         if (isset($_POST['btn_delete'])) {
             $vmenu = new menu();
             $vmenu->setId_menu($id_menu);
             //ini nya ga jalan alert nya
             echo "alertify.confirm('Apakah anda yakin ingin menghapus menu?','ya','Default Value')";
             $this->menudao->del($vmenu);
-                        header("location: index.php?menu=owner");
-
+            header("location: index.php?menu=owner");
         }
 
         if (isset($_POST['btn_update'])) {
@@ -145,11 +147,10 @@ $id_menu = $_GET['id'];
             header("location: index.php?menu=owner");
         }
 
-  
+
         $menu = $this->menudao->get_menu_by_id($id_menu);
-         
+
         require_once '/view/owner/editmenu.php';
-        
     }
 
     public function owner() {
@@ -207,6 +208,7 @@ $id_menu = $_GET['id'];
         }
         require_once '/view/user/userEditProfile.php';
     }
+
     public function Edit() {
         $user = $this->userdao->get_user_by_id($_GET['id']);
 
@@ -320,26 +322,27 @@ $id_menu = $_GET['id'];
     }
 
     public function adminUser() {
-         $user = $this->userdao->get_user_by_role(2)->getIterator();
-      
+        $user = $this->userdao->get_user_by_role(2)->getIterator();
+
 
         require_once '/view/admin/adminUser.php';
     }
 
     public function adminTenant() {
-         
+
         $owner = $this->userdao->get_user_by_role(4)->getIterator();
         require_once '/view/admin/adminTenant.php';
     }
 
     public function adminTrans() {
-         $transacNow = $this->transacdao->get_transac_by_status(0)->getIterator();
-         $transacOngoing = $this->transacdao->get_transac_by_status(1)->getIterator();
-         $transacDone = $this->transacdao->get_transac_by_status(2)->getIterator();
+        $transacNow = $this->transacdao->get_transac_by_status(0)->getIterator();
+        $transacOngoing = $this->transacdao->get_transac_by_status(1)->getIterator();
+        $transacDone = $this->transacdao->get_transac_by_status(2)->getIterator();
         require_once '/view/admin/adminTrans.php';
     }
+
     public function adminDriver() {
-         $driver = $this->userdao->get_user_by_role(3)->getIterator();
+        $driver = $this->userdao->get_user_by_role(3)->getIterator();
         require_once '/view/admin/adminDriver.php';
     }
 

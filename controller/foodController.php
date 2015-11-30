@@ -35,17 +35,30 @@ class foodController {
             $menu = $this->menudao->get_menu_by_service($id_service)->getIterator();
         }
         if (isset($_POST['btn_pesan'])) {
-          //cari last id transac nya buat dipake sama si item  $lastId = $this->
+            //cari last id transac nya buat dipake sama si item  $lastId = $this->
+            $last = $this->transacdao->get_last_id();
+            $id_transac = $last + 1;
             $transaksi = new transac();
-            $transaksi->setDate(getdate());
+            $transaksi->setId_transac($id_transac);
             $transaksi->setId_user($_SESSION['id_user']);
             $transaksi->setTotal(0);
+            $transaksi->setStatus(0);
             $transaksi->setAddress($_POST['address']);
             $this->transacdao->add($transaksi);
             
-            //itemnya belum dimasuki, masih bingun caranya pake checkbox aja gitu
+            foreach ($_POST['id_menu'] as $value) {
+                $item = new item();
+                $tempmenu = new menu();
+                $tempmenu = $this->menudao->get_menu_by_id($value);
+                $item->setId_menu($value);
+                $item->setId_transac($id_transac);
+                //gimana cara dapet QTY nya
+               // $item->setQty($id_transac);
+                //$item->setPrice($tempmenu->getPrice()*QTY);
+            }
+
             //item cuma butuh id menu sama id transac dan qty, kalo harganya langsung select dikali qty
-          //$this->itemdao->add($vitem);
+            //$this->itemdao->add($vitem);
             //header("location: index.php?menu=userPesan");
         }
         require '/view/deliFood.php';
