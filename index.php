@@ -124,6 +124,10 @@
             $usercon = new userController();
             $usercon->adminEditProfile();
             break;
+        case 'edit':
+            $usercon = new userController();
+            $usercon->Edit();
+            break;
         case 'login':
             $usercon = new userController();
             $usercon->login();
@@ -163,6 +167,10 @@
         case 'adminUser':
             $usercon = new userController();
             $usercon->adminUser();
+            break;
+        case 'adminDriver':
+            $usercon = new userController();
+            $usercon->adminDriver();
             break;
         case 'adminTenant':
             $usercon = new userController();

@@ -78,7 +78,7 @@ class menuDao implements menuInterface {
     }
 
     public function get_menu_by_id($id_menu) {
-        $menus = new ArrayObject();
+       // $menus = new ArrayObject();
         try {
             $conn = conection::getconection();
             $sql = "SELECT * from menu where id_menu = ?";
@@ -99,7 +99,7 @@ class menuDao implements menuInterface {
             die();
         }
         $conn = NULL;
-        return $menus;
+        return $menu;
     }
 
     public function get_menu_by_service($id_service) {

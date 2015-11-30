@@ -12,129 +12,131 @@ and open the template in the editor.
     <body>
 
 
-              <div class="navbar navbar-fixed-top">
-                <div class="navbar-inner">
-                  <div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
-                                  class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a>
-                                  <a class="brand"><div class="icon-large icon-truck">
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
+                            class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a>
+                    <a class="brand"><div class="icon-large icon-truck">
 
-                                  </div>Deli Town</a>
-                                  <div class="nav-collapse">
-                                    <ul class="nav pull-right">
+                        </div>Deli Town</a>
+                    <div class="nav-collapse">
+                        <ul class="nav pull-right">
 
-                                  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <i class="icon-large icon-user"></i> <b class="caret"></b></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="index.php?menu=userEditProfile">Edit Profile</a></li>
-                                        <li><a href="index.php?menu=logout"> Logout</a></li>
-                                     </ul>
-                                   </li>
-                                  </ul>
+                                <ul class="dropdown-menu">
+                                    <li><a href="index.php?menu=userEditProfile">Edit Profile</a></li>
+                                    <li><a href="index.php?menu=logout"> Logout</a></li>
+                                </ul>
+                            </li>
+                        </ul>
 
                     </div>
                     <!--/.nav-collapse -->
-                  </div>
-                  <!-- /container -->
                 </div>
-                <!-- /navbar-inner -->
-              </div>
-              <!-- /navbar -->
-              <div class="subnavbar">
-                <div class="subnavbar-inner">
-                  <div class="container">
+                <!-- /container -->
+            </div>
+            <!-- /navbar-inner -->
+        </div>
+        <!-- /navbar -->
+        <div class="subnavbar">
+            <div class="subnavbar-inner">
+                <div class="container">
                     <ul class="mainnav">
 
-                      <li class="dropdown"><a href="index.php?menu=deliFood" class="dropdown-toggle" >
-                        <div class="icon-large icon-glass">
-                        </div>
-                        <span>FOOD DELI</span> <b class="caret"></b></a>
-                      </li>
+                        <li class="dropdown"><a href="index.php?menu=deliFood" class="dropdown-toggle" >
+                                <div class="icon-large icon-glass">
+                                </div>
+                                <span>FOOD DELI</span> <b class="caret"></b></a>
+                        </li>
 
-                      <li class="active"><a href="index.php?menu=deliLaundry" class="dropdown-toggle" >
-                        <div class="icon-large icon-tag">
-                        </div>
-                        <span>LAUNDRY DELI</span> <b class="caret"></b></a>
+                        <li class="active"><a href="index.php?menu=deliLaundry" class="dropdown-toggle" >
+                                <div class="icon-large icon-tag">
+                                </div>
+                                <span>LAUNDRY DELI</span> <b class="caret"></b></a>
 
-                      </li>
+                        </li>
 
-                      <li class="dropdown"><a href="index.php?menu=deliCopy" class="dropdown-toggle" >
-                        <div class="icon-large icon-copy">
-                        </div>
-                        <span>PHOTOCOPY DELI</span> <b class="caret"></b></a>
-                      </li>
+                        <li class="dropdown"><a href="index.php?menu=deliCopy" class="dropdown-toggle" >
+                                <div class="icon-large icon-copy">
+                                </div>
+                                <span>PHOTOCOPY DELI</span> <b class="caret"></b></a>
+                        </li>
 
                     </ul>
-                  </div>
-                  <!-- /container -->
                 </div>
-                <!-- /subnavbar-inner -->
-              </div>
-              <!-- /subnavbar -->
+                <!-- /container -->
+            </div>
+            <!-- /subnavbar-inner -->
+        </div>
+        <!-- /subnavbar -->
 
 
-      <div class="main">
-        <div class="main-inner">
-          <div class="container">
-            <center>
-            <div class="rowSignup">
-              <div class="widget-content">
-        <form method="POST" enctype="multipart/form-data">
-            <table class="table table-striped table-bordered" >
-              <br>
-              <tr>
-                <td colspan="4"> <p style="font-size:170%; text-align: center" ><b>Edit User Profile</b></p></td>
-              </tr>
-                <tr>
-                    <td width="100">ID User</td>
-                    <td>
-                      <?php echo $user->getId_user(); ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Nama</td>
-                    <td><input type="text" class="inputNama" name="name" placeholder="Nama" value="<?php echo $user->getName(); ?>"/></td>
-                </tr>
-                <tr>
-                    <td>Username</td>
-                    <td><?php echo $user->getUsername(); ?></td>
-                </tr>
-                <tr>
-                    <td>Password</td>
-                    <td><input type="password" class="inputNama" name="Password" placeholder="Password" value=""/></td>
-                </tr>
-                <tr>
-                    <td>Email</td>
-                    <td><input type="text" class="inputNama" name="Email" placeholder="email" value="<?php echo $user->getEmail(); ?>"/></td>
-                </tr>
-                <tr>
-                    <td>Phone</td>
-                    <td><input type="text" class="inputNama" name="Phone" placeholder="phone" value="<?php echo $user->getPhone(); ?>"/></td>
-                </tr>
-                <tr>
-                    <td>Role</td>
-                    <td><?php echo $user->getRole(); ?></td>
-                </tr>
-                <tr>
-                    <td>Date Join</td>
-                    <td><?php echo $user->getDate_join(); ?></td>
-                </tr>
+        <div class="main">
+            <div class="main-inner">
+                <div class="container">
+                    <center>
+                        <div class="rowSignup">
+                            <div class="widget-content">
+                                <form method="POST" enctype="multipart/form-data">
+                                    <table class="table table-striped table-bordered" >
+                                        <br>
+                                        <tr>
+                                            <td colspan="4"> <p style="font-size:170%; text-align: center" ><b>EEEDDDIIIITTT</b></p></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="100">ID User</td>
+                                            <td>
+                                                <?php echo $user->getId_user(); ?>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Nama</td>
+                                            <td><input type="text" class="inputNama" name="name" placeholder="Nama" value="<?php echo $user->getName(); ?>"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Username</td>
+                                            <td><?php echo $user->getUsername(); ?></td>
+                                        </tr>
+                        <!--                <tr>
+                                            <td>Password</td>
+                                            <td><input type="password" class="inputNama" name="Password" placeholder="Password" value=""/></td>
+                                        </tr>-->
+                                        <tr>
+                                            <td>Email</td>
+                                            <td><input type="text" class="inputNama" name="Email" placeholder="email" value="<?php echo $user->getEmail(); ?>"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Phone</td>
+                                            <td><input type="text" class="inputNama" name="Phone" placeholder="phone" value="<?php echo $user->getPhone(); ?>"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Role</td>
+                                            <td><input type="text" class="inputNama" name="Phone" placeholder="phone" value="<?php echo $user->getRole(); ?>"/></td>
+
+                                           
+                                        </tr>
+                                        <tr>
+                                            <td>Date Join</td>
+                                            <td><?php echo $user->getDate_join(); ?></td>
+                                        </tr>
 
 
-                <tr>
-                    <td></td>
-                    <td>
-                        <input type="submit" class="button btn btn-success btn-large" style="margin-left: 10px" value="Update" name="btn_update"/>
-                    </td>
-                </tr>
-            </table>
-        </form>
-      </div>
+                                        <tr>
+                                            <td></td>
+                                            <td>
+                                                <input type="submit" class="button btn btn-success btn-large" style="margin-left: 10px" value="Update" name="btn_update"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </form>
+                            </div>
 
-    </div>
-  </center>
-  </div>
-</div>
-</div>
+                        </div>
+                    </center>
+                </div>
+            </div>
+        </div>
         <?php
         // put your code here
         ?>

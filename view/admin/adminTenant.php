@@ -43,26 +43,32 @@
       <div class="container">
         <ul class="mainnav">
 
-          <li class="dropdown"><a href="index.php?menu=adminUser" class="dropdown-toggle" >
-            <div class="icon-large icon-group">
-            </div>
-            <span>USER</span> <b class="caret"></b></a>
-          </li>
+                        <li class="dropdown"><a href="index.php?menu=adminUser" class="dropdown-toggle" >
+                                <div class="icon-large icon-group">
+                                </div>
+                                <span>USER</span> <b class="caret"></b></a>
+                        </li>
 
-          <li class="active"><a href="index.php?menu=adminTenant" class="dropdown-toggle" >
-            <div class="icon-large icon-sitemap">
-            </div>
-            <span>TENANT</span> <b class="caret"></b></a>
+                        <li class="active"><a href="index.php?menu=adminTenant" class="dropdown-toggle" >
+                                <div class="icon-large icon-group">
+                                </div>
+                                <span>TENANT</span> <b class="caret"></b></a>
 
-          </li>
+                        </li>
+                        <li class="dropdown"><a href="index.php?menu=adminDriver" class="dropdown-toggle" >
+                                <div class="icon-large icon-group">
+                                </div>
+                                <span>DRIVER</span> <b class="caret"></b></a>
 
-          <li class="dropdown"><a href="index.php?menu=adminTrans" class="dropdown-toggle" >
-            <div class="icon-large icon-money">
-            </div>
-            <span>TRANSACTION</span> <b class="caret"></b></a>
-          </li>
+                        </li>
 
-        </ul>
+                        <li class="dropdown"><a href="index.php?menu=adminTrans" class="dropdown-toggle" >
+                                <div class="icon-large icon-money">
+                                </div>
+                                <span>TRANSACTION</span> <b class="caret"></b></a>
+                        </li>
+
+                    </ul>
       </div>
       <!-- /container -->
     </div>
@@ -82,22 +88,39 @@
 
             <form action="" method="post">
 
-              <?php
+                                    <?php
+                                    echo "<table class='table table-striped table-bordered' style='width:80%'>";
+                                    echo "<br>";
+                                    echo "<th>ID</th>";
+                                    echo "<th>User</th>";
+                                    echo "<th>Username</th>";
+                                    echo "<th>Email</th>";
+                                    echo "<th>Phone</th>";
+                                    echo "<th>Role</th>";
+                                    echo "<th>Join Date</th>";
+                                    echo "<th>Action</th>";
 
-              echo "<table class='table table-striped table-bordered' style='width:80%'>";
-                  echo "<br>";
-                  echo "<th>ID</th>";
-                  echo "<th>Name</th>";
-                  echo "<th>Address</th>";
-                  echo "<th>Phone</th>";
-                  echo "<th>Type</th>";
-                  echo "<th>Action</th>";
+                                    
+                                    while ($owner->valid()) {
+                                    echo "<tr>"; 
+                                    echo "<td>"; echo $owner->current()->getId_user();
+                                    echo "<td>"; echo $owner->current()->getName();
+                                    echo "<td>"; echo $owner->current()->getUsername();
+                                    echo "<td>"; echo $owner->current()->getEmail();
+                                    echo "<td>"; echo $owner->current()->getPhone();
+                                    echo "<td>"; echo $owner->current()->getRole();
+                                    echo "<td>"; echo $owner->current()->getDate_join();
+                                    //ini harusnya rombol
+                                    echo "<td>"; echo "<a href='index.php?menu=edit&id=".$owner->current()->getId_user()."'>Edit Profile</a></li>" ;
+                                    
+                                    
+                                        $owner->next();
+                                    }
+                                    //data user disini ya faqih
+                                    echo "</table>";
+                                    ?>
 
-              echo "</table>";
-              //data tenant di sini ya faqih
-               ?>
-
-            </form>
+                                </form>
 
           </div>
 

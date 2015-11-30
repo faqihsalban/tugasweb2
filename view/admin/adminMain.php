@@ -41,28 +41,34 @@
   <div class="subnavbar">
     <div class="subnavbar-inner">
       <div class="container">
-        <ul class="mainnav">
+         <ul class="mainnav">
 
-          <li class="dropdown"><a href="index.php?menu=adminUser" class="dropdown-toggle" >
-            <div class="icon-large icon-group">
-            </div>
-            <span>USER</span> <b class="caret"></b></a>
-          </li>
+                        <li class="dropdown"><a href="index.php?menu=adminUser" class="dropdown-toggle" >
+                                <div class="icon-large icon-group">
+                                </div>
+                                <span>USER</span> <b class="caret"></b></a>
+                        </li>
 
-          <li class="dropdown"><a href="index.php?menu=adminTenant" class="dropdown-toggle" >
-            <div class="icon-large icon-sitemap">
-            </div>
-            <span>TENANT</span> <b class="caret"></b></a>
+                        <li class="dropdown"><a href="index.php?menu=adminTenant" class="dropdown-toggle" >
+                                <div class="icon-large icon-group">
+                                </div>
+                                <span>TENANT</span> <b class="caret"></b></a>
 
-          </li>
+                        </li>
+                        <li class="dropdown"><a href="index.php?menu=adminDriver" class="dropdown-toggle" >
+                                <div class="icon-large icon-group">
+                                </div>
+                                <span>DRIVER</span> <b class="caret"></b></a>
 
-          <li class="dropdown"><a href="index.php?menu=adminTrans" class="dropdown-toggle" >
-            <div class="icon-large icon-money">
-            </div>
-            <span>TRANSACTION</span> <b class="caret"></b></a>
-          </li>
+                        </li>
 
-        </ul>
+                        <li class="dropdown"><a href="index.php?menu=adminTrans" class="dropdown-toggle" >
+                                <div class="icon-large icon-money">
+                                </div>
+                                <span>TRANSACTION</span> <b class="caret"></b></a>
+                        </li>
+
+                    </ul>
       </div>
       <!-- /container -->
     </div>
@@ -80,8 +86,9 @@
         <div class="rowSignup">
           <div class="widget-content" style="margin-top:3em;">
             <br>
-            <h2><?php echo $user->getName(); ?></h2>
-<!-- faqih ini mau dikasih nama adminnya gimana sih..haha -->
+            <h2><?php echo $dirisendiri->getName(); ?></h2>
+<!-- faqih ini mau dikasih nama adminnya gimana sih..haha jawab : udah gitu aja-->
+
           </div>
 
         </div>

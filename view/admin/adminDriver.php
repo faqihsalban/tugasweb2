@@ -43,7 +43,7 @@
                 <div class="container">
                      <ul class="mainnav">
 
-                        <li class="active"><a href="index.php?menu=adminUser" class="dropdown-toggle" >
+                        <li class="dropdown"><a href="index.php?menu=adminUser" class="dropdown-toggle" >
                                 <div class="icon-large icon-group">
                                 </div>
                                 <span>USER</span> <b class="caret"></b></a>
@@ -55,7 +55,7 @@
                                 <span>TENANT</span> <b class="caret"></b></a>
 
                         </li>
-                        <li class="dropdown"><a href="index.php?menu=adminDriver" class="dropdown-toggle" >
+                        <li class="active"><a href="index.php?menu=adminDriver" class="dropdown-toggle" >
                                 <div class="icon-large icon-group">
                                 </div>
                                 <span>DRIVER</span> <b class="caret"></b></a>
@@ -101,20 +101,20 @@
                                     echo "<th>Action</th>";
 
                                     
-                                    while ($user->valid()) {
+                                    while ($driver->valid()) {
                                     echo "<tr>"; 
-                                    echo "<td>"; echo $user->current()->getId_user();
-                                    echo "<td>"; echo $user->current()->getName();
-                                    echo "<td>"; echo $user->current()->getUsername();
-                                    echo "<td>"; echo $user->current()->getEmail();
-                                    echo "<td>"; echo $user->current()->getPhone();
-                                    echo "<td>"; echo $user->current()->getRole();
-                                    echo "<td>"; echo $user->current()->getDate_join();
+                                    echo "<td>"; echo $driver->current()->getId_user();
+                                    echo "<td>"; echo $driver->current()->getName();
+                                    echo "<td>"; echo $driver->current()->getUsername();
+                                    echo "<td>"; echo $driver->current()->getEmail();
+                                    echo "<td>"; echo $driver->current()->getPhone();
+                                    echo "<td>"; echo $driver->current()->getRole();
+                                    echo "<td>"; echo $driver->current()->getDate_join();
                                     //ini harusnya rombol
-                                    echo "<td>"; echo "<a href='index.php?menu=edit&id=".$user->current()->getId_user()."'>Edit Profile</a></li>" ;
+                                    echo "<td>"; echo "<a href='index.php?menu=edit&id=".$driver->current()->getId_user()."'>Edit Profile</a></li>" ;
                                     
                                     
-                                        $user->next();
+                                        $driver->next();
                                     }
                                     //data user disini ya faqih
                                     echo "</table>";

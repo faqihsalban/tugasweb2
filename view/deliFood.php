@@ -159,7 +159,7 @@
                                                   echo "<td>";
                                                   ?>
                                                     <input class="inputQuantity" type="text" name="quantity">
-                                                    <!-- <input type = 'button' value='pilih' onclick="pilihmenu('<?php echo $menu->current()->getId_menu(); ?>')"/> -->
+                                                    <!-- <input type = 'button' value='pilih' onclick="pilihmenu('<?php //echo $menu->current()->getId_menu(); ?>')"/> -->
                                                   <?php
                                                 echo "</tr>";
                                                 $menu->next();
