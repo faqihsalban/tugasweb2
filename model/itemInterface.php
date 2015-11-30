@@ -16,6 +16,7 @@ interface itemInterface {
     public function del(item $vitem);
     public function get_item_by_transac($id_transac);
     
-    
+            public function hitung_total($id_transac);
+
 
 }

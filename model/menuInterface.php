@@ -18,4 +18,5 @@ interface menuInterface {
     public function add(menu $vmenu);
     public function del(menu $vmenu);
     public function upd(menu $vmenu);
+
 }

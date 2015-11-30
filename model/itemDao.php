@@ -76,5 +76,21 @@ class itemDao implements itemInterface {
         $conn = NULL;
         return $items;
     }
+ public function hitung_total($id_transac) {
+     
+        try {
+            $conn = conection::getconection();
+            $sql = "SELECT SUM(price) from item where id_transac = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(1, $id_transac);
+            $stmt->execute();
+           $hasil = $stmt->fetch();
 
+        } catch (Exception $e) {
+            echo $e->getMessage();
+            die();
+        }
+        $conn = NULL;
+        return $hasil;
+    }
 }
