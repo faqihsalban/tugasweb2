@@ -62,7 +62,7 @@ class userController {
             require_once './home.php';
     }
 
-    public function user() {      
+    public function user() {
 
         require_once '/view/user/userMain.php';
     }
@@ -312,7 +312,7 @@ class userController {
                    ";
             } else {
                 // echo "alalalala";
-                header("location:index.php?menu=ownerMain");
+                header("location:index.php?menu=owner");
             }
         }
         require_once '/view/owner/ownerEditProfile.php';
