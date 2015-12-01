@@ -28,6 +28,7 @@ class foodController {
     }
 
     public function index() {
+
         $hasil = $this->servicedao->get_service_by_type(1)->getIterator();
         $items = new ArrayObject();
         if (isset($_SESSION['id_transac']))
@@ -40,13 +41,16 @@ class foodController {
             $cart = $this->itemdao->get_item_by_transac($_SESSION['id_transac'])->getIterator();
         }
         if (isset($_POST['btn_checkout'])) {
-//            $barang = $items->getIterator();
-//
-//            while ($barang->valid()) {
-//                $this->itemdao->add($barang);
-//                $barang->next();
-//            }
             $_SESSION['createTransac'] = FALSE;
+            header("location: index.php?menu=HistoryTransac");
+        }
+        if (isset($_POST['btn_cancel'])) {
+            $vtransac = new transac();
+            $vtransac->setId_transac($_SESSION['id_transac']);
+            $this->transacdao->del($vtransac);
+
+            $_SESSION['createTransac'] = FALSE;
+            //header("location: index.php?menu=HistoryTransac");
         }
 
         if (isset($_GET['service'])) {
@@ -93,22 +97,134 @@ class foodController {
     public function photocopy() {
 
         $hasil = $this->servicedao->get_service_by_type(3)->getIterator();
+               $items = new ArrayObject();
+        if (isset($_SESSION['id_transac']))
+            $cart = $this->itemdao->get_item_by_transac($_SESSION['id_transac'])->getIterator();
+
+        if (isset($_POST['btn_hapus'])) {
+            $vitem = new item();
+            $vitem->setId_item($_POST['id_item']);
+            $this->itemdao->del($vitem);
+            $cart = $this->itemdao->get_item_by_transac($_SESSION['id_transac'])->getIterator();
+        }
+        if (isset($_POST['btn_checkout'])) {
+            $_SESSION['createTransac'] = FALSE;
+            header("location: index.php?menu=HistoryTransac");
+        }
+        if (isset($_POST['btn_cancel'])) {
+            $vtransac = new transac();
+            $vtransac->setId_transac($_SESSION['id_transac']);
+            $this->transacdao->del($vtransac);
+
+            $_SESSION['createTransac'] = FALSE;
+            //header("location: index.php?menu=HistoryTransac");
+        }
+
         if (isset($_GET['service'])) {
             $id_service = $_GET['service'];
             $menu = $this->menudao->get_menu_by_service($id_service)->getIterator();
         }
+        if (isset($_POST['btn_transac'])) {
 
+            $last = $this->transacdao->get_last_id();
+            $_SESSION['id_transac'] = $last['max(id_transac)'] + 1;
+            $transaksi = new transac();
+            $transaksi->setId_transac($_SESSION['id_transac']);
+            $transaksi->setId_user($_SESSION['id_user']);
+            $transaksi->setTotal(0);
+            $transaksi->setStatus(0);
+            $transaksi->setAddress($_POST['address']);
+            //  echo $id_transac;
+            $this->transacdao->add($transaksi);
+
+            // $this->transacdao->add($transaksi);
+            $_SESSION['createTransac'] = TRUE;
+            $cart = $this->itemdao->get_item_by_transac($_SESSION['id_transac'])->getIterator();
+        }
+
+        if (isset($_POST['btn_pesan'])) {
+            //cari last id transac nya buat dipake sama si item  $lastId = $this->
+            //  $last = $this->transacdao->get_last_id();
+            // $id_transac = $last['max(id_transac)'];
+            $tempmenu = $this->menudao->get_menu_by_id($_POST['id_menu']);
+            $item = new item();
+            $item->setId_menu($_POST['id_menu']);
+            $item->setId_transac($_SESSION['id_transac']);
+            $item->setQty($_POST['qty']);
+            // echo "ini kuantiti "; 
+            // echo $_POST['qty'];
+            $item->setPrice(($tempmenu->getPrice()) * ($_POST['qty']));
+            $this->itemdao->add($item);
+            $items->append($item);
+            $cart = $this->itemdao->get_item_by_transac($_SESSION['id_transac'])->getIterator();
+        }
         require '/view/deliCopy.php';
     }
 
     public function laundry() {
 
         $hasil = $this->servicedao->get_service_by_type(2)->getIterator();
+            $items = new ArrayObject();
+        if (isset($_SESSION['id_transac']))
+            $cart = $this->itemdao->get_item_by_transac($_SESSION['id_transac'])->getIterator();
+
+        if (isset($_POST['btn_hapus'])) {
+            $vitem = new item();
+            $vitem->setId_item($_POST['id_item']);
+            $this->itemdao->del($vitem);
+            $cart = $this->itemdao->get_item_by_transac($_SESSION['id_transac'])->getIterator();
+        }
+        if (isset($_POST['btn_checkout'])) {
+            $_SESSION['createTransac'] = FALSE;
+            header("location: index.php?menu=HistoryTransac");
+        }
+        if (isset($_POST['btn_cancel'])) {
+            $vtransac = new transac();
+            $vtransac->setId_transac($_SESSION['id_transac']);
+            $this->transacdao->del($vtransac);
+
+            $_SESSION['createTransac'] = FALSE;
+            //header("location: index.php?menu=HistoryTransac");
+        }
+
         if (isset($_GET['service'])) {
             $id_service = $_GET['service'];
             $menu = $this->menudao->get_menu_by_service($id_service)->getIterator();
         }
+        if (isset($_POST['btn_transac'])) {
 
+            $last = $this->transacdao->get_last_id();
+            $_SESSION['id_transac'] = $last['max(id_transac)'] + 1;
+            $transaksi = new transac();
+            $transaksi->setId_transac($_SESSION['id_transac']);
+            $transaksi->setId_user($_SESSION['id_user']);
+            $transaksi->setTotal(0);
+            $transaksi->setStatus(0);
+            $transaksi->setAddress($_POST['address']);
+            //  echo $id_transac;
+            $this->transacdao->add($transaksi);
+
+            // $this->transacdao->add($transaksi);
+            $_SESSION['createTransac'] = TRUE;
+            $cart = $this->itemdao->get_item_by_transac($_SESSION['id_transac'])->getIterator();
+        }
+
+        if (isset($_POST['btn_pesan'])) {
+            //cari last id transac nya buat dipake sama si item  $lastId = $this->
+            //  $last = $this->transacdao->get_last_id();
+            // $id_transac = $last['max(id_transac)'];
+            $tempmenu = $this->menudao->get_menu_by_id($_POST['id_menu']);
+            $item = new item();
+            $item->setId_menu($_POST['id_menu']);
+            $item->setId_transac($_SESSION['id_transac']);
+            $item->setQty($_POST['qty']);
+            // echo "ini kuantiti "; 
+            // echo $_POST['qty'];
+            $item->setPrice(($tempmenu->getPrice()) * ($_POST['qty']));
+            $this->itemdao->add($item);
+            $items->append($item);
+            $cart = $this->itemdao->get_item_by_transac($_SESSION['id_transac'])->getIterator();
+        }
         require '/view/deliLaundry.php';
     }
 

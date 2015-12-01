@@ -81,7 +81,7 @@
         <br>
         FINISH
         <table class="table table-striped table-bordered">
-            <th> id transac <th> id user <th> address <th> status <th> total <th> aksi
+            <th> id transac <th> id user <th> address <th> status <th> total 
                 <?php while ($complete->valid()) { ?>
                 <tr>
                     <td> <?php echo $complete->current()->getId_transac(); ?>

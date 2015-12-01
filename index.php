@@ -172,6 +172,10 @@
             $usercon = new userController();
             $usercon->addService();
             break;
+        case 'HistoryTransac':
+            $usercon = new userController();
+            $usercon->userHistory();
+            break;
         case 'adminUser':
             $usercon = new userController();
             $usercon->adminUser();

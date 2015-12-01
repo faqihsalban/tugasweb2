@@ -7,10 +7,6 @@
 
     </head>
     <body>
-
-
-
-
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
@@ -64,6 +60,11 @@
                                 <div class="icon-large icon-copy">
                                 </div>
                                 <span>PHOTOCOPY DELI</span> <b class="caret"></b></a>
+                        </li>
+                        <li class="dropdown"><a href="index.php?menu=HistoryTransac" class="dropdown-toggle" >
+                                <div class="icon-large icon-copy">
+                                </div>
+                                <span>History</span> <b class="caret"></b></a>
                         </li>
 
                     </ul>
@@ -169,7 +170,7 @@
                                                             <?php while ($cart->valid()) { ?>
                                                             <form method="POST" enctype="multipart/form-data">
                                                                 <tr>
-                                                                    <td> <input type="text"  value="<?php echo $cart->current()->getId_item(); ?> " name="id_item" > 
+                                                                    <td> <input type="hidden"  value="<?php echo $cart->current()->getId_item(); ?> " name="id_item" > 
                                                                     <td> <?php echo $cart->current()->getName_menu(); ?>
                                                                     <td> <?php echo $cart->current()->getQty(); ?>
                                                                     <td> <?php echo $cart->current()->getPrice(); ?>
@@ -179,19 +180,21 @@
                                                             <?php $cart->next();  }  ?>
                                                     </table>
                                                     <form method="POST" enctype="multipart/form-data">
-                                                        <td colspan="2"> <input type="submit" class="button btn btn-success btn-large" value="Check Oouutt" name="btn_checkout">
+                                                         <input type="submit" class="button btn btn-success btn-large" value="Check Oouutt" name="btn_checkout">
+                                                        <input type="submit" class="button btn btn-success btn-large" value="Cancel" name="btn_cancel">
                                                     </form>
                                                 <?php } ?>
                                                 <table class="table table-striped table-bordered">
-                                                    <th>ID <th>Name <th> Price  <th> Quantity <th> Action
+                                                    <th> <th>Name <th> Price  <th> Quantity   <?php if($_SESSION['createTransac']){?> <th> Action <?php } ?>
                                                         <?php while ($menu->valid()) { ?>
                                                         <form method="POST" enctype="multipart/form-data">
                                                             <tr>
-                                                                <td> <input type="text"  value="<?php echo $menu->current()->getId_menu(); ?>" name="id_menu" >
+                                                                <td> <input type="hidden"  value="<?php echo $menu->current()->getId_menu(); ?>" name="id_menu" >
                                                                 <td> <?php echo $menu->current()->getName(); ?>
                                                                 <td> <?php echo $menu->current()->getPrice(); ?>
                                                                 <td><input class="inputQuantity" type="text" name="qty">
-                                                                <td><input type="submit" class="button btn btn-success btn-large" value="Pesan" name="btn_pesan">
+                                                                    <?php if($_SESSION['createTransac']){?>
+                                                                    <td><input type="submit" class="button btn btn-success btn-large" value="Pesan" name="btn_pesan"><?php } ?>
                                                             </tr>
                                                         </form>
                                                         <?php

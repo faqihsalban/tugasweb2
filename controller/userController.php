@@ -70,6 +70,13 @@ class userController {
         require_once 'login.php';
     }
 
+    public function userHistory() {
+        $transacNow = $this->transacdao->get_transac_by_user_status($_SESSION['id_user'], 0)->getIterator();
+        $transacOngoing = $this->transacdao->get_transac_by_user_status($_SESSION['id_user'], 1)->getIterator();
+        $transacDone = $this->transacdao->get_transac_by_user_status($_SESSION['id_user'], 2)->getIterator();
+        require_once '/view/user/userHistory.php';
+    }
+
     public function signup() {
         if (isset($_POST['signUp'])) {
             $email = $_POST['email'];
@@ -169,15 +176,16 @@ class userController {
             $vmenu->setPrice($_POST['menuPrice']);
             //ini nya ga jalan alert nya
             echo "alertify.confirm('Apakah anda yakin ingin menghapus menu?','ya','Default Value')";
-            
+
             $this->menudao->add($vmenu);
             header("location: index.php?menu=owner&service=$id_service");
         }
         require_once '/view/owner/addMenu.php';
     }
+
     public function addService() {
 
-      
+
         if (isset($_POST['btn_add'])) {
             $vservice = new service();
             $vservice->setId_user($_SESSION['id_user']);
@@ -187,7 +195,7 @@ class userController {
             $vservice->setAddress($_POST['serviceAddress']);
             //ini nya ga jalan alert nya
             echo "alertify.confirm('Apakah anda yakin ingin add  service?','ya','Default Value')";
-            
+
             $this->servicedao->add($vservice);
             header("location: index.php?menu=owner");
         }

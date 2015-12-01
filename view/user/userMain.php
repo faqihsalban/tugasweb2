@@ -1,16 +1,19 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
+    <head>
 
-</head>
-<body>
-
-  <div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-      <div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
-                      class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a>
-                      <a class="brand"><div class="icon-large icon-truck">
+    </head>
+    <body>
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span> </a>
+                    <a href="index.php?menu=user" class="brand"><div class="icon-large icon-truck">
 
                       </div>Deli Town</a>
                       <div class="nav-collapse">
