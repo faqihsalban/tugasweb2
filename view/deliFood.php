@@ -192,7 +192,7 @@
                                                                 <td> <input type="hidden"  value="<?php echo $menu->current()->getId_menu(); ?>" name="id_menu" >
                                                                 <td> <?php echo $menu->current()->getName(); ?>
                                                                 <td> <?php echo $menu->current()->getPrice(); ?>
-                                                                <td><input class="inputQuantity" type="text" name="qty">
+                                                                <td><input class="inputQuantity" type="number" name="qty">
                                                                     <?php if($_SESSION['createTransac']){?>
                                                                     <td><input type="submit" class="button btn btn-success btn-large" value="Pesan" name="btn_pesan"><?php } ?>
                                                             </tr>

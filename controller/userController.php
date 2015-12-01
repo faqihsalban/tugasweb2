@@ -221,10 +221,13 @@ class userController {
             $userbaru->setPassword(md5($_POST['password']));
             $userbaru->setEmail($_POST['email']);
             $userbaru->setPhone($_POST['phone']);
+            $userbaru->setRole($_POST['role']);
             $userbaru->setId_user($_SESSION['id_user']);
 
-            if ($this->userdao->upd($userbaru))
-                echo "sukses";
+            if ($this->userdao->adminupd($userbaru))
+                 echo "<script>
+                    alertify.success('berhasil ');
+                    </script>";
             header("location: index.php?menu=user");
         }
         require_once '/view/editProfile.php';

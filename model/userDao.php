@@ -174,7 +174,7 @@ class userDao implements userInterface {
         try {
             $conn = conection::getconection();
             $conn->beginTransaction();
-            $sql = "UPDATE user set name=?, password=?, phone=?, role=? where id_user=?";
+            $sql = "UPDATE user set name=?, password=?, phone=?, email=? where id_user=?";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(1, $vuser->getName());
             $stmt->bindParam(2, $vuser->getPassword());
@@ -190,7 +190,27 @@ class userDao implements userInterface {
         $conn = NULL;
         return $result;
     }
-
+  public function adminupd(\user $vuser) {
+        $result = FALSE;
+        try {
+            $conn = conection::getconection();
+            $conn->beginTransaction();
+            $sql = "UPDATE user set name=?, email=?, phone=?, role=? where id_user=?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(1, $vuser->getName());
+            $stmt->bindParam(2, $vuser->getEmail());
+            $stmt->bindParam(3, $vuser->getPhone());
+            $stmt->bindParam(4, $vuser->getRole());
+            $stmt->bindParam(5, $vuser->getId_user());
+            $result = $stmt->execute();
+            $conn->commit();
+        } catch (Exception $e) {
+            echo $e->getMessage();
+            die();
+        }
+        $conn = NULL;
+        return $result;
+    }
     public function login(\user $vuser) {
 
         $login_result = FALSE;

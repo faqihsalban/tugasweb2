@@ -87,7 +87,7 @@
         	            <center><tr>
         	              <td width="12%">Email</td>
         	              <td colspan="3">
-        	                <input type="text" class="inputNama" name="email" placeholder="Email">
+        	                <input type="email" class="inputNama" name="email" placeholder="Email">
         	              </td>
         	            </tr></center>
 
@@ -113,7 +113,7 @@
 
                       <tr>
         	              <td width="12%">Phone</td>
-        	              <td colspan="3"><input type="text" class="inputNama" name="phone" placeholder="Phone" id="txtAngka"> </td>
+        	              <td colspan="3"><input type="number" class="inputNama" name="phone" placeholder="Phone" id="txtAngka"> </td>
         	            </tr>
 
         		          <tr>

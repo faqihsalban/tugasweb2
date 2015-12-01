@@ -96,11 +96,11 @@ and open the template in the editor.
 
                 <tr>
                     <td>Email</td>
-                    <td><input type="text" class="inputNama" name="email" placeholder="Email" value="<?php echo $user->getEmail(); ?>"/></td>
+                    <td><input type="email" class="inputNama" name="email" placeholder="Email" value="<?php echo $user->getEmail(); ?>"/></td>
                 </tr>
                 <tr>
                     <td>Phone</td>
-                    <td><input type="text" class="inputNama" name="phone" placeholder="Phone" value="<?php echo $user->getPhone(); ?>"/></td>
+                    <td><input type="number" class="inputNama" name="phone" placeholder="Phone" value="<?php echo $user->getPhone(); ?>"/></td>
                 </tr>
                 <tr>
                     <td>Password</td>
