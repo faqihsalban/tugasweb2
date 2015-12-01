@@ -61,6 +61,14 @@
                   <span>PHOTOCOPY DELI</span> <b class="caret"></b></a>
                 </li>
 
+                <?php if ($_SESSION['is_logged']) { ?>
+              <li class="dropdown"><a href="index.php?menu=HistoryTransac" class="dropdown-toggle" >
+                      <div class="icon-large icon-copy">
+                      </div>
+                      <span>History</span> <b class="caret"></b></a>
+              </li>
+              <?php } ?>
+
               </ul>
             </div>
             <!-- /container -->
@@ -117,9 +125,9 @@
                            <?php
                                             // if ($_SESSION['is_logged']) {
                                             echo '<table class="table table-striped table-bordered" style="">';
-                                            echo '<th> restaurant';
+                                            echo '<th colspan=2> restaurant';
                                             if ($_SESSION['is_logged']) {
-                                                echo '<th> action';
+                                                // echo '<th> action';
                                             }
                                             while ($hasil->valid()) {
 
