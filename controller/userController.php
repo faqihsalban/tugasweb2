@@ -62,9 +62,8 @@ class userController {
             require_once './home.php';
     }
 
-    public function user() {
-        $usr = $this->userdao->get_user_by_id($_SESSION['id_user']);
-        
+    public function user() {      
+
         require_once '/view/user/userMain.php';
     }
 

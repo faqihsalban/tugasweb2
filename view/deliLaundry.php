@@ -131,7 +131,9 @@
                                                 if ($_SESSION['is_logged']) {
                                                     echo "<td>";
                                                     ?>
-                                                    <a href="index.php?menu=deliLaundry&service=<?php echo $hasil->current()->getId_service(); ?>" name="show"> Show Menu</a>
+                                                    <a href="index.php?menu=deliLaundry&service=<?php echo $hasil->current()->getId_service(); ?>" name="show">
+                                                        <input type='button' class='button btn btn-success' value='Show Menu'>
+                                                    </a>
                                                     <?php
                                                     echo "</td>";
                                                 }
@@ -163,12 +165,12 @@
                                                             <?php while ($cart->valid()) { ?>
                                                             <form method="POST" enctype="multipart/form-data">
                                                                 <tr>
-                                                                    <td> <input type="hidden"  value="<?php echo $cart->current()->getId_item(); ?> " name="id_item" > 
+                                                                    <td> <input type="hidden"  value="<?php echo $cart->current()->getId_item(); ?> " name="id_item" >
                                                                     <td> <?php echo $cart->current()->getName_menu(); ?>
                                                                     <td> <?php echo $cart->current()->getQty(); ?>
                                                                     <td> <?php echo $cart->current()->getPrice(); ?>
                                                                     <td><input type="submit" class="button btn btn-danger btn-large" value="Hapus" name="btn_hapus">
-                                                                </tr> 
+                                                                </tr>
                                                             </form>
                                                             <?php $cart->next();  }  ?>
                                                     </table>

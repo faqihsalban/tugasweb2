@@ -60,7 +60,7 @@
          <div class="widget">
            <div class="widget-content">
 
-               <h2 style="text-align: center;"><br>Selamat Datang <?php $usr->getName(); ?> di Deli Town
+               <h2 style="text-align: center;"><br>Selamat Datang di Deli Town
                  <div class="icon-large icon-truck" style="color:#52017b"></div>
                  <div class="icon-small icon-align-left"></div>
                </h2><br>
