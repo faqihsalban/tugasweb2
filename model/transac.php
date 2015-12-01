@@ -12,6 +12,7 @@
  * @author faqih
  */
 class transac {
+
     //put your code here
     private $id_transac;
     private $id_user;
@@ -20,6 +21,7 @@ class transac {
     private $total;
     private $status;
     private $date;
+
     public function getId_transac() {
         return $this->id_transac;
     }
@@ -37,7 +39,22 @@ class transac {
     }
 
     public function getTotal() {
-        return $this->total;
+        try {
+            $conn = conection::getconection();
+            $sql = "SELECT SUM(price) from item where id_transac = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(1, $this->id_transac);
+            $stmt->execute();
+            $hasil = $stmt->fetch();
+        } catch (Exception $e) {
+            echo $e->getMessage();
+            die();
+        }
+        $conn = NULL;
+        return $hasil['SUM(price)'];
+
+
+        // return $this->total;
     }
 
     public function getStatus() {
@@ -75,9 +92,5 @@ class transac {
     public function setDate($date) {
         $this->date = $date;
     }
-
-
-    
-
 
 }

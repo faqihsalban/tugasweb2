@@ -30,7 +30,15 @@ class foodController {
     public function index() {
         $hasil = $this->servicedao->get_service_by_type(1)->getIterator();
         $items = new ArrayObject();
+        if (isset($_SESSION['id_transac']))
+            $cart = $this->itemdao->get_item_by_transac($_SESSION['id_transac'])->getIterator();
 
+        if (isset($_POST['btn_hapus'])) {
+            $vitem = new item();
+            $vitem->setId_item($_POST['id_item']);
+            $this->itemdao->del($vitem);
+            $cart = $this->itemdao->get_item_by_transac($_SESSION['id_transac'])->getIterator();
+        }
         if (isset($_POST['btn_checkout'])) {
 //            $barang = $items->getIterator();
 //
@@ -46,6 +54,7 @@ class foodController {
             $menu = $this->menudao->get_menu_by_service($id_service)->getIterator();
         }
         if (isset($_POST['btn_transac'])) {
+
             $last = $this->transacdao->get_last_id();
             $_SESSION['id_transac'] = $last['max(id_transac)'] + 1;
             $transaksi = new transac();
@@ -59,6 +68,7 @@ class foodController {
 
             // $this->transacdao->add($transaksi);
             $_SESSION['createTransac'] = TRUE;
+            $cart = $this->itemdao->get_item_by_transac($_SESSION['id_transac'])->getIterator();
         }
 
         if (isset($_POST['btn_pesan'])) {
@@ -73,8 +83,9 @@ class foodController {
             // echo "ini kuantiti "; 
             // echo $_POST['qty'];
             $item->setPrice(($tempmenu->getPrice()) * ($_POST['qty']));
-             $this->itemdao->add($item);
+            $this->itemdao->add($item);
             $items->append($item);
+            $cart = $this->itemdao->get_item_by_transac($_SESSION['id_transac'])->getIterator();
         }
         require '/view/deliFood.php';
     }

@@ -39,10 +39,9 @@ class itemDao implements itemInterface {
         try {
             $conn = conection::getconection();
             $conn->beginTransaction();
-            $sql = "DELETE from item where id_transac=? and id_menu=?";
+            $sql = "DELETE from item where id_item=?";
             $stmt = $conn->prepare($sql);
-            $stmt->bindParam(1, $vitem->getId_transac());
-            $stmt->bindParam(2, $vitem->getId_menu());
+            $stmt->bindParam(1, $vitem->getId_item());
             $result = $stmt->execute();
             $conn->commit();
         } catch (Exception $e) {
@@ -63,9 +62,10 @@ class itemDao implements itemInterface {
             $stmt->execute();
             while ($row = $stmt->fetch()) {
                 $item = new item();
+                $item->setId_item($row['id_item']);
                 $item->setId_menu($row['id_menu']);
-                $item->setId_service($row['id_service']);
-                $item->setName($row['name']);
+                $item->setId_transac($row['id_transac']);
+                $item->setQty($row['qty']);
                 $item->setPrice($row['price']);
                 $items->append($item);
             }
@@ -91,6 +91,6 @@ class itemDao implements itemInterface {
             die();
         }
         $conn = NULL;
-        return $hasil;
+        return $hasil['SUM(price)'];
     }
 }

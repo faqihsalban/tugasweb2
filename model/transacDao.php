@@ -18,13 +18,13 @@ class transacDao implements transacInterface {
         try {
             $conn = conection::getconection();
             $conn->beginTransaction();
-            $sql = "INSERT into transac(id_user,address,total,status,id_transac) values (?,?,?,?,?)";
+            $sql = "INSERT into transac(id_user,address,status,id_transac) values (?,?,?,?)";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(1, $vtransac->getId_user());
             $stmt->bindParam(2, $vtransac->getAddress());
-            $stmt->bindParam(3, $vtransac->getTotal());
-            $stmt->bindParam(4, $vtransac->getStatus());
-            $stmt->bindParam(5, $vtransac->getId_transac());
+        
+            $stmt->bindParam(3, $vtransac->getStatus());
+            $stmt->bindParam(4, $vtransac->getId_transac());
 
             $result = $stmt->execute();
             $conn->commit();
