@@ -63,9 +63,9 @@
 
                 <?php if ($_SESSION['is_logged']) { ?>
               <li class="dropdown"><a href="index.php?menu=HistoryTransac" class="dropdown-toggle" >
-                      <div class="icon-large icon-copy">
+                      <div class="icon-large icon-book">
                       </div>
-                      <span>History</span> <b class="caret"></b></a>
+                      <span>HISTORY</span> <b class="caret"></b></a>
               </li>
               <?php } ?>
 
@@ -184,7 +184,7 @@
                                                     </table>
                                                     <form method="POST" enctype="multipart/form-data">
                                                          <input type="submit" class="button btn btn-success btn-large" value="Check Oouutt" name="btn_checkout">
-                                                        <input type="submit" class="button btn btn-success btn-large" value="Cancel" name="btn_cancel">
+                                                        <input type="submit" class="button btn btn-success btn-large" style="margin-right:1em" value="Cancel" name="btn_cancel">
                                                     </form>
                                                 <?php } ?>
                                                 <table class="table table-striped table-bordered">
@@ -197,7 +197,7 @@
                                                                 <td> <?php echo $menu->current()->getPrice(); ?>
                                                                 <td><input class="inputQuantity" type="number" name="qty">
                                                                     <?php if($_SESSION['createTransac']){?>
-                                                                    <td><input type="submit" class="button btn btn-success btn-large" value="Pesan" name="btn_pesan"><?php } ?>
+                                                                    <td><input type="submit" class="btn btn-success" value="Pesan" name="btn_pesan"><?php } ?>
                                                             </tr>
                                                         </form>
                                                         <?php

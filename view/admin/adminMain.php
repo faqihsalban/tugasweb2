@@ -86,7 +86,7 @@
         <div class="rowSignup">
           <div class="widget-content" style="margin-top:3em;">
             <br>
-            <h2><?php echo $dirisendiri->getName(); ?></h2>
+            <h2>Welcome to Deli Town, <?php echo $dirisendiri->getName(); ?></h2>
 <!-- faqih ini mau dikasih nama adminnya gimana sih..haha jawab : udah gitu aja-->
 
           </div>

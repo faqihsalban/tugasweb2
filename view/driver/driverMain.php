@@ -54,7 +54,9 @@
                     <td> <?php echo $result->current()->getAddress(); ?>
                     <td> <?php echo $result->current()->getStatus(); ?>
                     <td> <?php echo $result->current()->getTotal(); ?>
-                    <td><a href="index.php?menu=driver&service=<?php echo $result->current()->getId_transac(); ?>"> pilih</a>
+                    <td><a href="index.php?menu=driver&service=<?php echo $result->current()->getId_transac(); ?>">
+                            <input type="button" name="btn_ambil" value="Ambil" class="btn btn-success">
+                        </a>
                 </tr>
                 <?php
                 $result->next();
@@ -72,7 +74,9 @@
                     <td> <?php echo $onproces->current()->getAddress(); ?>
                     <td> <?php echo $onproces->current()->getStatus(); ?>
                     <td> <?php echo $onproces->current()->getTotal(); ?>
-                    <td><a href="index.php?menu=driver&done=<?php echo $onproces->current()->getId_transac(); ?>"> pilih</a>
+                    <td><a href="index.php?menu=driver&done=<?php echo $onproces->current()->getId_transac(); ?>">
+                          <input type="button" name="btn_selesai" value="Selesai" class="btn btn-success">
+                        </a>
                 </tr>
                 <?php
                 $onproces->next();

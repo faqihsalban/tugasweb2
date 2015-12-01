@@ -64,7 +64,7 @@ and open the template in the editor.
                                         </tr>
                                         <tr>
                                             <td>Service Type</td>
-                                            <td><select name="serviceType">
+                                            <td><select name="serviceType" style="height:3em">
                                                     <option value="1">Restaurant</option>
                                                     <option value="2">Laundry</option>
                                                     <option value="3">PhotoCopy</option>

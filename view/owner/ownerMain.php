@@ -45,6 +45,7 @@
                         <div class="rowSignup">
 
                             <div class="widget-content">
+                              <br>
                               <h3> Your Tenant List & Info </h3>
                                 <table class="table table-striped table-bordered" style="">
                                     <br>
