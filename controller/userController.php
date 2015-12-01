@@ -84,8 +84,14 @@ class userController {
             $user->setName($nama);
             $user->setUsername($username);
             $user->setPassword(md5($password));
+            $user->setRole(2);
             $user->setPhone($phone);
-            $this->$userdao->add($user);
+            $this->userdao->add($user);
+            // $this->$userdao->add($user);
+
+            echo "<script>
+                    alertify.success('ID User berhasil didaftarkan');
+                    </script>";
         }
         $dataUser = $this->userdao->get_all_user()->getIterator();
         require_once 'signup.php';

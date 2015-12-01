@@ -184,7 +184,7 @@ span.login-checkbox > input[type='checkbox']:checked + label {
 	border-radius: 3px;
 	display: inline-block;
 	float: right;
-	margin-top: 18px;}
+	/*margin-top: 18px;}*/
 
 
 

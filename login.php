@@ -96,7 +96,7 @@
                                     </div>
 
                                     <div class="login-actions">
-                                        <button class="button btn btn-success btn-large" type="submit" name="btn_login">Masuk</button>
+                                        <button class="button btn btn-success btn-large" style="margin-top:2em" type="submit" name="btn_login">Masuk</button>
                                     </div>
 
                                 </form>

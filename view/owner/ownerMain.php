@@ -57,10 +57,10 @@
                                                 echo "<td>". $services->current()->getName(); echo "</td>";
                                                 echo "<td>";
                                                 ?>
-                                                <center><a href="index.php?menu=owner&service=<?php echo $services->current()->getId_service(); ?>" name="show">
+                                                <a href="index.php?menu=owner&service=<?php echo $services->current()->getId_service(); ?>" name="show">
                                                 <!-- #pao itu kelas btn info warnanya gak asik, ntar ganti aja jadi kuning atau apa deh yg cocok -->
-                                                <input type='button' class='btn btn-info' value='Show Menu'>
-                                              </a></center>
+                                                <input type='button' class='button btn btn-success btn-large' value='Show Menu'>
+                                              </a>
                                                 <?php
                                                 echo "</td>";
                                             echo "</tr>";
@@ -81,7 +81,7 @@
                                                   echo "<td>";
                                                   ?>
                                             <a href="index.php?menu=editMenu&id=<?php echo $menu->current()->getId_menu(); ?>" name="show">
-                                            <input type='button' class='btn btn-info' value='Edit Menu'> </a>
+                                            <input type='button' class='button btn btn-success btn-large' value='Edit Menu'> </a>
                                                 <?php
                                                 echo "</tr>";
                                                 $menu->next();

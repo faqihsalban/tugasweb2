@@ -98,22 +98,22 @@
 
         	            <tr>
         	              <td width="12%">Username</td>
-        	              <td colspan="3"><input type="text" class="inputNama" name="username" placeholder="Username" id="txtAngka" maxlength="4"> </td>
+        	              <td colspan="3"><input type="text" class="inputNama" name="username" placeholder="Username" id="txtAngka"> </td>
         	            </tr>
 
                       <tr>
         	              <td width="12%">Password</td>
-        	              <td colspan="3"><input type="password" class="inputNama" name="password" placeholder="Password" id="txtAngka" maxlength="4"> </td>
+        	              <td colspan="3"><input type="password" class="inputNama" name="password" placeholder="Password" id="txtAngka"> </td>
         	            </tr>
 
                       <tr>
         	              <td width="12%">Confirm Password</td>
-        	              <td colspan="3"><input type="password" class="inputNama" name="confirmPassword" placeholder="Confirm Password" id="txtAngka" maxlength="4"></td>
+        	              <td colspan="3"><input type="password" class="inputNama" name="confirmPassword" placeholder="Confirm Password" id="txtAngka"></td>
         	            </tr>
 
                       <tr>
         	              <td width="12%">Phone</td>
-        	              <td colspan="3"><input type="text" class="inputNama" name="phone" placeholder="Phone" id="txtAngka" maxlength="4"> </td>
+        	              <td colspan="3"><input type="text" class="inputNama" name="phone" placeholder="Phone" id="txtAngka"> </td>
         	            </tr>
 
         		          <tr>

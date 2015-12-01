@@ -156,11 +156,11 @@
                                                     <form method="POST" enctype="multipart/form-data">
                                                         <table>
                                                             <tr>
-                                                                <td>Address</td>
-                                                                <td><input type="text" name="address"></td>
+                                                                <td style="vertical-align: top">Address</td>
+                                                                <td><textarea name="address" style="width: 25em;height: 5em;vertical-align: top"></textarea></td>
                                                             </tr>
                                                             <tr>
-                                                                <td colspan="2"> <input type="submit" class="button btn btn-success btn-large" value="Create Transaction" name="btn_transac">
+                                                                <td colspan="2"> <input type="submit" class="button btn btn-success btn-large" style="margin-top: 1em" value="Create Transaction" name="btn_transac">
                                                             </tr>
                                                         </table>
 
