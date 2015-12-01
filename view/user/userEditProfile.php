@@ -63,6 +63,14 @@ and open the template in the editor.
                         <span>PHOTOCOPY DELI</span> <b class="caret"></b></a>
                       </li>
 
+                      <?php if ($_SESSION['is_logged']) { ?>
+                    <li class="dropdown"><a href="index.php?menu=HistoryTransac" class="dropdown-toggle" >
+                            <div class="icon-large icon-copy">
+                            </div>
+                            <span>History</span> <b class="caret"></b></a>
+                    </li>
+                    <?php } ?>
+
                     </ul>
                   </div>
                   <!-- /container -->

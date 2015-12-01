@@ -52,7 +52,7 @@ and open the template in the editor.
             <table class="table table-striped table-bordered" >
               <br>
               <tr>
-                <td colspan="4"> <p style="font-size:170%; text-align: center" ><b>Edit Owner Profile</b></p></td>
+                <td colspan="4"> <p style="font-size:170%; text-align: center" ><b>Edit Driver's Profile</b></p></td>
               </tr>
 
                 <tr>
