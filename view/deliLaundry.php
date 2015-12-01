@@ -114,60 +114,118 @@
                             <p style="text-align:center">Untuk melakukan pemesanan silakan <a href="index.php?menu=login">Login</a>
                               atau <a href="index.php?menu=signup">Daftar</a></p>
                           <?php }?>
-                            <?php
-                                    // if ($_SESSION['is_logged']) {
-                                        echo '<table class="table table-striped table-bordered" style="">';
-                                        echo '<th> Laundry';
-                                        echo '<th> action';
-                                        while ($hasil->valid()) {
-
-                                            echo "<tr>";
-                                            echo "<td>" . $hasil->current()->getName();
-                                            echo "<td>";
-                                            ?>
-                                            <a href="index.php?menu=deliLaundry&service=<?php echo $hasil->current()->getId_service(); ?>"> show menu</a>
-                                            <?php
-                                            echo "</tr>";
-                                            $hasil->next();
-                                        }
-                                    // }
-                                    ?>
-                                </table>
-                                <br>
-                                        <?php if (isset($_GET['service'])) { ?>
-                                    <table class="table table-striped table-bordered">
-                                        <th>Name <th> Price  <th> Action
-                                            <?php
-                                            while ($menu->valid()) {
-                                                echo "<tr>";
-                                                echo "<td>" . $menu->current()->getName();
-                                                echo "<td>" . $menu->current()->getPrice();
-                                                echo "<td>";
-                                                ?>
-                                                <input type = 'button' value='pilih' onclick="pilihmenu('<?php echo $menu->current()->getId_menu(); ?>')"/>
-                                                <?php
-                                                echo "</tr>";
-                                                $menu->next();
+                           <?php
+                                            // if ($_SESSION['is_logged']) {
+                                            echo '<table class="table table-striped table-bordered" style="">';
+                                            echo '<th> restaurant';
+                                            if ($_SESSION['is_logged']) {
+                                                echo '<th> action';
                                             }
+                                            while ($hasil->valid()) {
+
+                                                echo "<tr>";
+                                                echo "<td> "
+                                                . $hasil->current()->getName();
+
+                                                echo "</td>";
+                                                if ($_SESSION['is_logged']) {
+                                                    echo "<td>";
+                                                    ?>
+                                                    <a href="index.php?menu=deliLaundry&service=<?php echo $hasil->current()->getId_service(); ?>" name="show"> Show Menu</a>
+                                                    <?php
+                                                    echo "</td>";
+                                                }
+                                                echo "</tr>";
+                                                $hasil->next();
+                                            }
+                                            // }
                                             ?>
+                                            </table>
+                                            <br>
+                                            <?php if (isset($_GET['service'])) { ?>
+                                                <?php if ($_SESSION['createTransac'] == FALSE) { ?>
+                                                    <form method="POST" enctype="multipart/form-data">
+                                                        <table>
+                                                            <tr>
+                                                                <td style="vertical-align: top">Address</td>
+                                                                <td><textarea name="address" style="width: 25em;height: 5em;vertical-align: top"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2"> <input type="submit" class="button btn btn-success btn-large" style="margin-top: 1em" value="Create Transaction" name="btn_transac">
+                                                            </tr>
+                                                        </table>
 
-                                    </table>
+                                                    </form>
+                                                <?php } else { ?>
 
-                            <?php } ?>
-  								        </p>
-  								      </div>
+                                                    <table>
+                                                        <th> item <th> Menu <th> Qty <th> Price
+                                                            <?php while ($cart->valid()) { ?>
+                                                            <form method="POST" enctype="multipart/form-data">
+                                                                <tr>
+                                                                    <td> <input type="hidden"  value="<?php echo $cart->current()->getId_item(); ?> " name="id_item" > 
+                                                                    <td> <?php echo $cart->current()->getName_menu(); ?>
+                                                                    <td> <?php echo $cart->current()->getQty(); ?>
+                                                                    <td> <?php echo $cart->current()->getPrice(); ?>
+                                                                    <td><input type="submit" class="button btn btn-danger btn-large" value="Hapus" name="btn_hapus">
+                                                                </tr> 
+                                                            </form>
+                                                            <?php $cart->next();  }  ?>
+                                                    </table>
+                                                    <form method="POST" enctype="multipart/form-data">
+                                                         <input type="submit" class="button btn btn-success btn-large" value="Check Oouutt" name="btn_checkout">
+                                                        <input type="submit" class="button btn btn-success btn-large" value="Cancel" name="btn_cancel">
+                                                    </form>
+                                                <?php } ?>
+                                                <table class="table table-striped table-bordered">
+                                                    <th> <th>Name <th> Price  <th> Quantity   <?php if($_SESSION['createTransac']){?> <th> Action <?php } ?>
+                                                        <?php while ($menu->valid()) { ?>
+                                                        <form method="POST" enctype="multipart/form-data">
+                                                            <tr>
+                                                                <td> <input type="hidden"  value="<?php echo $menu->current()->getId_menu(); ?>" name="id_menu" >
+                                                                <td> <?php echo $menu->current()->getName(); ?>
+                                                                <td> <?php echo $menu->current()->getPrice(); ?>
+                                                                <td><input class="inputQuantity" type="number" name="qty">
+                                                                    <?php if($_SESSION['createTransac']){?>
+                                                                    <td><input type="submit" class="button btn btn-success btn-large" value="Pesan" name="btn_pesan"><?php } ?>
+                                                            </tr>
+                                                        </form>
+                                                        <?php
+                                                        $menu->next();
+                                                    }
+                                                    ?>
+                                                </table>
+                                            <?php } ?>
+                                            </p>
 
-  									</ol>
-  							</div>
-  						</div>
-  					</div>
-  				</div>
-  				</div>
-  				</div>
-  			</div>
+
+                                        </div>
+
+                                    </ol>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <?php
-    // }
-    ?>
-  </body>
+// }
+        ?>
+    </body>
 </html>
+<script type="text/javascript">
+    function showTextField(el) {
+        if (el.selectedIndex) {
+            switch (el.selectedIndex) {
+                case 1:
+                    document.forms[0].elements['btn_show'].style.display = "";
+                    break;
+            }
+        }
+    }
+</script>
