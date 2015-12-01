@@ -152,63 +152,67 @@
                                             </table>
                                             <br>
                                             <?php if (isset($_GET['service'])) { ?>
-                                                <form method="POST" enctype="multipart/form-data">
-                                                    <table>
-                                                        <tr>
-                                                            <td>Address</td>
-                                                            <td><input type="text" name="address"></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="2"> <input type="submit" class="button btn btn-success btn-large" value="Create Transaction" name="btn_transac">
-                                                        </tr>
-                                                    </table>
+                                                <?php if ($_SESSION['createTransac']==FALSE) { ?>
+                                                    <form method="POST" enctype="multipart/form-data">
+                                                        <table>
+                                                            <tr>
+                                                                <td>Address</td>
+                                                                <td><input type="text" name="address"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2"> <input type="submit" class="button btn btn-success btn-large" value="Create Transaction" name="btn_transac">
+                                                            </tr>
+                                                        </table>
 
-                                                </form>
-                                                <form method="POST" enctype="multipart/form-data">
+                                                    </form>
+                                                    <?php } else {?>
+                                                    <form method="POST" enctype="multipart/form-data">
+                                                        <table>
+                                                            <tr>
+                                                                <td colspan="2"> <input type="submit" class="button btn btn-success btn-large" value="Check Oouutt" name="btn_checkout">
+                                                            </tr>
+                                                        </table>
+
+                                                    </form>
+                                                    <?php }?>
                                                     <table class="table table-striped table-bordered">
                                                         <th>ID <th>Name <th> Price  <th> Quantity <th> Action
-                                                            <?php
-                                                                       
-
-                                                            while ($menu->valid()) {     ?>
-                                                            <tr>
-                                                                <td> <input type="text"  value="<?php echo $menu->current()->getId_menu(); ?>" name="id_menu" >
-                                                                <td> <?php echo $menu->current()->getName(); ?>
-                                                                <td> <?php echo $menu->current()->getPrice(); ?>
-                                                                <td><input class="inputQuantity" type="text" name="qty">
-
-                                                                <td><input type="submit" class="button btn btn-success btn-large" value="Pesan" name="btn_pesan">
-
-                                                            </tr>
+                                                            <?php while ($menu->valid()) { ?>
+                                                            <form method="POST" enctype="multipart/form-data">
+                                                                <tr>
+                                                                    <td> <input type="text"  value="<?php echo $menu->current()->getId_menu(); ?>" name="id_menu" >
+                                                                    <td> <?php echo $menu->current()->getName(); ?>
+                                                                    <td> <?php echo $menu->current()->getPrice(); ?>
+                                                                    <td><input class="inputQuantity" type="text" name="qty">
+                                                                    <td><input type="submit" class="button btn btn-success btn-large" value="Pesan" name="btn_pesan">
+                                                                </tr>
+                                                            </form>
                                                             <?php
                                                             $menu->next();
                                                         }
                                                         ?>
-
                                                     </table>
-
-                                                </form>
-                                            <?php } ?>
-                                            </p>
+                                                <?php } ?>
+                                                </p>
 
 
-                                        </div>
+                                            </div>
 
-                                    </ol>
+                                        </ol>
 
 
 
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <?php
+            <?php
 // }
-        ?>
+            ?>
     </body>
 </html>
 <script type="text/javascript">

@@ -42,7 +42,7 @@ class userController {
                 $login_result = $this->userdao->login($usr);
                 if ($login_result) {
                     echo "<script>alertify.success('sukses');</script>";
-
+                    $_SESSION['createTransac'] = FALSE;
                     if ($_SESSION['role'] == 1)
                         header("location: index.php?menu=admin");
                     else if ($_SESSION['role'] == 2)
