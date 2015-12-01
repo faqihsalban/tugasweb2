@@ -151,42 +151,44 @@
                                             ?>
                                             </table>
                                             <br>
-                                                    <?php if (isset($_GET['service'])) { ?>
-                                                <table class="table table-striped table-bordered">
-                                                    <th>Check <th>Name <th> Price  <th> Quantity
-                                                        <?php
-                                                        while ($menu->valid()) {
-                                                            echo "<tr>";
+                                            <?php if (isset($_GET['service'])) { ?>
+                                                <form method="POST" enctype="multipart/form-data">
+                                                    <table>
+                                                        <tr>
+                                                            <td>Address</td>
+                                                            <td><input type="text" name="address"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="2"> <input type="submit" class="button btn btn-success btn-large" value="Create Transaction" name="btn_transac">
+                                                        </tr>
+                                                    </table>
 
-                                                            echo "<td><input type='checkbox' name='id_menu' value='" . $menu->current()->getId_menu() . "'>";
-                                                            echo "<td>" . $menu->current()->getName();
-                                                            echo "<td>" . $menu->current()->getPrice();
-                                                            echo "<td>";
-                                                            ?>
-                                                            <input class="inputQuantity" type="text" name="quantity">
-                                                            <!-- <input type = 'button' value='pilih' onclick="pilihmenu('<?php //echo $menu->current()->getId_menu(); ?>')"/> -->
+                                                </form>
+                                                <form method="POST" enctype="multipart/form-data">
+                                                    <table class="table table-striped table-bordered">
+                                                        <th>ID <th>Name <th> Price  <th> Quantity <th> Action
                                                             <?php
-                                                            echo "</tr>";
+                                                                       
+
+                                                            while ($menu->valid()) {     ?>
+                                                            <tr>
+                                                                <td> <input type="text"  value="<?php echo $menu->current()->getId_menu(); ?>" name="id_menu" >
+                                                                <td> <?php echo $menu->current()->getName(); ?>
+                                                                <td> <?php echo $menu->current()->getPrice(); ?>
+                                                                <td><input class="inputQuantity" type="text" name="qty">
+
+                                                                <td><input type="submit" class="button btn btn-success btn-large" value="Pesan" name="btn_pesan">
+
+                                                            </tr>
+                                                            <?php
                                                             $menu->next();
                                                         }
                                                         ?>
-    <?php if ($_SESSION['is_logged']) { ?>
-                                                        <tr>
-                                                            <td colspan="2" style="text-align:right;"> Total </td>
-                                                            <td>
-                                                                <input class="inputQuantity" type="text" name="total" value="">
-                                                            </td>
-                                                        </tr>
 
-                                                        <tr>
-                                                            <td colspan="3">
-                                                                <input type="button" class="button btn btn-success btn-large" value="Pesan" name="btn_pesan">
-                                                            </td>
-                                                        </tr>
-                                                <?php } ?>
-                                                </table>
+                                                    </table>
 
-<?php } ?>
+                                                </form>
+                                            <?php } ?>
                                             </p>
 
 
@@ -204,9 +206,9 @@
             </div>
         </div>
 
-<?php
+        <?php
 // }
-?>
+        ?>
     </body>
 </html>
 <script type="text/javascript">
