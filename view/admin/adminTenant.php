@@ -43,30 +43,30 @@
       <div class="container">
         <ul class="mainnav">
 
-                        <li class="dropdown"><a href="index.php?menu=adminUser" class="dropdown-toggle" >
-                                <div class="icon-large icon-group">
-                                </div>
-                                <span>USER</span> <b class="caret"></b></a>
-                        </li>
+          <li class="dropdown"><a href="index.php?menu=adminUser" class="dropdown-toggle" >
+                  <div class="icon-large icon-group">
+                  </div>
+                  <span>USER</span> <b class="caret"></b></a>
+          </li>
 
-                        <li class="active"><a href="index.php?menu=adminTenant" class="dropdown-toggle" >
-                                <div class="icon-large icon-group">
-                                </div>
-                                <span>TENANT</span> <b class="caret"></b></a>
+          <li class="active"><a href="index.php?menu=adminTenant" class="dropdown-toggle" >
+                  <div class="icon-large icon-flag">
+                  </div>
+                  <span>TENANT</span> <b class="caret"></b></a>
 
-                        </li>
-                        <li class="dropdown"><a href="index.php?menu=adminDriver" class="dropdown-toggle" >
-                                <div class="icon-large icon-group">
-                                </div>
-                                <span>DRIVER</span> <b class="caret"></b></a>
+          </li>
+          <li class="dropdown"><a href="index.php?menu=adminDriver" class="dropdown-toggle" >
+                  <div class="icon-large icon-user">
+                  </div>
+                  <span>DRIVER</span> <b class="caret"></b></a>
 
-                        </li>
+          </li>
 
-                        <li class="dropdown"><a href="index.php?menu=adminTrans" class="dropdown-toggle" >
-                                <div class="icon-large icon-money">
-                                </div>
-                                <span>TRANSACTION</span> <b class="caret"></b></a>
-                        </li>
+          <li class="dropdown"><a href="index.php?menu=adminTrans" class="dropdown-toggle" >
+                  <div class="icon-large icon-credit-card">
+                  </div>
+                  <span>TRANSACTION</span> <b class="caret"></b></a>
+          </li>
 
                     </ul>
       </div>
@@ -97,12 +97,12 @@
                                     echo "<th>Email</th>";
                                     echo "<th>Phone</th>";
                                     echo "<th>Role</th>";
-                                    echo "<th>Join Date</th>";
-                                    echo "<th>Action</th>";
+                                    echo "<th colspan='2'>Join Date</th>";
+                                    // echo "<th>Action</th>";
 
-                                    
+
                                     while ($owner->valid()) {
-                                    echo "<tr>"; 
+                                    echo "<tr>";
                                     echo "<td>"; echo $owner->current()->getId_user();
                                     echo "<td>"; echo $owner->current()->getName();
                                     echo "<td>"; echo $owner->current()->getUsername();
@@ -111,9 +111,11 @@
                                     echo "<td>"; echo $owner->current()->getRole();
                                     echo "<td>"; echo $owner->current()->getDate_join();
                                     //ini harusnya rombol
-                                    echo "<td>"; echo "<a href='index.php?menu=edit&id=".$owner->current()->getId_user()."'>Edit Profile</a></li>" ;
-                                    
-                                    
+                                    echo "<td>"; echo "<a href='index.php?menu=edit&id=".$owner->current()->getId_user()."'>
+                                    <input type='button' class='button btn btn-success' value='Edit Profile'>
+                                    </a></li>" ;
+
+
                                         $owner->next();
                                     }
                                     //data user disini ya faqih

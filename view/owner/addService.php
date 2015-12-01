@@ -68,7 +68,7 @@ and open the template in the editor.
                                                     <option value="1">Restaurant</option>
                                                     <option value="2">Laundry</option>
                                                     <option value="3">PhotoCopy</option>
-                                                   
+
                                                 </select>
                                             </td>
                                         </tr>
@@ -81,7 +81,7 @@ and open the template in the editor.
                                             <td></td>
                                             <td>
 
-                                                <input type="submit" class="button btn btn-success btn-large" value="Add Menu" name="btn_add"/>
+                                                <input type="submit" class="button btn btn-success btn-large" value="Add Service" name="btn_add"/>
                                             </td>
                                         </tr>
                                     </table>

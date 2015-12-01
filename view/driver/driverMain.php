@@ -44,6 +44,7 @@
       <div class="widget" >
         <div class="widget-content" style="width: 74%">
           <br>
+          <h3> Daftar Permintaan Transaksi </h3>
         <table class="table table-striped table-bordered">
             <th> id transaction <th> id user <th> address <th> status <th> total <th> aksi
                 <?php if($onproces->count()==0){ while ($result->valid()) { ?>
@@ -61,7 +62,7 @@
             ?>
         </table>
         <br>
-        ON PROCESS
+        <h3> Transaksi Yang Sedang Dalam Proses </h3>
         <table class="table table-striped table-bordered">
             <th> id transac <th> id user <th> address <th> status <th> total <th> aksi
                 <?php while ($onproces->valid()) { ?>
@@ -79,9 +80,9 @@
             ?>
         </table>
         <br>
-        FINISH
+        <h3> Transaksi Yang Sudah Selesai</h3>
         <table class="table table-striped table-bordered">
-            <th> id transac <th> id user <th> address <th> status <th> total 
+            <th> id transac <th> id user <th> address <th> status <th> total
                 <?php while ($complete->valid()) { ?>
                 <tr>
                     <td> <?php echo $complete->current()->getId_transac(); ?>

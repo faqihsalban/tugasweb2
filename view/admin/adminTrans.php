@@ -44,30 +44,30 @@
                 <div class="container">
                     <ul class="mainnav">
 
-                        <li class="dropdown"><a href="index.php?menu=adminUser" class="dropdown-toggle" >
-                                <div class="icon-large icon-group">
-                                </div>
-                                <span>USER</span> <b class="caret"></b></a>
-                        </li>
+                      <li class="dropdown"><a href="index.php?menu=adminUser" class="dropdown-toggle" >
+                              <div class="icon-large icon-group">
+                              </div>
+                              <span>USER</span> <b class="caret"></b></a>
+                      </li>
 
-                        <li class="dropdown"><a href="index.php?menu=adminTenant" class="dropdown-toggle" >
-                                <div class="icon-large icon-group">
-                                </div>
-                                <span>TENANT</span> <b class="caret"></b></a>
+                      <li class="dropdown"><a href="index.php?menu=adminTenant" class="dropdown-toggle" >
+                              <div class="icon-large icon-flag">
+                              </div>
+                              <span>TENANT</span> <b class="caret"></b></a>
 
-                        </li>
-                        <li class="dropdown"><a href="index.php?menu=adminDriver" class="dropdown-toggle" >
-                                <div class="icon-large icon-group">
-                                </div>
-                                <span>DRIVER</span> <b class="caret"></b></a>
+                      </li>
+                      <li class="dropdown"><a href="index.php?menu=adminDriver" class="dropdown-toggle" >
+                              <div class="icon-large icon-user">
+                              </div>
+                              <span>DRIVER</span> <b class="caret"></b></a>
 
-                        </li>
+                      </li>
 
-                        <li class="active"><a href="index.php?menu=adminTrans" class="dropdown-toggle" >
-                                <div class="icon-large icon-money">
-                                </div>
-                                <span>TRANSACTION</span> <b class="caret"></b></a>
-                        </li>
+                      <li class="active"><a href="index.php?menu=adminTrans" class="dropdown-toggle" >
+                              <div class="icon-large icon-credit-card">
+                              </div>
+                              <span>TRANSACTION</span> <b class="caret"></b></a>
+                      </li>
 
                     </ul>
                 </div>
@@ -83,14 +83,14 @@
         <div class="main">
             <div class="main-inner">
                 <div class="container">
-                    <center>
+                    <!-- <center> -->
                         <div class="row">
                             <div class="widget-content">
-                                
+
                                 <br>
- TRANSAKSI YANG BELUM DI AMBIL
+                                <h3>Daftar Permintaan Transaksi</h3>
                                 <table class="table table-striped table-bordered">
-                                    <th> id transaction <th> id user <th> address <th> status <th> total 
+                                    <th> Transaction ID <th> User ID <th> Address <th> Status <th> Total
                                         <?php while ($transacNow->valid()) { ?>
                                         <tr>
                                             <td> <?php echo $transacNow->current()->getId_transac(); ?>
@@ -106,9 +106,10 @@
                                     ?>
                                 </table>
                                 <br>
-                                ON PROCESS
+                                <h3>Transaksi Dalam Proses</h3>
+
                                 <table class="table table-striped table-bordered">
-                                    <th> id transac <th> id user <th> id driver <th> address <th> status <th> total 
+                                    <th> Transaction ID <th> User ID <th> Driver ID <th> Address <th> Status <th> Total
                                         <?php while ($transacOngoing->valid()) { ?>
                                         <tr>
                                             <td> <?php echo $transacOngoing->current()->getId_transac(); ?>
@@ -125,9 +126,9 @@
                                     ?>
                                 </table>
                                 <br>
-                                FINISH
+                                  <h3>Transaksi Yang Sudah Selesai</h3>
                                 <table class="table table-striped table-bordered">
-                                    <th> id transac <th> id user <th> id driver <th> address <th> status <th> total 
+                                    <th> Transaction ID <th> User ID <th> Driver ID <th> Address <th> Status <th> Total
                                         <?php while ($transacDone->valid()) { ?>
                                         <tr>
                                             <td> <?php echo $transacDone->current()->getId_transac(); ?>
@@ -146,7 +147,7 @@
                             </div>
 
                         </div>
-                    </center>
+                    <!-- </center> -->
                 </div>
             </div>
         </div>

@@ -43,7 +43,7 @@
                 <div class="container">
                     <ul class="mainnav">
 
-                        <li class="active"><a href="index.php?menu=deliFood" class="dropdown-toggle" >
+                        <li class="dropdown"><a href="index.php?menu=deliFood" class="dropdown-toggle" >
                                 <div class="icon-large icon-glass">
                                 </div>
                                 <span>FOOD DELI</span> <b class="caret"></b></a>
@@ -61,7 +61,7 @@
                                 </div>
                                 <span>PHOTOCOPY DELI</span> <b class="caret"></b></a>
                         </li>
-                        <li class="dropdown"><a href="index.php?menu=HistoryTransac" class="dropdown-toggle" >
+                        <li class="active"><a href="index.php?menu=HistoryTransac" class="dropdown-toggle" >
                                 <div class="icon-large icon-copy">
                                 </div>
                                 <span>History</span> <b class="caret"></b></a>
@@ -80,18 +80,18 @@
         <div class="main">
             <div class="main-inner">
                 <div class="container">
-                    <center>
+                    <!-- <center> -->
                         <div class="row">
                             <div class="widget-content">
-                                
+
                                 <br>
- TRANSAKSI YANG BELUM DI AMBIL
+ <h3> Daftar Request Transaksi</h3>
                                 <table class="table table-striped table-bordered">
-                                    <th> id transaction <th> address <th> status <th> total 
+                                    <th> id transaction <th> address <th> status <th> total
                                         <?php while ($transacNow->valid()) { ?>
                                         <tr>
                                             <td> <?php echo $transacNow->current()->getId_transac(); ?>
-                                          
+
                                             <td> <?php echo $transacNow->current()->getAddress(); ?>
                                             <td> <?php echo $transacNow->current()->getStatus(); ?>
                                             <td> <?php echo $transacNow->current()->getTotal(); ?>
@@ -103,13 +103,13 @@
                                     ?>
                                 </table>
                                 <br>
-                                ON PROCESS
+                              <h3> Transaksi Yang Sedang Berlansung </h3>
                                 <table class="table table-striped table-bordered">
-                                    <th> id transaction  <th>id driver <th> address <th> status <th> total 
+                                    <th> id transaction  <th>id driver <th> address <th> status <th> total
                                         <?php while ($transacOngoing->valid()) { ?>
                                         <tr>
                                             <td> <?php echo $transacOngoing->current()->getId_transac(); ?>
-                                            
+
                                             <td> <?php echo $transacOngoing->current()->getId_driver(); ?>
                                             <td> <?php echo $transacOngoing->current()->getAddress(); ?>
                                             <td> <?php echo $transacOngoing->current()->getStatus(); ?>
@@ -122,13 +122,13 @@
                                     ?>
                                 </table>
                                 <br>
-                                FINISH
+                              <h3> Transaksi Yang Sudah Selesai </h3>
                                 <table class="table table-striped table-bordered">
-                                    <th> id transaction  <th> id driver <th> address <th> status <th> total 
+                                    <th> id transaction  <th> id driver <th> address <th> status <th> total
                                         <?php while ($transacDone->valid()) { ?>
                                         <tr>
                                             <td> <?php echo $transacDone->current()->getId_transac(); ?>
-                                            
+
                                             <td> <?php echo $transacDone->current()->getId_driver(); ?>
                                             <td> <?php echo $transacDone->current()->getAddress(); ?>
                                             <td> <?php echo $transacDone->current()->getStatus(); ?>
@@ -143,7 +143,7 @@
                             </div>
 
                         </div>
-                    </center>
+                    <!-- </center> -->
                 </div>
             </div>
         </div>

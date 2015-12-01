@@ -40,19 +40,20 @@
         <div class="main">
             <div class="main-inner">
                 <div class="container">
-                
+
                     <center>
                         <div class="rowSignup">
-                            
+
                             <div class="widget-content">
+                              <h3> Your Tenant List & Info </h3>
                                 <table class="table table-striped table-bordered" style="">
                                     <br>
-                                    <th> restaurant <th> <a href="index.php?menu=addService"><input type='button' class='button btn btn-success btn-large' value='Add service'></a>
+                                    <th> restaurant <th> <a href="index.php?menu=addService"><input type='button' class='button btn btn-success' value='Add Service'></a>
                                         <?php while ($services->valid()) { ?>
                                         <tr>
                                             <td><?php echo $services->current()->getName(); ?></td>
                                             <td><a href="index.php?menu=owner&service=<?php echo $services->current()->getId_service(); ?>" name="show">
-                                                    <input type='button' class='button btn btn-success btn-large' value='Show Menu'></a>
+                                                    <input type='button' class='button btn btn-success' value='Show Menu'></a>
                                                 <?php
                                                 $services->next();
                                             }
@@ -61,7 +62,7 @@
                                 <br>
                                 <?php if (isset($_GET['service'])) { ?>
                                     <table class="table table-striped table-bordered">
-                                        <th>Name <th> Price <th> <a href="index.php?menu=addMenu&service=<?php echo $_GET['service'] ?>"><input type='button' class='button btn btn-success btn-large' value='Add Menu'></a>
+                                        <th>Name <th> Price <th> <a href="index.php?menu=addMenu&service=<?php echo $_GET['service'] ?>"><input type='button' class='button btn btn-success' value='Add Menu'></a>
                                             <?php
                                             while ($menu->valid()) {
                                                 echo "<tr>";
@@ -70,7 +71,7 @@
                                                 echo "<td>";
                                                 ?>
                                                 <a href="index.php?menu=editMenu&id=<?php echo $menu->current()->getId_menu(); ?>" name="show">
-                                                    <input type='button' class='button btn btn-success btn-large' value='Edit Menu'> </a>
+                                                    <input type='button' class='button btn btn-success' value='Edit Menu'> </a>
                                                     <?php
                                                     echo "</tr>";
                                                     $menu->next();

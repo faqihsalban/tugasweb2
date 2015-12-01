@@ -50,7 +50,7 @@ and open the template in the editor.
                         <span>FOOD DELI</span> <b class="caret"></b></a>
                       </li>
 
-                      <li class="active"><a href="index.php?menu=deliLaundry" class="dropdown-toggle" >
+                      <li class="dropdown"><a href="index.php?menu=deliLaundry" class="dropdown-toggle" >
                         <div class="icon-large icon-tag">
                         </div>
                         <span>LAUNDRY DELI</span> <b class="caret"></b></a>

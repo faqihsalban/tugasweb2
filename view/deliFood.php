@@ -61,12 +61,13 @@
                                 </div>
                                 <span>PHOTOCOPY DELI</span> <b class="caret"></b></a>
                         </li>
+                          <?php if ($_SESSION['is_logged']) { ?>
                         <li class="dropdown"><a href="index.php?menu=HistoryTransac" class="dropdown-toggle" >
                                 <div class="icon-large icon-copy">
                                 </div>
                                 <span>History</span> <b class="caret"></b></a>
                         </li>
-
+                        <?php } ?>
                     </ul>
                 </div>
                 <!-- /container -->
@@ -124,9 +125,9 @@
                                             <?php
                                             // if ($_SESSION['is_logged']) {
                                             echo '<table class="table table-striped table-bordered" style="">';
-                                            echo '<th> restaurant';
+                                            echo "<th colspan='2'> restaurant";
                                             if ($_SESSION['is_logged']) {
-                                                echo '<th> action';
+                                                // echo '<th> action';
                                             }
                                             while ($hasil->valid()) {
 
@@ -138,7 +139,9 @@
                                                 if ($_SESSION['is_logged']) {
                                                     echo "<td>";
                                                     ?>
-                                                    <a href="index.php?menu=deliFood&service=<?php echo $hasil->current()->getId_service(); ?>" name="show"> Show Menu</a>
+                                                    <a href="index.php?menu=deliFood&service=<?php echo $hasil->current()->getId_service(); ?>" name="show">
+                                                      <input type='button' class='button btn btn-success' value='Show Menu'>
+                                                    </a>
                                                     <?php
                                                     echo "</td>";
                                                 }
@@ -170,12 +173,12 @@
                                                             <?php while ($cart->valid()) { ?>
                                                             <form method="POST" enctype="multipart/form-data">
                                                                 <tr>
-                                                                    <td> <input type="hidden"  value="<?php echo $cart->current()->getId_item(); ?> " name="id_item" > 
+                                                                    <td> <input type="hidden"  value="<?php echo $cart->current()->getId_item(); ?> " name="id_item" >
                                                                     <td> <?php echo $cart->current()->getName_menu(); ?>
                                                                     <td> <?php echo $cart->current()->getQty(); ?>
                                                                     <td> <?php echo $cart->current()->getPrice(); ?>
                                                                     <td><input type="submit" class="button btn btn-danger btn-large" value="Hapus" name="btn_hapus">
-                                                                </tr> 
+                                                                </tr>
                                                             </form>
                                                             <?php $cart->next();  }  ?>
                                                     </table>

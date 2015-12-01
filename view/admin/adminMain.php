@@ -50,20 +50,20 @@
                         </li>
 
                         <li class="dropdown"><a href="index.php?menu=adminTenant" class="dropdown-toggle" >
-                                <div class="icon-large icon-group">
+                                <div class="icon-large icon-flag">
                                 </div>
                                 <span>TENANT</span> <b class="caret"></b></a>
 
                         </li>
                         <li class="dropdown"><a href="index.php?menu=adminDriver" class="dropdown-toggle" >
-                                <div class="icon-large icon-group">
+                                <div class="icon-large icon-user">
                                 </div>
                                 <span>DRIVER</span> <b class="caret"></b></a>
 
                         </li>
 
                         <li class="dropdown"><a href="index.php?menu=adminTrans" class="dropdown-toggle" >
-                                <div class="icon-large icon-money">
+                                <div class="icon-large icon-credit-card">
                                 </div>
                                 <span>TRANSACTION</span> <b class="caret"></b></a>
                         </li>

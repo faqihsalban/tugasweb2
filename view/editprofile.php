@@ -44,24 +44,30 @@ and open the template in the editor.
                 <div class="container">
                     <ul class="mainnav">
 
-                        <li class="dropdown"><a href="index.php?menu=deliFood" class="dropdown-toggle" >
-                                <div class="icon-large icon-glass">
-                                </div>
-                                <span>FOOD DELI</span> <b class="caret"></b></a>
-                        </li>
+                      <li class="dropdown"><a href="index.php?menu=adminUser" class="dropdown-toggle" >
+                              <div class="icon-large icon-group">
+                              </div>
+                              <span>USER</span> <b class="caret"></b></a>
+                      </li>
 
-                        <li class="active"><a href="index.php?menu=deliLaundry" class="dropdown-toggle" >
-                                <div class="icon-large icon-tag">
-                                </div>
-                                <span>LAUNDRY DELI</span> <b class="caret"></b></a>
+                      <li class="dropdown"><a href="index.php?menu=adminTenant" class="dropdown-toggle" >
+                              <div class="icon-large icon-flag">
+                              </div>
+                              <span>TENANT</span> <b class="caret"></b></a>
 
-                        </li>
+                      </li>
+                      <li class="dropdown"><a href="index.php?menu=adminDriver" class="dropdown-toggle" >
+                              <div class="icon-large icon-user">
+                              </div>
+                              <span>DRIVER</span> <b class="caret"></b></a>
 
-                        <li class="dropdown"><a href="index.php?menu=deliCopy" class="dropdown-toggle" >
-                                <div class="icon-large icon-copy">
-                                </div>
-                                <span>PHOTOCOPY DELI</span> <b class="caret"></b></a>
-                        </li>
+                      </li>
+
+                      <li class="dropdown"><a href="index.php?menu=adminTrans" class="dropdown-toggle" >
+                              <div class="icon-large icon-credit-card">
+                              </div>
+                              <span>TRANSACTION</span> <b class="caret"></b></a>
+                      </li>
 
                     </ul>
                 </div>
@@ -82,7 +88,7 @@ and open the template in the editor.
                                     <table class="table table-striped table-bordered" >
                                         <br>
                                         <tr>
-                                            <td colspan="4"> <p style="font-size:170%; text-align: center" ><b>EEEDDDIIIITTT</b></p></td>
+                                            <td colspan="4"> <p style="font-size:170%; text-align: center" ><b>Edit Profile</b></p></td>
                                         </tr>
                                         <tr>
                                             <td width="100">ID User</td>
@@ -119,10 +125,10 @@ and open the template in the editor.
                                                     <option value="3">Driver</option>
                                                     <option value="4">Owner</option>
                                                 </select>
-                                                            
+
                                             </td>
 
-                                           
+
                                         </tr>
                                         <tr>
                                             <td>Date Join</td>
