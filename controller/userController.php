@@ -163,6 +163,8 @@ class userController {
 
         $services = $this->servicedao->get_service_by_user($_SESSION['id_user'])->getIterator();
 
+        
+        
         if (isset($_GET['service'])) {
             $id_service = $_GET['service'];
             $menu = $this->menudao->get_menu_by_service($id_service)->getIterator();
