@@ -40,12 +40,14 @@
         <div class="main">
             <div class="main-inner">
                 <div class="container">
+                
                     <center>
                         <div class="rowSignup">
+                            
                             <div class="widget-content">
                                 <table class="table table-striped table-bordered" style="">
                                     <br>
-                                    <th colspan="2" style="text-align:center"> restaurant
+                                    <th> restaurant <th> <a href="index.php?menu=addService"><input type='button' class='button btn btn-success btn-large' value='Add service'></a>
                                         <?php while ($services->valid()) { ?>
                                         <tr>
                                             <td><?php echo $services->current()->getName(); ?></td>
@@ -59,7 +61,7 @@
                                 <br>
                                 <?php if (isset($_GET['service'])) { ?>
                                     <table class="table table-striped table-bordered">
-                                        <th>Name <th colspan="2"> Price
+                                        <th>Name <th> Price <th> <a href="index.php?menu=addMenu&service=<?php echo $_GET['service'] ?>"><input type='button' class='button btn btn-success btn-large' value='Add Menu'></a>
                                             <?php
                                             while ($menu->valid()) {
                                                 echo "<tr>";

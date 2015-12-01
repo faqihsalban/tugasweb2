@@ -18,12 +18,13 @@ class serviceDao implements serviceInterface {
         try {
             $conn = conection::getconection();
             $conn->beginTransaction();
-            $sql = "INSERT into service(name,address,phone,type) values (?,?,?,?)";
+            $sql = "INSERT into service(name,address,phone,type,id_user) values (?,?,?,?,?)";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(1, $vservice->getName());
             $stmt->bindParam(2, $vservice->getAddress());
             $stmt->bindParam(3, $vservice->getPhone());
             $stmt->bindParam(4, $vservice->getType());
+            $stmt->bindParam(5, $vservice->getId_user());
 
             $result = $stmt->execute();
             $conn->commit();

@@ -164,6 +164,14 @@
             $usercon = new userController();
             $usercon->editMenu();
             break;
+        case 'addMenu':
+            $usercon = new userController();
+            $usercon->addMenu();
+            break;
+        case 'addService':
+            $usercon = new userController();
+            $usercon->addService();
+            break;
         case 'adminUser':
             $usercon = new userController();
             $usercon->adminUser();

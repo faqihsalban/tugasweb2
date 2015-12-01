@@ -159,12 +159,45 @@ class userController {
         require_once '/view/owner/editmenu.php';
     }
 
+    public function addMenu() {
+
+        $id_service = $_GET['service'];
+        if (isset($_POST['btn_add'])) {
+            $vmenu = new menu();
+            $vmenu->setId_service($id_service);
+            $vmenu->setName($_POST['menuName']);
+            $vmenu->setPrice($_POST['menuPrice']);
+            //ini nya ga jalan alert nya
+            echo "alertify.confirm('Apakah anda yakin ingin menghapus menu?','ya','Default Value')";
+            
+            $this->menudao->add($vmenu);
+            header("location: index.php?menu=owner&service=$id_service");
+        }
+        require_once '/view/owner/addMenu.php';
+    }
+    public function addService() {
+
+      
+        if (isset($_POST['btn_add'])) {
+            $vservice = new service();
+            $vservice->setId_user($_SESSION['id_user']);
+            $vservice->setName($_POST['serviceName']);
+            $vservice->setPhone($_POST['servicePhone']);
+            $vservice->setType($_POST['serviceType']);
+            $vservice->setAddress($_POST['serviceAddress']);
+            //ini nya ga jalan alert nya
+            echo "alertify.confirm('Apakah anda yakin ingin add  service?','ya','Default Value')";
+            
+            $this->servicedao->add($vservice);
+            header("location: index.php?menu=owner");
+        }
+        require_once '/view/owner/addService.php';
+    }
+
     public function owner() {
 
         $services = $this->servicedao->get_service_by_user($_SESSION['id_user'])->getIterator();
 
-        
-        
         if (isset($_GET['service'])) {
             $id_service = $_GET['service'];
             $menu = $this->menudao->get_menu_by_service($id_service)->getIterator();
