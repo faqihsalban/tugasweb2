@@ -93,7 +93,9 @@
                                             <td> <?php echo $transacNow->current()->getId_transac(); ?>
 
                                             <td> <?php echo $transacNow->current()->getAddress(); ?>
-                                            <td> <?php echo $transacNow->current()->getStatus(); ?>
+                                            <td> <?php if($transacNow->current()->getStatus()==0) echo 'Belum Diambil'; 	
+                                            else if  ($transacNow->current()->getStatus()==1) echo 'Sedang Diantar'; 
+                                            else echo 'Selesai'; ?>
                                             <td> <?php echo $transacNow->current()->getTotal(); ?>
                         <!--                    <td><a href="index.php?menu=driver&service=<?php echo $transacNow->current()->getId_transac(); ?>"> pilih</a>-->
                                         </tr>
@@ -112,7 +114,9 @@
 
                                             <td> <?php echo $transacOngoing->current()->getId_driver(); ?>
                                             <td> <?php echo $transacOngoing->current()->getAddress(); ?>
-                                            <td> <?php echo $transacOngoing->current()->getStatus(); ?>
+                                             <td> <?php if($transacNow->current()->getStatus()==0) echo 'Belum Diambil'; 	
+                                            else if  ($transacNow->current()->getStatus()==1) echo 'Sedang Diantar'; 
+                                            else echo 'Selesai'; ?>
                                             <td> <?php echo $transacOngoing->current()->getTotal(); ?>
                         <!--                    <td><a href="index.php?menu=driver&done=<?php echo $transacOngoing->current()->getId_transac(); ?>"> pilih</a>-->
                                         </tr>
@@ -131,7 +135,9 @@
 
                                             <td> <?php echo $transacDone->current()->getId_driver(); ?>
                                             <td> <?php echo $transacDone->current()->getAddress(); ?>
-                                            <td> <?php echo $transacDone->current()->getStatus(); ?>
+                                             <td> <?php if($transacNow->current()->getStatus()==0) echo 'Belum Diambil'; 	
+                                            else if  ($transacNow->current()->getStatus()==1) echo 'Sedang Diantar'; 
+                                            else echo 'Selesai'; ?>
                                             <td> <?php echo $transacDone->current()->getTotal(); ?>
                                             <!-- <td><a href="index.php?menu=driver&service=<?php echo $transacDone->current()->getId_transac(); ?>"> pilih</a>-->
                                         </tr>

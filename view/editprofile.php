@@ -110,18 +110,18 @@ and open the template in the editor.
                                         </tr>-->
                                         <tr>
                                             <td>Email</td>
-                                            <td><input type="email" class="inputNama" name="Email" placeholder="email" value="<?php echo $user->getEmail(); ?>"/></td>
+                                            <td><input type="email" class="inputNama" name="email" placeholder="email" value="<?php echo $user->getEmail(); ?>"/></td>
                                         </tr>
                                         <tr>
                                             <td>Phone</td>
-                                            <td><input type="number" class="inputNama" name="Phone" placeholder="phone" value="<?php echo $user->getPhone(); ?>"/></td>
+                                            <td><input type="number" class="inputNama" name="phone" placeholder="phone" value="<?php echo $user->getPhone(); ?>"/></td>
                                         </tr>
                                         <tr>
                                             <td>Role</td>
                                             <td>
                                                 <select name="role">
                                                     <option value="1">Admin</option>
-                                                    <option value="2">User</option>
+                                                    <option value="2" selected>User</option>
                                                     <option value="3">Driver</option>
                                                     <option value="4">Owner</option>
                                                 </select>

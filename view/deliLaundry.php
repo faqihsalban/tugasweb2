@@ -168,14 +168,14 @@
                                                     </form>
                                                 <?php } else { ?>
 
-                                                    <table>
-                                                        <th> item <th> Menu <th> Qty <th> Price
+                                                        <table class="table table-striped table-bordered">
+                                                        <th>  <th> Menu <th> Quantity <th> Price <th>
                                                             <?php while ($cart->valid()) { ?>
                                                             <form method="POST" enctype="multipart/form-data">
                                                                 <tr>
                                                                     <td> <input type="hidden"  value="<?php echo $cart->current()->getId_item(); ?> " name="id_item" >
                                                                     <td> <?php echo $cart->current()->getName_menu(); ?>
-                                                                    <td> <?php echo $cart->current()->getQty(); ?>
+                                                                    <td style="text-align:center"> <?php echo $cart->current()->getQty(); ?>
                                                                     <td> <?php echo $cart->current()->getPrice(); ?>
                                                                     <td><input type="submit" class="button btn btn-danger btn-large" value="Hapus" name="btn_hapus">
                                                                 </tr>
@@ -185,6 +185,7 @@
                                                     <form method="POST" enctype="multipart/form-data">
                                                          <input type="submit" class="button btn btn-success btn-large" value="Check Oouutt" name="btn_checkout">
                                                         <input type="submit" class="button btn btn-success btn-large" style="margin-right:1em" value="Cancel" name="btn_cancel">
+
                                                     </form>
                                                 <?php } ?>
                                                 <table class="table table-striped table-bordered">

@@ -51,7 +51,7 @@ class transac {
             die();
         }
         $conn = NULL;
-        return $hasil['SUM(price)'];
+        return ($hasil['SUM(price)']+10000);
 
 
         // return $this->total;

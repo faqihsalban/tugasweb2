@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -49,7 +48,7 @@
                               <h3> Your Tenant List & Info </h3>
                                 <table class="table table-striped table-bordered" style="">
                                     <br>
-                                    <th> restaurant <th> <a href="index.php?menu=addService"><input type='button' class='button btn btn-success' value='Add Service'></a>
+                                    <th> Service <th> <a href="index.php?menu=addService"><input type='button' class='button btn btn-success' value='Add Service'></a>
                                         <?php while ($services->valid()) { ?>
                                         <tr>
                                             <td><?php echo $services->current()->getName(); ?></td>

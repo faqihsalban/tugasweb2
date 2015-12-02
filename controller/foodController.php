@@ -58,7 +58,10 @@ class foodController {
             $menu = $this->menudao->get_menu_by_service($id_service)->getIterator();
         }
         if (isset($_POST['btn_transac'])) {
-
+        
+if($_POST['address']==''){
+echo "<script>alertify.error('Alamat Harus Diisi!')</script>";
+}else{
             $last = $this->transacdao->get_last_id();
             $_SESSION['id_transac'] = $last['max(id_transac)'] + 1;
             $transaksi = new transac();
@@ -73,6 +76,7 @@ class foodController {
             // $this->transacdao->add($transaksi);
             $_SESSION['createTransac'] = TRUE;
             $cart = $this->itemdao->get_item_by_transac($_SESSION['id_transac'])->getIterator();
+           }
         }
 
         if (isset($_POST['btn_pesan'])) {
@@ -125,7 +129,9 @@ class foodController {
             $menu = $this->menudao->get_menu_by_service($id_service)->getIterator();
         }
         if (isset($_POST['btn_transac'])) {
-
+if($_POST['address']==''){
+echo "<script>alertify.error('Alamat Harus Diisi!')</script>";
+}else{
             $last = $this->transacdao->get_last_id();
             $_SESSION['id_transac'] = $last['max(id_transac)'] + 1;
             $transaksi = new transac();
@@ -140,6 +146,7 @@ class foodController {
             // $this->transacdao->add($transaksi);
             $_SESSION['createTransac'] = TRUE;
             $cart = $this->itemdao->get_item_by_transac($_SESSION['id_transac'])->getIterator();
+            }
         }
 
         if (isset($_POST['btn_pesan'])) {
@@ -192,7 +199,9 @@ class foodController {
             $menu = $this->menudao->get_menu_by_service($id_service)->getIterator();
         }
         if (isset($_POST['btn_transac'])) {
-
+if($_POST['address']==''){
+echo "<script>alertify.error('Alamat Harus Diisi!')</script>";
+}else{
             $last = $this->transacdao->get_last_id();
             $_SESSION['id_transac'] = $last['max(id_transac)'] + 1;
             $transaksi = new transac();
@@ -207,6 +216,7 @@ class foodController {
             // $this->transacdao->add($transaksi);
             $_SESSION['createTransac'] = TRUE;
             $cart = $this->itemdao->get_item_by_transac($_SESSION['id_transac'])->getIterator();
+            }
         }
 
         if (isset($_POST['btn_pesan'])) {

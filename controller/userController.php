@@ -128,7 +128,7 @@ class userController {
         $onproces = $this->transacdao->get_transac_by_driver_status($_SESSION['id_user'], 1)->getIterator();
         $complete = $this->transacdao->get_transac_by_driver_status($_SESSION['id_user'], 2)->getIterator();
 
-        require_once 'view/driver/DriverMain.php';
+        require_once 'view/driver/driverMain.php';
     }
 
     public function admin() {
@@ -234,7 +234,7 @@ class userController {
             $userbaru->setId_user($_SESSION['id_user']);
 
             if ($this->userdao->adminupd($userbaru))
-                 echo "<script>
+                echo "<script>
                     alertify.success('berhasil ');
                     </script>";
             header("location: index.php?menu=user");
@@ -256,7 +256,7 @@ class userController {
             $userbaru->setId_user($_SESSION['id_user']);
 
             if ($password != $confirmPassword) {
-                $this->userdao->upd($userbaru);
+               
                 echo "
                     <script>
                     alertify.alert('Password Tidak Sesuai Konfirmasi');
@@ -264,6 +264,7 @@ class userController {
                    ";
             } else {
                 // echo "alalalala";
+                 $this->userdao->upd($userbaru);
                 header("location:index.php?menu=userMain");
             }
         }
@@ -274,27 +275,17 @@ class userController {
         $user = $this->userdao->get_user_by_id($_GET['id']);
 
         if (isset($_POST['btn_update'])) {
-            $confirmPassword = $_POST['confirmPassword'];
-            $password = $_POST['password'];
             $userbaru = new user();
             $userbaru->setName($_POST['name']);
-            $userbaru->setPassword($user->getPassword());
             $userbaru->setEmail($_POST['email']);
             $userbaru->setPhone($_POST['phone']);
-            $userbaru->setId_user($_SESSION['id_user']);
+            $userbaru->setRole($_POST['role']);
+            $userbaru->setId_user($_GET['id']);
 
-            if ($password != $confirmPassword) {
-                $this->userdao->upd($userbaru);
-                echo "
-                    <script>
-                    alertify.alert('Password Tidak Sesuai Konfirmasi');
-                    </script>
-                   ";
-            } else {
-                // echo "alalalala";
-                header("location:index.php?menu=admin");
-            }
+            $this->userdao->adminupd($userbaru);
+            // header("location:index.php?menu=admin");
         }
+
         require_once 'view/editprofile.php';
     }
 
@@ -312,7 +303,7 @@ class userController {
             $userbaru->setId_user($_SESSION['id_user']);
 
             if ($password != $confirmPassword) {
-                $this->userdao->upd($userbaru);
+               
                 echo "
                     <script>
                     alertify.alert('Password Tidak Sesuai Konfirmasi');
@@ -320,6 +311,7 @@ class userController {
                    ";
             } else {
                 // echo "alalalala";
+                 $this->userdao->upd($userbaru);
                 header("location:index.php?menu=owner");
             }
         }
@@ -340,7 +332,7 @@ class userController {
             $userbaru->setId_user($_SESSION['id_user']);
 
             if ($password != $confirmPassword) {
-                $this->userdao->upd($userbaru);
+               
                 echo "
                     <script>
                     alertify.alert('Password Tidak Sesuai Konfirmasi');
@@ -348,6 +340,7 @@ class userController {
                    ";
             } else {
                 // echo "alalalala";
+                 $this->userdao->upd($userbaru);
                 header("location:index.php?menu=driverMain");
             }
         }
@@ -368,7 +361,7 @@ class userController {
             $userbaru->setId_user($_SESSION['id_user']);
 
             if ($password != $confirmPassword) {
-                $this->userdao->upd($userbaru);
+               
                 echo "
                     <script>
                     alertify.alert('Password Tidak Sesuai Konfirmasi');
@@ -376,6 +369,7 @@ class userController {
                    ";
             } else {
                 // echo "alalalala";
+                 $this->userdao->upd($userbaru);
                 header("location:index.php?menu=adminMain");
             }
         }
@@ -384,8 +378,6 @@ class userController {
 
     public function adminUser() {
         $user = $this->userdao->get_user_by_role(2)->getIterator();
-
-
         require_once 'view/admin/adminUser.php';
     }
 
