@@ -64,7 +64,7 @@ class userController {
 
     public function user() {
 
-        require_once '/view/user/userMain.php';
+        require_once 'view/user/userMain.php';
     }
 
     public function login() {
@@ -75,7 +75,7 @@ class userController {
         $transacNow = $this->transacdao->get_transac_by_user_status($_SESSION['id_user'], 0)->getIterator();
         $transacOngoing = $this->transacdao->get_transac_by_user_status($_SESSION['id_user'], 1)->getIterator();
         $transacDone = $this->transacdao->get_transac_by_user_status($_SESSION['id_user'], 2)->getIterator();
-        require_once '/view/user/userHistory.php';
+        require_once 'view/user/userHistory.php';
     }
 
     public function signup() {
@@ -128,14 +128,14 @@ class userController {
         $onproces = $this->transacdao->get_transac_by_driver_status($_SESSION['id_user'], 1)->getIterator();
         $complete = $this->transacdao->get_transac_by_driver_status($_SESSION['id_user'], 2)->getIterator();
 
-        require_once '/view/driver/DriverMain.php';
+        require_once 'view/driver/DriverMain.php';
     }
 
     public function admin() {
         $dirisendiri = $this->userdao->get_user_by_id($_SESSION['id_user']);
         $alluser = $this->userdao->get_all_user()->getIterator();
 
-        require_once '/view/admin/adminMain.php';
+        require_once 'view/admin/adminMain.php';
     }
 
     public function editMenu() {
@@ -145,7 +145,9 @@ class userController {
             $vmenu = new menu();
             $vmenu->setId_menu($id_menu);
             //ini nya ga jalan alert nya
-            echo "alertify.confirm('Apakah anda yakin ingin menghapus menu?','ya','Default Value')";
+            echo "<script>
+                    alertify.confirm('Apakah anda yakin ingin menghapus menu?','ya','Default Value');
+                    </script>";
             $this->menudao->del($vmenu);
             header("location: index.php?menu=owner");
         }
@@ -156,7 +158,9 @@ class userController {
             $vmenu->setName($_POST['menuName']);
             $vmenu->setPrice($_POST['menuPrice']);
             //ini nya ga jalan alert nya
-            echo "alertify.confirm('Apakah anda yakin ingin menghapus menu?','ya','Default Value')";
+            echo "<script>
+            alertify.confirm('Apakah anda yakin ingin mengupdate menu?','ya','Default Value')
+            </script>";
             $this->menudao->upd($vmenu);
             header("location: index.php?menu=owner");
         }
@@ -164,7 +168,7 @@ class userController {
 
         $menu = $this->menudao->get_menu_by_id($id_menu);
 
-        require_once '/view/owner/editmenu.php';
+        require_once 'view/owner/editmenu.php';
     }
 
     public function addMenu() {
@@ -176,12 +180,14 @@ class userController {
             $vmenu->setName($_POST['menuName']);
             $vmenu->setPrice($_POST['menuPrice']);
             //ini nya ga jalan alert nya
-            echo "alertify.confirm('Apakah anda yakin ingin menghapus menu?','ya','Default Value')";
+            echo "<script>
+            alertify.success('Menu berhasil ditambahkan');
+            </script>";
 
             $this->menudao->add($vmenu);
             header("location: index.php?menu=owner&service=$id_service");
         }
-        require_once '/view/owner/addMenu.php';
+        require_once 'view/owner/addMenu.php';
     }
 
     public function addService() {
@@ -200,7 +206,7 @@ class userController {
             $this->servicedao->add($vservice);
             header("location: index.php?menu=owner");
         }
-        require_once '/view/owner/addService.php';
+        require_once 'view/owner/addService.php';
     }
 
     public function owner() {
@@ -211,7 +217,7 @@ class userController {
             $id_service = $_GET['service'];
             $menu = $this->menudao->get_menu_by_service($id_service)->getIterator();
         }
-        require_once '/view/owner/ownerMain.php';
+        require_once 'view/owner/ownerMain.php';
     }
 
     public function editProfile() {
@@ -231,7 +237,7 @@ class userController {
                     </script>";
             header("location: index.php?menu=user");
         }
-        require_once '/view/editProfile.php';
+        require_once 'view/editProfile.php';
     }
 
     public function userEditProfile() {
@@ -259,7 +265,7 @@ class userController {
                 header("location:index.php?menu=userMain");
             }
         }
-        require_once '/view/user/userEditProfile.php';
+        require_once 'view/user/userEditProfile.php';
     }
 
     public function Edit() {
@@ -287,7 +293,7 @@ class userController {
                 header("location:index.php?menu=admin");
             }
         }
-        require_once '/view/EditProfile.php';
+        require_once 'view/EditProfile.php';
     }
 
     public function ownerEditProfile() {
@@ -315,7 +321,7 @@ class userController {
                 header("location:index.php?menu=owner");
             }
         }
-        require_once '/view/owner/ownerEditProfile.php';
+        require_once 'view/owner/ownerEditProfile.php';
     }
 
     public function driverEditProfile() {
@@ -343,7 +349,7 @@ class userController {
                 header("location:index.php?menu=driverMain");
             }
         }
-        require_once '/view/driver/driverEditProfile.php';
+        require_once 'view/driver/driverEditProfile.php';
     }
 
     public function adminEditProfile() {
@@ -371,32 +377,32 @@ class userController {
                 header("location:index.php?menu=adminMain");
             }
         }
-        require_once '/view/admin/adminEditProfile.php';
+        require_once 'view/admin/adminEditProfile.php';
     }
 
     public function adminUser() {
         $user = $this->userdao->get_user_by_role(2)->getIterator();
 
 
-        require_once '/view/admin/adminUser.php';
+        require_once 'view/admin/adminUser.php';
     }
 
     public function adminTenant() {
 
         $owner = $this->userdao->get_user_by_role(4)->getIterator();
-        require_once '/view/admin/adminTenant.php';
+        require_once 'view/admin/adminTenant.php';
     }
 
     public function adminTrans() {
         $transacNow = $this->transacdao->get_transac_by_status(0)->getIterator();
         $transacOngoing = $this->transacdao->get_transac_by_status(1)->getIterator();
         $transacDone = $this->transacdao->get_transac_by_status(2)->getIterator();
-        require_once '/view/admin/adminTrans.php';
+        require_once 'view/admin/adminTrans.php';
     }
 
     public function adminDriver() {
         $driver = $this->userdao->get_user_by_role(3)->getIterator();
-        require_once '/view/admin/adminDriver.php';
+        require_once 'view/admin/adminDriver.php';
     }
 
     // public function logout() {

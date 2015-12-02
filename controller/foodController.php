@@ -84,14 +84,14 @@ class foodController {
             $item->setId_menu($_POST['id_menu']);
             $item->setId_transac($_SESSION['id_transac']);
             $item->setQty($_POST['qty']);
-            // echo "ini kuantiti "; 
+            // echo "ini kuantiti ";
             // echo $_POST['qty'];
             $item->setPrice(($tempmenu->getPrice()) * ($_POST['qty']));
             $this->itemdao->add($item);
             $items->append($item);
             $cart = $this->itemdao->get_item_by_transac($_SESSION['id_transac'])->getIterator();
         }
-        require '/view/deliFood.php';
+        require 'view/deliFood.php';
     }
 
     public function photocopy() {
@@ -151,14 +151,14 @@ class foodController {
             $item->setId_menu($_POST['id_menu']);
             $item->setId_transac($_SESSION['id_transac']);
             $item->setQty($_POST['qty']);
-            // echo "ini kuantiti "; 
+            // echo "ini kuantiti ";
             // echo $_POST['qty'];
             $item->setPrice(($tempmenu->getPrice()) * ($_POST['qty']));
             $this->itemdao->add($item);
             $items->append($item);
             $cart = $this->itemdao->get_item_by_transac($_SESSION['id_transac'])->getIterator();
         }
-        require '/view/deliCopy.php';
+        require 'view/deliCopy.php';
     }
 
     public function laundry() {
@@ -218,18 +218,18 @@ class foodController {
             $item->setId_menu($_POST['id_menu']);
             $item->setId_transac($_SESSION['id_transac']);
             $item->setQty($_POST['qty']);
-            // echo "ini kuantiti "; 
+            // echo "ini kuantiti ";
             // echo $_POST['qty'];
             $item->setPrice(($tempmenu->getPrice()) * ($_POST['qty']));
             $this->itemdao->add($item);
             $items->append($item);
             $cart = $this->itemdao->get_item_by_transac($_SESSION['id_transac'])->getIterator();
         }
-        require '/view/deliLaundry.php';
+        require 'view/deliLaundry.php';
     }
 
     public function order() {
-        
+
     }
 
     public function editMenu() {

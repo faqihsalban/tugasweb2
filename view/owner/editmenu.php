@@ -67,7 +67,7 @@ and open the template in the editor.
                 <tr>
                     <td></td>
                     <td>
-                      <input type="submit" class="button btn btn-success btn-large" style="margin-left:1em;" value="Hapus" name="btn_delete"/>
+                      <!-- <input type="submit" class="button btn btn-success btn-large" style="margin-left:1em;" value="Hapus" name="btn_delete"/> -->
                       <!-- ini gimana sih cara supaya buttonnya misah, #pao tolong ya wakakaka -->
                         <input type="submit" class="button btn btn-success btn-large" value="Update" name="btn_update"/>
                     </td>
