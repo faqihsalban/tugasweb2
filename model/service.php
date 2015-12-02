@@ -12,6 +12,7 @@
  * @author faqih
  */
 class service {
+
     //put your code here
     private $id_service;
     private $name;
@@ -19,6 +20,7 @@ class service {
     private $phone;
     private $type;
     private $id_user;
+
     public function getId_user() {
         return $this->id_user;
     }
@@ -27,7 +29,7 @@ class service {
         $this->id_user = $id_user;
     }
 
-        public function getId_service() {
+    public function getId_service() {
         return $this->id_service;
     }
 
@@ -45,6 +47,23 @@ class service {
 
     public function getType() {
         return $this->type;
+    }
+
+    public function getName_owner() {
+        try {
+            $conn = conection::getconection();
+            $sql = "SELECT name from user where id_user = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(1, $this->id_user);
+            $stmt->execute();
+            $row = $stmt->fetch();
+        } catch (Exception $e) {
+            echo $e->getMessage();
+            die();
+        }
+        $conn = NULL;
+        return $row['name'];
+        //return $this->id_menu;
     }
 
     public function setId_service($id_service) {
@@ -66,6 +85,5 @@ class service {
     public function setType($type) {
         $this->type = $type;
     }
-
 
 }

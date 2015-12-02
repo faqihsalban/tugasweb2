@@ -17,12 +17,14 @@ class userController {
     private $transacdao;
     private $servicedao;
     private $menudao;
+    private $itemdao;
 
     public function __construct() {
         $this->userdao = new userDao();
         $this->transacdao = new transacDao();
         $this->servicedao = new serviceDao();
         $this->menudao = new menuDao();
+        $this->itemdao = new itemDao();
     }
 
     public function index() {
@@ -216,6 +218,7 @@ class userController {
         $services = $this->servicedao->get_service_by_user($_SESSION['id_user'])->getIterator();
 
         if (isset($_GET['service'])) {
+            $service = $this->servicedao->get_service_by_id($_GET['service']);
             $id_service = $_GET['service'];
             $menu = $this->menudao->get_menu_by_service($id_service)->getIterator();
         }
@@ -256,7 +259,7 @@ class userController {
             $userbaru->setId_user($_SESSION['id_user']);
 
             if ($password != $confirmPassword) {
-               
+
                 echo "
                     <script>
                     alertify.alert('Password Tidak Sesuai Konfirmasi');
@@ -264,7 +267,7 @@ class userController {
                    ";
             } else {
                 // echo "alalalala";
-                 $this->userdao->upd($userbaru);
+                $this->userdao->upd($userbaru);
                 header("location:index.php?menu=userMain");
             }
         }
@@ -303,7 +306,7 @@ class userController {
             $userbaru->setId_user($_SESSION['id_user']);
 
             if ($password != $confirmPassword) {
-               
+
                 echo "
                     <script>
                     alertify.alert('Password Tidak Sesuai Konfirmasi');
@@ -311,7 +314,7 @@ class userController {
                    ";
             } else {
                 // echo "alalalala";
-                 $this->userdao->upd($userbaru);
+                $this->userdao->upd($userbaru);
                 header("location:index.php?menu=owner");
             }
         }
@@ -332,7 +335,7 @@ class userController {
             $userbaru->setId_user($_SESSION['id_user']);
 
             if ($password != $confirmPassword) {
-               
+
                 echo "
                     <script>
                     alertify.alert('Password Tidak Sesuai Konfirmasi');
@@ -340,7 +343,7 @@ class userController {
                    ";
             } else {
                 // echo "alalalala";
-                 $this->userdao->upd($userbaru);
+                $this->userdao->upd($userbaru);
                 header("location:index.php?menu=driverMain");
             }
         }
@@ -361,7 +364,7 @@ class userController {
             $userbaru->setId_user($_SESSION['id_user']);
 
             if ($password != $confirmPassword) {
-               
+
                 echo "
                     <script>
                     alertify.alert('Password Tidak Sesuai Konfirmasi');
@@ -369,7 +372,7 @@ class userController {
                    ";
             } else {
                 // echo "alalalala";
-                 $this->userdao->upd($userbaru);
+                $this->userdao->upd($userbaru);
                 header("location:index.php?menu=adminMain");
             }
         }
@@ -397,6 +400,39 @@ class userController {
     public function adminDriver() {
         $driver = $this->userdao->get_user_by_role(3)->getIterator();
         require_once 'view/admin/adminDriver.php';
+    }
+
+    public function detailTrans() {
+        $items = $this->itemdao->get_item_by_transac($_GET['id'])->getIterator();
+        $transac = $this->transacdao->get_transac_by_id($_GET['id']);
+
+        require_once 'view/driver/detail.php';
+    }
+
+    public function report() {
+        $menu = $this->menudao->get_menu_by_service($_GET['service'])->getIterator();
+        $var = new ArrayIterator();
+
+        $menus = new ArrayObject();
+        while ($menu->valid()) {
+            
+            
+            $item = $this->itemdao->get_report_menu($menu->current()->getId_menu());
+            
+            $aaa = new reportmenu();
+            $aaa->setName($menu->current()->getName());
+            $aaa->setQty($item['sum(qty)']);
+            $aaa->setPrice($item['sum(price)']);
+           
+            
+            $menus->append($aaa);
+            $menu->next();
+        }
+
+
+
+       
+        require_once 'view/owner/report.php';
     }
 
     // public function logout() {

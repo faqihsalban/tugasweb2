@@ -89,11 +89,11 @@
                                 <br>
                                 <h3>Daftar Permintaan Transaksi</h3>
                                 <table class="table table-striped table-bordered">
-                                    <th> Transaction ID <th> User ID <th> Address <th> Status <th> Total
+                                    <th> Transaction ID <th> User  <th> Address <th> Status <th> Total
                                         <?php while ($transacNow->valid()) { ?>
                                         <tr>
                                             <td> <?php echo $transacNow->current()->getId_transac(); ?>
-                                            <td> <?php echo $transacNow->current()->getId_user(); ?>
+                                            <td> <?php echo $transacNow->current()->getName_user(); ?>
                                             <td> <?php echo $transacNow->current()->getAddress(); ?>
                                             <td> <?php if($transacNow->current()->getStatus()==0) echo 'Belum Diambil'; 	
                                             else if  ($transacNow->current()->getStatus()==1) echo 'Sedang Diantar'; 
@@ -110,15 +110,15 @@
                                 <h3>Transaksi Dalam Proses</h3>
 
                                 <table class="table table-striped table-bordered">
-                                    <th> Transaction ID <th> User ID <th> Driver ID <th> Address <th> Status <th> Total
+                                    <th> Transaction ID <th> User  <th> Driver  <th> Address <th> Status <th> Total
                                         <?php while ($transacOngoing->valid()) { ?>
                                         <tr>
                                             <td> <?php echo $transacOngoing->current()->getId_transac(); ?>
-                                            <td> <?php echo $transacOngoing->current()->getId_user(); ?>
-                                            <td> <?php echo $transacOngoing->current()->getId_driver(); ?>
+                                            <td> <?php echo $transacOngoing->current()->getName_user(); ?>
+                                            <td> <?php echo $transacOngoing->current()->getName_driver(); ?>
                                             <td> <?php echo $transacOngoing->current()->getAddress(); ?>
-                                             <td> <?php if($transacNow->current()->getStatus()==0) echo 'Belum Diambil'; 	
-                                            else if  ($transacNow->current()->getStatus()==1) echo 'Sedang Diantar'; 
+                                             <td> <?php if($transacOngoing->current()->getStatus()==0) echo 'Belum Diambil'; 	
+                                            else if  ($transacOngoing->current()->getStatus()==1) echo 'Sedang Diantar'; 
                                             else echo 'Selesai'; ?>
                                             <td> <?php echo $transacOngoing->current()->getTotal(); ?>
                         <!--                    <td><a href="index.php?menu=driver&done=<?php echo $transacOngoing->current()->getId_transac(); ?>"> pilih</a>-->
@@ -131,15 +131,15 @@
                                 <br>
                                   <h3>Transaksi Yang Sudah Selesai</h3>
                                 <table class="table table-striped table-bordered">
-                                    <th> Transaction ID <th> User ID <th> Driver ID <th> Address <th> Status <th> Total
+                                    <th> Transaction ID <th> User  <th> Driver  <th> Address <th> Status <th> Total
                                         <?php while ($transacDone->valid()) { ?>
                                         <tr>
                                             <td> <?php echo $transacDone->current()->getId_transac(); ?>
-                                            <td> <?php echo $transacDone->current()->getId_user(); ?>
-                                            <td> <?php echo $transacDone->current()->getId_driver(); ?>
+                                            <td> <?php echo $transacDone->current()->getName_user(); ?>
+                                            <td> <?php echo $transacDone->current()->getName_driver(); ?>
                                             <td> <?php echo $transacDone->current()->getAddress(); ?>
-                                             <td> <?php if($transacNow->current()->getStatus()==0) echo 'Belum Diambil'; 	
-                                            else if  ($transacNow->current()->getStatus()==1) echo 'Sedang Diantar'; 
+                                             <td> <?php if($transacDone->current()->getStatus()==0) echo 'Belum Diambil'; 	
+                                            else if  ($transacDone->current()->getStatus()==1) echo 'Sedang Diantar'; 
                                             else echo 'Selesai'; ?>
                                             <td> <?php echo $transacDone->current()->getTotal(); ?>
                                             <!-- <td><a href="index.php?menu=driver&service=<?php echo $transacDone->current()->getId_transac(); ?>"> pilih</a>-->

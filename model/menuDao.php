@@ -147,7 +147,30 @@ class menuDao implements menuInterface {
         return $result;
     }
 
-   
+    public function get_all_menu_by_service($id_service) {
+         $menus = new ArrayObject();
+        try {
+            $conn = conection::getconection();
+            $sql = "SELECT * from menu where id_service = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(1, $id_service);
+            $stmt->execute();
+            while ($row = $stmt->fetch()) {
+                $menu = new menu();
+                $menu->setId_menu($row['id_menu']);
+                $menu->setId_service($row['id_service']);
+                $menu->setName($row['name']);
+                $menu->setPrice($row['price']);
+                $menus->append($menu);
+            }
+
+        } catch (Exception $e) {
+            echo $e->getMessage();
+            die();
+        }
+        $conn = NULL;
+        return $menus; 
+    }
 
 //put your code here
 }

@@ -44,16 +44,18 @@
                         <div class="rowSignup">
 
                             <div class="widget-content">
-                              <br>
-                              <h3> Your Tenant List & Info </h3>
+                                <br>
+                                <h3> Your Tenant List & Info </h3>
                                 <table class="table table-striped table-bordered" style="">
                                     <br>
                                     <th> Service <th> <a href="index.php?menu=addService"><input type='button' class='button btn btn-success' value='Add Service'></a>
                                         <?php while ($services->valid()) { ?>
                                         <tr>
                                             <td><?php echo $services->current()->getName(); ?></td>
-                                            <td><a href="index.php?menu=owner&service=<?php echo $services->current()->getId_service(); ?>" name="show">
-                                                    <input type='button' class='button btn btn-success' value='Show Menu'></a>
+                                            <td><a href="index.php?menu=report&service=<?php echo $services->current()->getId_service(); ?>" name="show">
+                                                    <input type='button' class='button btn btn-success'  value='Report'></a>
+                                                <a href="index.php?menu=owner&service=<?php echo $services->current()->getId_service(); ?>" name="show">
+                                                    <input type='button' class='button btn btn-success' style="margin-right: 1em" value='Show Menu'></a>
                                                 <?php
                                                 $services->next();
                                             }
@@ -61,13 +63,16 @@
                                 </table>
                                 <br>
                                 <?php if (isset($_GET['service'])) { ?>
+                                    <h2>  <?php echo $service->getName(); ?> </h2>
                                     <table class="table table-striped table-bordered">
                                         <th>Name <th> Price <th> <a href="index.php?menu=addMenu&service=<?php echo $_GET['service'] ?>"><input type='button' class='button btn btn-success' value='Add Menu'></a>
                                             <?php
                                             while ($menu->valid()) {
+                                                $formatHarga = number_format($menu->current()->getPrice());
+
                                                 echo "<tr>";
                                                 echo "<td>" . $menu->current()->getName();
-                                                echo "<td>" . $menu->current()->getPrice();
+                                                echo "<td> Rp." . $formatHarga;
                                                 echo "<td>";
                                                 ?>
                                                 <a href="index.php?menu=editMenu&id=<?php echo $menu->current()->getId_menu(); ?>" name="show">

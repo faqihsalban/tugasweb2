@@ -50,6 +50,7 @@
     include_once 'model/itemInterface.php';
     include_once 'model/itemDao.php';
 
+    include_once 'model/reportmenu.php';
     include_once 'model/menu.php';
     include_once 'model/menuInterface.php';
     include_once 'model/menuDao.php';
@@ -191,6 +192,14 @@
         case 'adminTrans':
             $usercon = new userController();
             $usercon->adminTrans();
+            break;
+        case 'detail':
+            $usercon = new userController();
+            $usercon->detailTrans();
+            break;
+        case 'report':
+            $usercon = new userController();
+            $usercon->report();
             break;
         case 'logout':include_once ("logout.php");
         // $usecon = new userController();

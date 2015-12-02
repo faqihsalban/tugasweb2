@@ -46,14 +46,17 @@
           <br>
           <h3> Daftar Permintaan Transaksi </h3>
         <table class="table table-striped table-bordered">
-            <th> id transaction <th> id user <th> address <th> status <th> total <th> aksi
-                <?php if($onproces->count()==0){ while ($result->valid()) { ?>
+            <th> id transaction <th>  User <th> address <th> status <th> total <th> aksi
+                <?php if($onproces->count()==0){ while ($result->valid()) { 
+                    $formatHarga = number_format($result->current()->getTotal());
+                    ?>
                 <tr>
-                    <td> <?php echo $result->current()->getId_transac(); ?>
-                    <td> <?php echo $result->current()->getId_user(); ?>
+                    <td> <a href="index.php?menu=detail&id=<?php echo $result->current()->getId_transac(); ?>"><?php echo $result->current()->getId_transac(); ?></a>
+                    <td> <?php echo $result->current()->getName_user(); ?>
                     <td> <?php echo $result->current()->getAddress(); ?>
                     <td> <?php echo $result->current()->getStatus(); ?>
-                    <td> <?php echo $result->current()->getTotal(); ?>
+                        
+                    <td> <?php echo "Rp.". $formatHarga; ?>
                     <td><a href="index.php?menu=driver&service=<?php echo $result->current()->getId_transac(); ?>">
                             <input type="button" name="btn_ambil" value="Ambil" class="btn btn-success">
                         </a>
@@ -66,14 +69,16 @@
         <br>
         <h3> Transaksi Yang Sedang Dalam Proses </h3>
         <table class="table table-striped table-bordered">
-            <th> id transac <th> id user <th> address <th> status <th> total <th> aksi
-                <?php while ($onproces->valid()) { ?>
+            <th> id transac <th>  user <th> address <th> status <th> total <th> aksi
+                <?php while ($onproces->valid()) { 
+                    $formatHarga = number_format($onproces->current()->getTotal());
+                    ?>
                 <tr>
                     <td> <?php echo $onproces->current()->getId_transac(); ?>
-                    <td> <?php echo $onproces->current()->getId_user(); ?>
+                    <td> <?php echo $onproces->current()->getName_user(); ?>
                     <td> <?php echo $onproces->current()->getAddress(); ?>
                     <td> <?php echo $onproces->current()->getStatus(); ?>
-                    <td> <?php echo $onproces->current()->getTotal(); ?>
+                    <td> <?php echo "Rp.". $formatHarga; ?>
                     <td><a href="index.php?menu=driver&done=<?php echo $onproces->current()->getId_transac(); ?>">
                           <input type="button" name="btn_selesai" value="Selesai" class="btn btn-success">
                         </a>
@@ -86,14 +91,16 @@
         <br>
         <h3> Transaksi Yang Sudah Selesai</h3>
         <table class="table table-striped table-bordered">
-            <th> id transac <th> id user <th> address <th> status <th> total
-                <?php while ($complete->valid()) { ?>
+            <th> id transac <th>  user <th> address <th> status <th> total
+                <?php while ($complete->valid()) { 
+                    $formatHarga = number_format($complete->current()->getTotal());
+                    ?>
                 <tr>
                     <td> <?php echo $complete->current()->getId_transac(); ?>
-                    <td> <?php echo $complete->current()->getId_user(); ?>
+                    <td> <?php echo $complete->current()->getName_user(); ?>
                     <td> <?php echo $complete->current()->getAddress(); ?>
                     <td> <?php echo $complete->current()->getStatus(); ?>
-                    <td> <?php echo $complete->current()->getTotal(); ?>
+                    <td><?php echo "Rp.". $formatHarga; ?>
                     <!-- <td><a href="index.php?menu=driver&service=<?php echo $complete->current()->getId_transac(); ?>"> pilih</a>-->
                 </tr>
                 <?php

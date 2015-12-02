@@ -13,6 +13,7 @@
 interface menuInterface {
     //put your code here
     public function get_menu_by_service($id_service);
+    public function get_all_menu_by_service($id_service);
     public function get_menu_by_id($id_menu);
     public function get_menu(menu $vmenu);
     public function add(menu $vmenu);

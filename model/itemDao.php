@@ -93,4 +93,23 @@ class itemDao implements itemInterface {
         $conn = NULL;
         return $hasil['SUM(price)'];
     }
+
+    public function get_report_menu($id_menu) {
+      
+        try {
+            $conn = conection::getconection();
+            $sql = "SELECT sum(qty),sum(price) from item where id_menu = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(1, $id_menu);
+            $stmt->execute();
+            $menu = $stmt->fetch();
+            
+        } catch (Exception $e) {
+            echo $e->getMessage();
+            die();
+        }
+        $conn = NULL;
+        return $menu;
+    }
+
 }

@@ -37,6 +37,39 @@ class transac {
     public function getAddress() {
         return $this->address;
     }
+  public function getName_driver() {
+        try {
+            $conn = conection::getconection();
+            $sql = "SELECT name from user where id_user = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(1, $this->id_driver);
+            $stmt->execute();
+            $row = $stmt->fetch();
+        } catch (Exception $e) {
+            echo $e->getMessage();
+            die();
+        }
+        $conn = NULL;
+        return $row['name'];
+        //return $this->id_menu;
+    }
+
+    public function getName_user() {
+        try {
+            $conn = conection::getconection();
+            $sql = "SELECT name from user where id_user = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(1, $this->id_user);
+            $stmt->execute();
+            $row = $stmt->fetch();
+        } catch (Exception $e) {
+            echo $e->getMessage();
+            die();
+        }
+        $conn = NULL;
+        return $row['name'];
+        //return $this->id_menu;
+    }
 
     public function getTotal() {
         try {
@@ -51,7 +84,7 @@ class transac {
             die();
         }
         $conn = NULL;
-        return ($hasil['SUM(price)']+10000);
+        return ($hasil['SUM(price)'] + 10000);
 
 
         // return $this->total;
