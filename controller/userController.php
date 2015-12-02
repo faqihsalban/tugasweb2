@@ -201,7 +201,9 @@ class userController {
             $vservice->setType($_POST['serviceType']);
             $vservice->setAddress($_POST['serviceAddress']);
             //ini nya ga jalan alert nya
-            echo "alertify.confirm('Apakah anda yakin ingin add  service?','ya','Default Value')";
+            echo "<script>
+                      alertify.confirm('Apakah anda yakin ingin add  service?','ya','Default Value');
+                  </script>";
 
             $this->servicedao->add($vservice);
             header("location: index.php?menu=owner");
@@ -293,7 +295,7 @@ class userController {
                 header("location:index.php?menu=admin");
             }
         }
-        require_once 'view/EditProfile.php';
+        require_once 'view/editprofile.php';
     }
 
     public function ownerEditProfile() {
