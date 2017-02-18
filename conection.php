@@ -15,7 +15,7 @@ class conection {
    
    public static function getconection(){
         try{
-          $db_handler= new PDO("sqlsrv:server = tcp:delitown.database.windows.net,1433; Database = delitown", "admindelitown", "1a2b3c4d5e");
+          $db_handler= new PDO("sqlsrv:server = tcp:delitown.database.windows.net,1433; Database = delitown", "admindelitown", "Eloehad@2013");
           $db_handler->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
           return $db_handler;
         }
