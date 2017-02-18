@@ -31,10 +31,10 @@ class conection {
                 $connectstr_dbpassword = preg_replace("/^.*Password=(.+?)$/", "\\1", $value);
             }
 
-            $link = mysqli_connect($connectstr_dbhost, $connectstr_dbusername, $connectstr_dbpassword,$connectstr_dbname);
+            //$link = mysqli_connect($connectstr_dbhost, $connectstr_dbusername, $connectstr_dbpassword,$connectstr_dbname);
 
         try{
-          $db_handler= new PDO('mysql:host='$connectstr_dbhost; $connectstr_dbname, $connectstr_dbusername,  $connectstr_dbpassword);
+          $db_handler= new PDO("mysql:host=$connectstr_dbhost;dbname=$connectstr_dbname", $connectstr_dbusername,  $connectstr_dbpassword);
           $db_handler->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
           return $db_handler;
         }
