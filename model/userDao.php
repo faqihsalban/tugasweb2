@@ -216,7 +216,7 @@ class userDao implements userInterface {
         $login_result = FALSE;
         try {
             $conn = conection::getconection();
-            $sql = "SELECT * from user where username= ? AND password= ?";
+            $sql = "SELECT * from dbo.user where username= ? AND password= ?";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(1, $vuser->getUsername());
             $stmt->bindParam(2, $vuser->getPassword());
